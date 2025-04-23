@@ -22,13 +22,18 @@ function Navbar() {
       <div className="max-w-8xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Brand/Logo */}
         <div className="flex items-center space-x-2">
-          <img
-            src="/icons/banner.png"
-            alt="Logo"
-            className="w-12 h-12"
-            style={{ height: "50px", width: "50px", marginRight: "20px" }}
-          />
-          <h1 className="text-2xl font-bold">
+          {/* Clickable Icon */}
+          <Link to="/" className="flex items-center">
+            <img
+              src="/icons/logo-white.png"
+              alt="Logo"
+              className="w-12 h-12"
+              style={{ height: "50px", width: "50px", marginRight: "20px" }}
+            />
+          </Link>
+
+          {/* Name Banner (Visible Only on Desktop) */}
+          <h1 className="hidden md:block text-2xl font-bold">
             <Link to="/">Elor Itzkovitz</Link>
           </h1>
         </div>
