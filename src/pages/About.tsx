@@ -7,7 +7,7 @@ function About() {
         <div className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
           <p className="text-lg">
-            Hi! My name is Elor, an aspiring software developer. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas and interests - and shape them into reality. 
+            Hi! My name is Elor. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas and interests - and shape them into reality. 
             I am very passionate about building modern, scalable, and user-friendly applications, as well as learning and adapting to new technologies and frameworks. I am always eager to learn and grow, and I believe that the best way to do that is by constantly challenging ourselves.
           </p>
           <p className="text-lg mt-4">
