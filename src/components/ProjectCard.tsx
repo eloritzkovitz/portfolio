@@ -8,7 +8,13 @@ interface ProjectCardProps {
   link: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, languages, image, link }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  name,
+  description,
+  languages,
+  image,
+  link,
+}) => {
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden">
       {/* Project Image */}
@@ -24,10 +30,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, languages,
       <div className="p-6 flex flex-col justify-between w-full">
         <div>
           <h2 className="text-4xl font-semibold mb-4">{name}</h2>
-          <p className="text-xl text-gray-700 mb-4">{description}</p>
-          <p className="text-lg text-gray-500">
-            <strong>Languages/Technologies:</strong> {languages.join(", ")}
-          </p>
+          <p className="text-xl text-gray-700 mb-6">{description}</p>
+          <div className="flex flex-wrap gap-2">
+            {languages.map((language, index) => (
+              <span
+                key={index}
+                className="bg-beige-100 text-gray-800 text-xl font-medium px-3 py-1 rounded-full"
+                style={{ backgroundColor: "#f5f5dc" }}
+              >
+                {language}
+              </span>
+            ))}
+          </div>
         </div>
         <a
           href={link}
