@@ -34,7 +34,7 @@ function Navbar() {
 
         {/* Hamburger Menu Button */}
         <button
-          className="text-white text-2xl md:hidden"
+          className="bg-gray-700 text-white text-2xl p-2 rounded-md md:hidden hover:bg-gray-600 transition-colors duration-300"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
