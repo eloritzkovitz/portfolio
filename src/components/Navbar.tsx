@@ -8,6 +8,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useState } from "react";
+import '../styles/Navbar.css';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ function Navbar() {
           </h1>
         </div>
 
-        {/* Hamburger Menu Button */}
+        {/* Hamburger Menu Button (Visible Only on Mobile) */}
         <button
           className="bg-gray-700 text-white text-2xl p-2 rounded-md md:hidden hover:bg-gray-600 transition-colors duration-300"
           onClick={toggleMenu}
