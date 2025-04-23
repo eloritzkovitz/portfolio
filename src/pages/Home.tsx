@@ -58,17 +58,8 @@ function Home() {
       {/* Intro Card */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <h1 className="text-4xl font-bold mb-4 text-center">
-          Welcome to My Portfolio
-        </h1>
-        <p className="text-lg mb-4">
-          Hello! I'm Elor Itzkovitz, an aspiring software developer with a
-          passion for building modern, scalable, and user-friendly applications.
-        </p>
-        <p className="text-lg mb-4">
-          I am currently a third-year computer science student specializing in
-          React, TypeScript, and Node.js. I'm always eager to learn new
-          technologies and improve my skills.
-        </p>        
+          My Portfolio
+        </h1>           
       </div>
 
       {/* GitHub Data Section */}

@@ -3,10 +3,13 @@ import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 function Contact() {
   return (
     <section className="p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Contact Me</h1>
-      <p className="text-lg text-center mb-8">
-        Feel free to reach out to me via email or connect with me on social media.
-      </p>
+      {/* Intro Card */}
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h1 className="text-4xl font-bold mb-4 text-center">
+          Contact Me
+        </h1>
+      </div>
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Email Card */}
         <div className="bg-white rounded-lg p-6 flex flex-col items-center text-center">

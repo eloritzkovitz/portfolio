@@ -73,7 +73,12 @@ function About() {
 
   return (
     <section className="about-section">
-      <h1 className="about-title">About Me</h1>
+      {/* Intro Card */}
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h1 className="text-4xl font-bold mb-4 text-center">
+          About Me
+        </h1>
+      </div>   
 
       <div className="carousel-container">
         {/* Carousel Items */}
