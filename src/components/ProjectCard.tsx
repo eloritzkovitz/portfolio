@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/ProjectCard.css";
 
 interface ProjectCardProps {
   name: string;
@@ -33,11 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <p className="text-xl text-gray-700 mb-6">{description}</p>
           <div className="flex flex-wrap gap-2">
             {languages.map((language, index) => (
-              <span
-                key={index}
-                className="bg-beige-100 text-gray-800 text-xl font-medium px-3 py-1 rounded-full"
-                style={{ backgroundColor: "#f5f5dc" }}
-              >
+              <span key={index} className="language-tag">
                 {language}
               </span>
             ))}
