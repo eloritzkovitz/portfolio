@@ -6,9 +6,15 @@ function Navbar() {
     <nav className="bg-gray-800 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-8xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Brand/Logo */}
-        <div className="flex items-center space-x-2">          
-          <h1 className="text-2xl font-bold ml-12">
-            <Link to="/">My Portfolio</Link>
+        <div className="flex items-center space-x-2 ml-12">
+          <img
+            src="/icons/banner.png"
+            alt="Logo"
+            className="w-12 h-12"
+            style={{ height: "50px", width: "50px", marginRight: "20px" }}
+          />
+          <h1 className="text-2xl font-bold">
+            <Link to="/">Elor Itzkovitz</Link>
           </h1>
         </div>
 
