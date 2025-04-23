@@ -1,12 +1,26 @@
 import { Link } from "react-router-dom";
-import { FaHome, FaUser, FaProjectDiagram, FaEnvelope } from "react-icons/fa";
+import {
+  FaHome,
+  FaUser,
+  FaProjectDiagram,
+  FaEnvelope,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+import { useState } from "react";
 
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className="bg-gray-800 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-8xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Brand/Logo */}
-        <div className="flex items-center space-x-2 ml-12">
+        <div className="flex items-center space-x-2">
           <img
             src="/icons/banner.png"
             alt="Logo"
@@ -18,28 +32,44 @@ function Navbar() {
           </h1>
         </div>
 
+        {/* Hamburger Menu Button */}
+        <button
+          className="text-white text-2xl md:hidden"
+          onClick={toggleMenu}
+          aria-label="Toggle Menu"
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
         {/* Menu */}
-        <ul className="flex space-x-8 mr-12">
-          <li>
+        <ul
+          className={`flex flex-col md:flex-row md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent transition-all duration-300 ${
+            isMenuOpen ? "block" : "hidden md:flex"
+          }`}
+        >
+          <li className="border-b md:border-none">
             <Link
               to="/"
-              className="flex items-center space-x-2 hover:text-gray-300"
+              className="flex items-center space-x-2 px-4 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
             >
               <FaHome /> <span>Home</span>
             </Link>
           </li>
-          <li>
+          <li className="border-b md:border-none">
             <Link
               to="/about"
-              className="flex items-center space-x-2 hover:text-gray-300"
+              className="flex items-center space-x-2 px-4 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
             >
               <FaUser /> <span>About</span>
             </Link>
           </li>
-          <li>
+          <li className="border-b md:border-none">
             <Link
               to="/projects"
-              className="flex items-center space-x-2 hover:text-gray-300"
+              className="flex items-center space-x-2 px-4 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
             >
               <FaProjectDiagram /> <span>Projects</span>
             </Link>
@@ -47,7 +77,8 @@ function Navbar() {
           <li>
             <Link
               to="/contact"
-              className="flex items-center space-x-2 hover:text-gray-300"
+              className="flex items-center space-x-2 px-4 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
             >
               <FaEnvelope /> <span>Contact</span>
             </Link>
