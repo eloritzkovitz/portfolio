@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { FaList, FaTh } from "react-icons/fa"; // Import icons from react-icons
+import { FaList, FaTh } from "react-icons/fa";
 import skillsData from "../data/skillsData";
 import "../styles/About.css";
 
 function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [isPaused, setIsPaused] = useState(false); // State to pause auto-sliding
+  const [isPaused, setIsPaused] = useState(false);
   const [expandedStates, setExpandedStates] = useState(
-    skillsData.map(() => false) // Initialize all categories as collapsed
+    skillsData.map(() => false)
   );
-  const [isFlatView, setIsFlatView] = useState(false); // Toggle between grouped and flat view
+  const [isFlatView, setIsFlatView] = useState(true);
 
   const cards = [
     {
@@ -139,7 +139,7 @@ function About() {
 
   // Automatic scrolling
   useEffect(() => {
-    if (isPaused) return; // Pause auto-sliding when `isPaused` is true
+    if (isPaused) return;
 
     const interval = setInterval(() => {
       handleNext();
@@ -169,8 +169,8 @@ function About() {
   return (
     <section
       className="about-section"
-      onMouseEnter={() => setIsPaused(true)} // Pause sliding on hover
-      onMouseLeave={() => setIsPaused(false)} // Resume sliding on mouse leave
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Intro Card */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
