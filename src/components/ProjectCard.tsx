@@ -4,7 +4,7 @@ import "../styles/ProjectCard.css";
 interface ProjectCardProps {
   name: string;
   description: string;
-  languages: string[];
+  tech: string[];
   image: string;
   link: string;
 }
@@ -12,7 +12,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({
   name,
   description,
-  languages,
+  tech,
   image,
   link,
 }) => {
@@ -33,9 +33,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <h2 className="text-4xl font-semibold mb-4">{name}</h2>
           <p className="text-xl text-gray-700 mb-6">{description}</p>
           <div className="flex flex-wrap gap-2">
-            {languages.map((language, index) => (
-              <span key={index} className="language-tag">
-                {language}
+            {tech.map((tech, index) => (
+              <span key={index} className="tech-tag">
+                {tech}
               </span>
             ))}
           </div>

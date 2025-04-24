@@ -18,7 +18,7 @@ function Projects() {
             key={index}
             name={project.name}
             description={project.description}
-            languages={project.languages}
+            tech={project.tech}
             image={project.image}
             link={project.link}
           />
