@@ -5,7 +5,6 @@ import "../styles/About.css";
 
 function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [expandedStates, setExpandedStates] = useState(
     skillsData.map(() => false)
@@ -48,7 +47,10 @@ function About() {
             <div className="flex flex-wrap gap-2">
               {skillsData.flatMap((skillCategory) =>
                 skillCategory.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="tech-tag">
+                  <span
+                    key={`${skillCategory.category}-${skillIndex}`}
+                    className="tech-tag"
+                  >
                     {skill}
                   </span>
                 ))
@@ -122,8 +124,8 @@ function About() {
 
   // Handle the previous card
   const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + cards.length) % cards.length
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
     );
   };
 
@@ -147,24 +149,26 @@ function About() {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  // Detect screen size to hide arrows on mobile
-  useEffect(() => {
-    const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
-    updateIsMobile();
-    window.addEventListener("resize", updateIsMobile);
-    return () => window.removeEventListener("resize", updateIsMobile);
-  }, []);
-
-  // Add keyboard navigation for the right arrow key
+  // Add keyboard arrow navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
         handleNext();
       }
+      if (event.key === "ArrowLeft") {
+        handlePrev();
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [handleNext, handlePrev]);
+
+  // Set flat view when not on the skills card
+  useEffect(() => {
+    if (cards[currentIndex].title !== "Skills") {
+      setIsFlatView(true);
+    }
+  }, [currentIndex, cards]);
 
   return (
     <section
@@ -184,7 +188,7 @@ function About() {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {cards.map((card, index) => (
-            <div key={index} className="carousel-card">
+            <div key={`${card.title}-${index}`} className="carousel-card">
               {/* Title with Toggle Button */}
               <div className="flex items-center justify-between mb-4">
                 <h2 className="carousel-card-title text-2xl font-bold">
@@ -195,6 +199,11 @@ function About() {
                     className="toggle-view-btn"
                     onClick={() => setIsFlatView(!isFlatView)}
                     aria-label="Toggle View"
+                    data-tooltip={
+                      isFlatView
+                        ? "Switch to Grouped View"
+                        : "Switch to Flat View"
+                    }
                   >
                     {isFlatView ? <FaList size={20} /> : <FaTh size={20} />}
                   </button>
@@ -204,24 +213,6 @@ function About() {
             </div>
           ))}
         </div>
-
-        {/* Navigation Buttons */}
-        {!isMobile && (
-          <>
-            <button
-              onClick={handlePrev}
-              className="carousel-button carousel-button-left"
-            >
-              &#8592;
-            </button>
-            <button
-              onClick={handleNext}
-              className="carousel-button carousel-button-right"
-            >
-              &#8594;
-            </button>
-          </>
-        )}
 
         {/* Indicators */}
         <div className="carousel-indicators">
