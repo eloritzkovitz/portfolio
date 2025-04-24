@@ -56,7 +56,7 @@ function Navbar() {
           <li>
             <Link
               to="/"
-              className="flex items-center space-x-2 px-4 py-4 hover:bg-gray-100"
+              className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
               <FaHome /> <span>Home</span>
@@ -65,7 +65,7 @@ function Navbar() {
           <li>
             <Link
               to="/about"
-              className="flex items-center space-x-2 px-4 py-4 hover:bg-gray-100"
+              className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
               <FaUser /> <span>About</span>
@@ -74,7 +74,7 @@ function Navbar() {
           <li>
             <Link
               to="/projects"
-              className="flex items-center space-x-2 px-4 py-4 hover:bg-gray-100"
+              className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
               <FaProjectDiagram /> <span>Projects</span>
@@ -83,7 +83,7 @@ function Navbar() {
           <li>
             <Link
               to="/contact"
-              className="flex items-center space-x-2 px-4 py-4 hover:bg-gray-100"
+              className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
               <FaEnvelope /> <span>Contact</span>
