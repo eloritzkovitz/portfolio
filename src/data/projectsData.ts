@@ -15,6 +15,13 @@ const projects = [
       link: "https://github.com/Elor-Itz/Trevel",
     },
     {
+      name: "Voltrico",
+      description: "An online appliances store, allowing users to browse products, add them to cart, perform orders and view them. Administrators can also add, edit and delete items, as well as view order history and statistics. Originally a college project written in JavaScript/CSS/HTML, this version has been completely rewritten in React and TypeScript to match newer standards.",
+      tech: ["React", "TypeScript", "Bootstrap", "CSS", "Node.js", "MongoDB", "JWT", "Swagger", "JavaScript", "HTML"],
+      image: "/projects/Voltrico.png",
+      link: "https://github.com/Elor-Itz/Voltrico",
+    },
+    {
       name: "HexGame",
       description: "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",
       tech: ["React", "JavaScript", "CSS"],
