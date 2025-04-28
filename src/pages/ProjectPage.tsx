@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import projects from "../data/projectsData";
+import ImageViewer from "../components/ImageViewer";
 
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams();
@@ -10,16 +12,94 @@ const ProjectPage: React.FC = () => {
     (proj) => proj.name.toLowerCase().replace(/\s+/g, "-") === projectId
   );
 
+  const [showImageViewer, setShowImageViewer] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Variables for swipe detection
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  // Scroll to the top of the page when the component is mounted
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Handle arrow key navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        handlePrevImage();
+      } else if (event.key === "ArrowRight") {
+        handleNextImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [currentImageIndex]);
+
+  // Handle swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setTouchEndX(e.changedTouches[0].clientX);
+
+    if (touchStartX !== null && touchEndX !== null) {
+      const swipeDistance = touchStartX - touchEndX;
+
+      if (swipeDistance > 50) {
+        // Swipe left
+        handleNextImage();
+      } else if (swipeDistance < -50) {
+        // Swipe right
+        handlePrevImage();
+      }
+    }
+
+    // Reset touch positions
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   if (!project) {
     return <div>Project not found</div>;
   }
 
+  const handleOpenImageViewer = (index: number) => {
+    setCurrentImageIndex(index);
+    setShowImageViewer(true);
+  };
+
+  const handleCloseImageViewer = () => {
+    setShowImageViewer(false);
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === project.screenshots.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? project.screenshots.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
-    <div className="project-page">
+    <div
+      className="project-page"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Back to Projects Button */}
       <button
         onClick={() => navigate("/projects")}
-        className="mb-8 text-black text-lg font-semibold rounded-lg"
+        className="mb-12 text-black text-lg font-semibold rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-100"
       >
         ← Back to Projects
       </button>
@@ -30,7 +110,7 @@ const ProjectPage: React.FC = () => {
           <img
             src={project.image}
             alt={project.name}
-            className="rounded-lg w-20 h-20 object-cover"
+            className="rounded-lg w-20 h-20 object-contain"
           />
           <h1 className="text-4xl font-bold">{project.name}</h1>
         </div>
@@ -38,10 +118,36 @@ const ProjectPage: React.FC = () => {
 
       {/* Details */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        {/* Screenshots Carousel */}
+        {project.screenshots && project.screenshots.length > 0 && (
+          <div className="mb-12 relative">            
+            <div className="flex items-center justify-center">
+              <img
+                src={project.screenshots[currentImageIndex]}
+                alt={`Screenshot ${currentImageIndex + 1}`}
+                className="rounded-lg object-contain w-full max-h-[500px] cursor-pointer"
+                onClick={() => handleOpenImageViewer(currentImageIndex)}
+              />
+            </div>           
+
+            {/* Indicators */}
+            <div className="carousel-indicators">
+              {project.screenshots.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`carousel-indicator ${
+                    index === currentImageIndex ? "active" : ""
+                  }`}
+                ></button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Description */}
         <h2 className="text-3xl font-semibold mb-6">Description</h2>
-        <p className="text-xl text-gray-700 mb-6">{project.description}</p> 
+        <p className="text-xl text-gray-700 mb-6">{project.description}</p>
 
         {/* Tech Stack */}
         <div className="mb-12">
@@ -65,26 +171,9 @@ const ProjectPage: React.FC = () => {
           </ul>
         </div>
 
-        {/* Screenshots */}
-        {project.screenshots && (
-          <div className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6">Screenshots</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.screenshots.map((screenshot, index) => (
-                <img
-                  key={index}
-                  src={screenshot}
-                  alt={`Screenshot ${index + 1}`}
-                  className="rounded-lg object-cover w-full"
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* GitHub Links */}
+        {/* Links */}
         <div className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6">GitHub Links</h2>
+          <h2 className="text-3xl font-semibold mb-6">Links</h2>
           <ul className="list-disc list-inside text-xl text-gray-700">
             {Array.isArray(project.links) ? (
               project.links.map((link, index) => (
@@ -114,6 +203,18 @@ const ProjectPage: React.FC = () => {
           </ul>
         </div>
       </div>
+
+      {/* Image Viewer Modal */}
+      {project.screenshots && (
+        <ImageViewer
+          show={showImageViewer}
+          images={project.screenshots}
+          currentIndex={currentImageIndex}
+          onClose={handleCloseImageViewer}
+          onNext={handleNextImage}
+          onPrev={handlePrevImage}
+        />
+      )}
     </div>
   );
 };

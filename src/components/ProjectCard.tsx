@@ -6,8 +6,7 @@ interface ProjectCardProps {
   name: string;
   description: string;
   tech: string[];
-  image: string;
-  links: string | string[];
+  image: string;  
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -15,11 +14,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   tech,
   image,
-  links,
 }) => {
-  // Determine the link to display
-  const primaryLink = Array.isArray(links) ? links[0] : links;
-
   return (
     <div className="flex flex-col bg-white rounded-lg overflow-hidden mb-8 shadow-md transform transition-transform duration-300 hover:scale-102">
       {/* Clickable Area for Project Page */}
@@ -49,20 +44,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Link */}
+          <div className="p-4">
+            <a
+              href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-500 hover:text-teal-700 font-semibold text-xl block text-start"
+            >
+              Visit project page →
+            </a>
+          </div>
         </div>
       </Link>
-
-      {/* GitHub Link */}
-      <div className="p-4">
-        <a
-          href={primaryLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal-500 hover:text-teal-700 font-semibold text-xl block text-center"
-        >
-          View on GitHub →
-        </a>
-      </div>
     </div>
   );
 };
