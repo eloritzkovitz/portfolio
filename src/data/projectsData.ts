@@ -37,8 +37,8 @@ const projects = [
       involvement: [
         "Designed and implemented the application interface and frontend using React and TypeScript",
         "Developed the backend API using Node.js and MongoDB, ensuring seamless integration with the frontend",
-        "Implemented user authentication and authorization using JWT for secure access",
-        "Integrated Swagger for API documentation and testing",
+        "Implemented user authentication and authorization using JWT and cookies",
+        "Integrated Swagger for API documentation",
         "Implemented testing suites with Jest",
         "Implemented Generative AI features to provide personalized content suggestions and enhance user engagement",        
       ],
