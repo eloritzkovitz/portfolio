@@ -18,7 +18,6 @@ const ProjectPage: React.FC = () => {
 
   // Variables for swipe detection
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
   // Scroll to the top of the page when the component is mounted
   useEffect(() => {
@@ -47,10 +46,9 @@ const ProjectPage: React.FC = () => {
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    setTouchEndX(e.changedTouches[0].clientX);
-
-    if (touchStartX !== null && touchEndX !== null) {
-      const swipeDistance = touchStartX - touchEndX;
+    if (touchStartX !== null) {
+      const touchEnd = e.changedTouches[0].clientX;
+      const swipeDistance = touchStartX - touchEnd;
 
       if (swipeDistance > 50) {
         // Swipe left
@@ -61,9 +59,8 @@ const ProjectPage: React.FC = () => {
       }
     }
 
-    // Reset touch positions
+    // Reset touch start
     setTouchStartX(null);
-    setTouchEndX(null);
   };
 
   if (!project) {
@@ -100,7 +97,7 @@ const ProjectPage: React.FC = () => {
       {/* Back to Projects Button */}
       <button
         onClick={() => navigate("/projects")}
-        className="mb-12 text-black text-lg font-semibold rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-100"
+        className="mb-8 text-black text-lg font-semibold rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-100"
       >
         ← Back to Projects
       </button>
