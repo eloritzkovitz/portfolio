@@ -10,6 +10,10 @@ function About() {
     skillsData.map(() => false)
   );
   const [isFlatView, setIsFlatView] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Variables for swipe detection
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const cards = [
     {
@@ -149,51 +153,108 @@ function About() {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  // Add keyboard arrow navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") {
+  // Handle swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX !== null) {
+      const touchEnd = e.changedTouches[0].clientX;
+      const swipeDistance = touchStartX - touchEnd;
+
+      if (swipeDistance > 50) {
+        // Swipe left
         handleNext();
-      }
-      if (event.key === "ArrowLeft") {
+      } else if (swipeDistance < -50) {
+        // Swipe right
         handlePrev();
       }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleNext, handlePrev]);
-
-  // Set flat view when not on the skills card
-  useEffect(() => {
-    if (cards[currentIndex].title !== "Skills") {
-      setIsFlatView(true);
     }
-  }, [currentIndex, cards]);
+
+    // Reset touch start
+    setTouchStartX(null);
+  };
+
+  // Update `isMobile` state on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
       className="about-section"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Intro Card */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <h1 className="text-4xl font-bold mb-4 text-center">About Me</h1>
       </div>
 
-      <div className="carousel-container">
-        {/* Carousel Items */}
-        <div
-          className="carousel-items"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
+      {isMobile ? (
+        <div className="carousel-container">
+          {/* Carousel Items */}
+          <div
+            className="carousel-items"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {cards.map((card, index) => (
+              <div key={`${card.title}-${index}`} className="carousel-card">
+                {/* Title with Toggle Button */}
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="carousel-card-title text-2xl font-bold">
+                    {card.title}
+                  </h2>
+                  {card.title === "Skills" && (
+                    <button
+                      className="toggle-view-btn"
+                      onClick={() => setIsFlatView(!isFlatView)}
+                      aria-label="Toggle View"
+                      data-tooltip={
+                        isFlatView
+                          ? "Switch to Grouped View"
+                          : "Switch to Flat View"
+                      }
+                    >
+                      {isFlatView ? <FaList size={20} /> : <FaTh size={20} />}
+                    </button>
+                  )}
+                </div>
+                {card.content}
+              </div>
+            ))}
+          </div>
+
+          {/* Indicators */}
+          <div className="carousel-indicators">
+            {cards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleIndicatorClick(index)}
+                className={`carousel-indicator ${
+                  currentIndex === index ? "active" : ""
+                }`}
+              ></button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="desktop-cards">
           {cards.map((card, index) => (
-            <div key={`${card.title}-${index}`} className="carousel-card">
-              {/* Title with Toggle Button */}
+            <div
+              key={`${card.title}-${index}`}
+              className="bg-white shadow-md rounded-lg p-6 mb-8"
+            >
               <div className="flex items-center justify-between mb-4">
-                <h2 className="carousel-card-title text-2xl font-bold">
-                  {card.title}
-                </h2>
+                <h2 className="text-2xl font-bold">{card.title}</h2>
                 {card.title === "Skills" && (
                   <button
                     className="toggle-view-btn"
@@ -213,20 +274,7 @@ function About() {
             </div>
           ))}
         </div>
-
-        {/* Indicators */}
-        <div className="carousel-indicators">
-          {cards.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleIndicatorClick(index)}
-              className={`carousel-indicator ${
-                currentIndex === index ? "active" : ""
-              }`}
-            ></button>
-          ))}
-        </div>
-      </div>
+      )}
     </section>
   );
 }
