@@ -12,6 +12,7 @@ const ProjectPage: React.FC = () => {
     (proj) => proj.name.toLowerCase().replace(/\s+/g, "-") === projectId
   );
 
+  // Image viewer state
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -23,22 +24,6 @@ const ProjectPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Handle arrow key navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        handlePrevImage();
-      } else if (event.key === "ArrowRight") {
-        handleNextImage();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [currentImageIndex]);
 
   // Handle swipe gestures
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -120,7 +105,8 @@ const ProjectPage: React.FC = () => {
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
         {/* Screenshots Carousel */}
         {project.screenshots && project.screenshots.length > 0 && (
-          <div className="mb-12 relative">            
+          <div className="mb-12 relative">
+            {/* Current Screenshot */}
             <div className="flex items-center justify-center">
               <img
                 src={project.screenshots[currentImageIndex]}
@@ -128,7 +114,21 @@ const ProjectPage: React.FC = () => {
                 className="rounded-lg object-contain w-full max-h-[500px] cursor-pointer"
                 onClick={() => handleOpenImageViewer(currentImageIndex)}
               />
-            </div>           
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={handlePrevImage}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black bg-gray-800 hover:bg-gray-900 rounded-full p-8 text-6xl focus:outline-none"
+            >
+              ‹
+            </button>
+            <button
+              onClick={handleNextImage}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-black bg-gray-800 hover:bg-gray-900 rounded-full p-8 text-6xl focus:outline-none"
+            >
+              ›
+            </button>
 
             {/* Indicators */}
             <div className="carousel-indicators">
