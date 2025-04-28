@@ -20,7 +20,7 @@ function Projects() {
             description={project.description}
             tech={project.tech}
             image={project.image}
-            link={project.link}
+            links={project.links}
           />
         ))}
       </div>
