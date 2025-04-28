@@ -1,30 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import projects from "../data/projectsData";
 import ImageViewer from "../components/ImageViewer";
 
 const ProjectPage: React.FC = () => {
-  const { projectId } = useParams();
+  const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
 
-  // Fetch project details based on projectId
   const project = projects.find(
     (proj) => proj.name.toLowerCase().replace(/\s+/g, "-") === projectId
   );
 
-  // Image viewer state
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Variables for swipe detection
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-  // Scroll to the top of the page when the component is mounted
+  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Handle keyboard navigation (ArrowLeft and ArrowRight)
+  // Handle the next image in the carousel
+  const handleNextImage = useCallback(() => {
+    if (project) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === project.screenshots.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  }, [project]);
+
+  // Handle the previous image in the carousel
+  const handlePrevImage = useCallback(() => {
+    if (project) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? project.screenshots.length - 1 : prevIndex - 1
+      );
+    }
+  }, [project]);
+
+  // Handle keyboard navigation for next and previous images
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
@@ -38,54 +52,45 @@ const ProjectPage: React.FC = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [currentImageIndex]);
+  }, [handleNextImage, handlePrevImage]);
 
-  // Handle swipe gestures
+  // Handle touch start event to detect swipe gestures
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
 
+  // Handle touch end event to detect swipe gestures
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX !== null) {
       const touchEnd = e.changedTouches[0].clientX;
       const swipeDistance = touchStartX - touchEnd;
 
       if (swipeDistance > 50) {
-        // Swipe left
         handleNextImage();
       } else if (swipeDistance < -50) {
-        // Swipe right
         handlePrevImage();
       }
     }
-
-    // Reset touch start
     setTouchStartX(null);
   };
 
   if (!project) {
-    return <div>Project not found</div>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-2xl font-semibold">Project not found</div>
+      </div>
+    );
   }
 
+  // Open the image viewer when clicking on a screenshot
   const handleOpenImageViewer = (index: number) => {
     setCurrentImageIndex(index);
     setShowImageViewer(true);
   };
 
+  // Close the image viewer when clicking outside of it
   const handleCloseImageViewer = () => {
     setShowImageViewer(false);
-  };
-
-  const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === project.screenshots.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? project.screenshots.length - 1 : prevIndex - 1
-    );
   };
 
   return (
