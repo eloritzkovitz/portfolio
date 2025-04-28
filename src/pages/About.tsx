@@ -121,6 +121,11 @@ function About() {
     },
   ];
 
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Handle the next card
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
