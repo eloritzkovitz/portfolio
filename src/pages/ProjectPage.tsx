@@ -193,31 +193,31 @@ const ProjectPage: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-3xl font-semibold mb-6">Links</h2>
           <ul className="list-disc list-inside text-xl text-gray-700">
-            {Array.isArray(project.links) ? (
-              project.links.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-teal-500 hover:text-teal-700"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))
-            ) : (
-              <li>
-                <a
-                  href={project.links}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-500 hover:text-teal-700"
-                >
-                  {project.links}
-                </a>
-              </li>
-            )}
+            {Array.isArray(project.links)
+              ? project.links.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-teal-500 hover:text-teal-700"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              : project.links && (
+                  <li>
+                    <a
+                      href={project.links.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-teal-500 hover:text-teal-700"
+                    >
+                      {project.links.label}
+                    </a>
+                  </li>
+                )}
           </ul>
         </div>
       </div>
