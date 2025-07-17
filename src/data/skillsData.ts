@@ -1,11 +1,11 @@
 const skillsData = [
   {
     category: "Frontend Development",
-    skills: ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Bootstrap", "CSS", "HTML"],
+    skills: ["React", "Vite", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Bootstrap", "CSS", "HTML"],
   },
   {
     category: "Backend Development",
-    skills: ["Node.js", "Express", "REST APIs", "C#", "Python"],
+    skills: ["Node.js", "Express.js", "REST API", "Swagger", "WebSockets", "C#", ".NET", "Python"],
   },
   {
     category: "Mobile Development",
@@ -13,7 +13,7 @@ const skillsData = [
   },
   {
     category: "Database Management",
-    skills: ["MongoDB", "SQLite"],
+    skills: ["MongoDB", "SQL", "SQLite"],
   },
   {
     category: "Version Control",
@@ -21,15 +21,15 @@ const skillsData = [
   },
   {
     category: "DevOps",
-    skills: ["Docker", "CI/CD"],
+    skills: ["Docker", "Docker Hub", "PM2", "Ansible", "Terraform"],
   },
   {
     category: "Cloud Services",
-    skills: ["AWS", "Firebase"],
+    skills: ["AWS", "GCP", "Firebase"],
   },
   {
-    category: "Testing",
-    skills: ["Jest"],
+    category: "Testing & Automation",
+    skills: ["Jest", "Selenium"],
   },
   {
     category: "Languages",
