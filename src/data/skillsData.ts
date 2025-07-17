@@ -21,7 +21,7 @@ const skillsData = [
   },
   {
     category: "DevOps",
-    skills: ["Docker", "Docker Hub", "PM2", "Ansible", "Terraform"],
+    skills: ["Docker", "PM2", "Ansible", "Terraform"],
   },
   {
     category: "Cloud Services",
