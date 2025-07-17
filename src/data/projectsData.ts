@@ -117,6 +117,33 @@ const projects = [
     screenshots: [],
   },
   {
+    name: "Oopsify",
+    description:
+      "A simple, interactive React app for simulating and learning about common HTTP error messages. This project was developed as a DevOps final project and demonstrates modern DevOps practices alongside frontend development.",
+    tech: [      
+      "React",
+      "Vite",      
+      "TypeScript",
+      "Node.js",
+      "AWS", 
+      "Ansible",     
+      "Docker",
+      "Docker Compose",      
+      "Selenium",
+      "GitHub Actions",
+    ],
+    image: "/projects/Oopsify/icon.png",
+    links: [
+    ],
+    involvement: [
+      "Developed a simple React application to simulate and learn about HTTP error messages",
+      "Added a Dockerfile and Docker Compose configuration for easy deployment",      
+      "Collaborated with my team to implement CI/CD pipelines using GitHub Actions, following DevOps practices",
+    ],
+    screenshots: [      
+    ],
+  },
+  {
     name: "HexGame",
     description:
       "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",
