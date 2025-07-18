@@ -132,11 +132,11 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 text-2xl font-semibold hover:underline"
+                className="text-2xl font-semibold hover:underline"
               >
                 {repo.name}
               </a>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-500 dark:text-gray-200">
                 {repo.stargazers_count} ⭐
               </span>
             </li>
