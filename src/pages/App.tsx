@@ -9,10 +9,10 @@ import Footer from "../components/Footer";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen w-full bg-gray-100 text-gray-900">
+    <div className="flex flex-col min-h-screen w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white">
       <Router>
         {/* Sticky Navbar */}
-        <header className="sticky top-0 z-50 bg-gray-800 text-white shadow-md w-full">
+        <header className="sticky top-0 z-50 shadow-md">
           <Navbar />
         </header>
 
@@ -28,7 +28,7 @@ function App() {
         </main>
 
         {/* Footer */}
-        <footer className="bg-gray-800 text-white py-4 w-full">
+        <footer>
           <Footer />
         </footer>
       </Router>

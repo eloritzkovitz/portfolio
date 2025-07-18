@@ -1,7 +1,6 @@
 /* Section Styling */
 .about-section {
-  padding: 2rem;
-  background-color: #f3f4f6;
+  padding: 2rem;  
   min-height: 100vh;
 }
 
@@ -23,7 +22,7 @@
 }
 
 /* Toggle View Button */
-.toggle-view-btn {
+.toggle-view-btn, .toggle-skills-btn {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -40,7 +39,11 @@
   color: #000000;
 }
 
-.toggle-view-btn:hover {
+.dark .toggle-view-btn svg {
+  color: #ffffff;
+}
+
+.toggle-view-btn:hover, .toggle-skills-btn:hover {
   transform: scale(1.1);
 }
 

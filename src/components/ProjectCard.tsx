@@ -35,7 +35,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="p-6 flex flex-col justify-between w-full">
           <div>
             <h2 className="text-4xl font-semibold mb-4">{name}</h2>
-            <p className="text-xl text-gray-700 mb-6">{description}</p>
+            <p className="text-xl text-gray-700 dark:text-gray-200 mb-6">{description}</p>
             <div className="flex flex-wrap gap-2">
               {tech.map((tech, index) => (
                 <span key={index} className="tech-tag">

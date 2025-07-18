@@ -29,7 +29,7 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {/* GitHub Profile Widget */}
-      <div className="bg-white text-black shadow-md rounded-lg p-6 text-center">
+      <div className="bg-white shadow-md rounded-lg p-6 text-center">
         <h2 className="text-3xl font-bold mb-4">GitHub Profile</h2>
         <a
           href={profile_url}
@@ -112,7 +112,7 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
                     }}
                   ></div>
                   <p className="text-sm font-medium mt-2">{language}</p>
-                  <p className="text-xs text-gray-500">{percentage}%</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-200">{percentage}%</p>
                 </div>
               );
             })}

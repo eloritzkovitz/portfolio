@@ -76,10 +76,10 @@ function About() {
                       setExpandedStates(newStates);
                     }}
                   >
-                    <h3 className="text-xl font-semibold">
+                    <h3 className="text-xl text-gray-700 font-semibold">
                       {skillCategory.category}
                     </h3>
-                    <button className="text-lg font-bold">
+                    <button className="toggle-skills-btn">
                       {isExpanded ? "-" : "+"}
                     </button>
                   </div>
