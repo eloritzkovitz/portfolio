@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   FaHome,
@@ -17,6 +17,24 @@ function Navbar() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "light"
   );
+
+  // Touch swipe logic for dismissing menu
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current !== null) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const deltaX = touchEndX - touchStartX.current;
+      if (deltaX > 80) { // swipe right threshold
+        setIsMenuOpen(false);
+      }
+      touchStartX.current = null;
+    }
+  };
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -69,6 +87,8 @@ function Navbar() {
           } md:bg-transparent ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } md:translate-x-0`}
+          onTouchStart={isMenuOpen ? handleTouchStart : undefined}
+          onTouchEnd={isMenuOpen ? handleTouchEnd : undefined}
         >
           <li>
             <Link
