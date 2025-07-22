@@ -13,4 +13,4 @@ This is my personal portfolio website built with **React + Vite**, **TypeScript*
 Feel free to reach out to me via:
 - **Email**: [eloritzkovitz@gmail.com](mailto:eloritzkovitz@gmail.com)
 - **LinkedIn**: [linkedin.com/in/elor-itzkovitz](https://linkedin.com/in/elor-itzkovitz)
-- **GitHub**: [github.com/Elor-Itz](https://github.com/Elor-Itz)
+- **GitHub**: [github.com/eloritzkovitz](https://github.com/eloritzkovitz)

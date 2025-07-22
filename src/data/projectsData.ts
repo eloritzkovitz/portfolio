@@ -24,13 +24,13 @@ const projects = [
     image: "/projects/SnapChef/icon.png",
     links: [
       { url: "https://snapchef-app.vercel.app/", label: "App Website" },
-      { url: "https://github.com/Elor-Itz/SnapChef", label: "GitHub - App" },
+      { url: "https://github.com/eloritzkovitz/SnapChef", label: "GitHub - App" },
       {
-        url: "https://github.com/Elor-Itz/SnapChef-Server",
+        url: "https://github.com/eloritzkovitz/SnapChef-Server",
         label: "GitHub - Server",
       },
       {
-        url: "https://github.com/Elor-Itz/SnapChef-Web",
+        url: "https://github.com/eloritzkovitz/SnapChef-Web",
         label: "GitHub - Web",
       },
     ],
@@ -72,7 +72,7 @@ const projects = [
       "GCP",
     ],
     image: "/projects/Trevel/icon.png",
-    links: { url: "https://github.com/Elor-Itz/Trevel", label: "GitHub" },
+    links: { url: "https://github.com/eloritzkovitz/Trevel", label: "GitHub" },
     involvement: [
       "Designed and implemented the application interface and frontend using React + Vite and TypeScript",
       "Developed the backend server (Node.js + Express.js, TypeScript, MongoDB) and deployed it to a remote server using PM2",
@@ -108,7 +108,7 @@ const projects = [
       "HTML",
     ],
     image: "/projects/Voltrico/icon.png",
-    links: { url: "https://github.com/Elor-Itz/Voltrico", label: "GitHub" },
+    links: { url: "https://github.com/eloritzkovitz/Voltrico", label: "GitHub" },
     involvement: [
       "Refactored legacy code from JavaScript/CSS/HTML to React and TypeScript",
       "Redesigned the application interface to a modern and user-friendly layout using Bootstrap",
@@ -151,7 +151,7 @@ const projects = [
       "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",
     tech: ["React", "Vite", "JavaScript", "CSS", "HTML"],
     image: "/projects/HexGame/icon.png",
-    links: { url: "https://github.com/Elor-Itz/HexGame", label: "GitHub" },
+    links: { url: "https://github.com/eloritzkovitz/HexGame", label: "GitHub" },
     involvement: [
       "Implemented the game logic using disjoint-set data structures",
       "Expanded a simple college assignment into a fully functional game using React",

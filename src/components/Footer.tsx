@@ -6,7 +6,7 @@ function Footer() {
           &copy; 2025 Elor Itzkovitz. All rights reserved.
           <br />
           <a
-            href="https://github.com/Elor-Itz/portfolio"
+            href="https://github.com/eloritzkovitz/portfolio"
             target="_blank"
             rel="noopener noreferrer"
             className="text-teal-500 hover:text-teal-700 underline"

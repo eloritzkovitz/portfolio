@@ -42,7 +42,7 @@ function Contact() {
         <div className="flex-1 bg-white shadow-md rounded-lg p-6 sm:p-8 flex flex-col items-center text-center">
           <FaGithub className="text-3xl sm:text-4xl mb-4" />         
           <a
-            href="https://github.com/Elor-Itz"
+            href="https://github.com/eloritzkovitz"
             className="text-xl sm:text-2xl hover:underline"
             target="_blank"
             rel="noopener noreferrer"

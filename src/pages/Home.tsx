@@ -18,11 +18,11 @@ function Home() {
 
   useEffect(() => {
     // Fetch GitHub profile data
-    fetch("https://api.github.com/users/Elor-Itz")
+    fetch("https://api.github.com/users/eloritzkovitz")
       .then((response) => response.json())
       .then((data) => {
         // Fetch repositories
-        fetch("https://api.github.com/users/Elor-Itz/repos")
+        fetch("https://api.github.com/users/eloritzkovitz/repos")
           .then((response) => response.json())
           .then((repos) => {
             const languageCounts: { [key: string]: number } = {};
