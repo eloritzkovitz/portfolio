@@ -119,17 +119,19 @@ const projects = [
   {
     name: "Oopsify",
     description:
-      "A simple, interactive React app for simulating and learning about common HTTP error messages. This project was developed as a DevOps final project and demonstrates modern DevOps practices alongside frontend development.",
+      "A simple, interactive React app for simulating and learning about HTTP error messages. This project was developed as a DevOps final project and demonstrates modern DevOps practices alongside frontend development.",
     tech: [      
       "React",
       "Vite",      
       "TypeScript",
-      "Node.js",
-      "AWS", 
-      "Ansible",     
+      "CSS",      
+      "Node.js",      
       "Docker",
-      "Docker Compose",      
+      "Docker Compose", 
+      "AWS", 
+      "Ansible", 
       "Selenium",
+      "Python",
       "GitHub Actions",
     ],
     image: "/projects/Oopsify/icon.png",
@@ -163,24 +165,7 @@ const projects = [
       "/projects/HexGame/screenshot4.png",
       "/projects/HexGame/screenshot5.png",
     ],
-  },
-  {
-    name: "SayTheC",
-    description:
-      "A simple educational desktop application built for my brother's assignment. It helps pupils learn the pronunciation of the letter C in various English words.",
-    tech: ["C#", ".NET", "WPF", "Text-to-Speech"],
-    image: "/projects/SayTheC/icon.png",
-    links: { url: "https://github.com/Elor-Itz/SayTheC", label: "GitHub" },
-    involvement: [
-      "Developed a simple desktop application using C# and WPF",
-      "Implemented Text-to-Speech functionality to pronounce words containing the letter C",
-    ],
-    screenshots: [
-      "/projects/SayTheC/screenshot1.png",
-      "/projects/SayTheC/screenshot2.png",
-      "/projects/SayTheC/screenshot3.png",
-    ],
-  },
+  },  
 ];
 
 export default projects;

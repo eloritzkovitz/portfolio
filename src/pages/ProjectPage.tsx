@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import projects from "../data/projectsData";
 import ImageViewer from "../components/ImageViewer";
+import SectionsNavigator from "../components/SectionsNavigator";
+import projects from "../data/projectsData";
 
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+
+  // Section anchors for navigation
+  const sectionAnchors = [
+    { id: "description", label: "Description" },
+    { id: "tech-stack", label: "Tech Stack" },
+    { id: "involvement", label: "My Involvement" },
+    { id: "links", label: "Links" },
+  ];
 
   const project = projects.find(
     (proj) => proj.name.toLowerCase().replace(/\s+/g, "-") === projectId
@@ -92,6 +101,9 @@ const ProjectPage: React.FC = () => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      {/* Sections Navigator */}
+      <SectionsNavigator sections={sectionAnchors} />
+
       {/* Back to Projects Button */}
       <button
         onClick={() => navigate("/projects")}
@@ -160,7 +172,7 @@ const ProjectPage: React.FC = () => {
         )}
 
         {/* Description */}
-        <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+        <h2 id="description" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
           Description
         </h2>
         <p className="text-base sm:text-xl text-gray-700 mb-4 sm:mb-6">
@@ -169,7 +181,7 @@ const ProjectPage: React.FC = () => {
 
         {/* Tech Stack */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2 id="tech-stack" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
             Tech Stack
           </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -186,7 +198,7 @@ const ProjectPage: React.FC = () => {
 
         {/* My Involvement */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2 id="my-involvement" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
             My Involvement
           </h2>
           <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
@@ -198,7 +210,7 @@ const ProjectPage: React.FC = () => {
 
         {/* Links */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2 id="links" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
             Links
           </h2>
           <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
