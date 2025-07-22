@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import projects from "../data/projectsData";
 import ImageViewer from "../components/ImageViewer";
 
@@ -95,14 +96,14 @@ const ProjectPage: React.FC = () => {
 
   return (
     <div
-      className="project-page"
+      className="project-page p-8"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {/* Back to Projects Button */}
       <button
         onClick={() => navigate("/projects")}
-        className="mb-8 text-black text-lg font-semibold rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-100"
+        className="toggle-navigation-btn mb-8"
       >
         ← Back to Projects
       </button>
@@ -137,15 +138,15 @@ const ProjectPage: React.FC = () => {
             {/* Navigation Buttons */}
             <button
               onClick={handlePrevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black bg-gray-800 hover:bg-gray-900 rounded-full p-8 text-6xl focus:outline-none"
+              className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-4 sm:p-8 text-4xl sm:text-6xl"
             >
-              ‹
+              <FaChevronLeft className="w-8 h-8 sm:w-12 sm:h-12" />
             </button>
             <button
               onClick={handleNextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-black bg-gray-800 hover:bg-gray-900 rounded-full p-8 text-6xl focus:outline-none"
+              className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-4 sm:p-8 text-4xl sm:text-6xl"
             >
-              ›
+              <FaChevronRight className="w-8 h-8 sm:w-12 sm:h-12" />
             </button>
 
             {/* Indicators */}

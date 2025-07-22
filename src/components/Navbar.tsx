@@ -14,8 +14,8 @@ import "../styles/Navbar.css";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(() =>
-    localStorage.getItem("theme") || "light"
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
   );
 
   useEffect(() => {
@@ -38,7 +38,11 @@ function Navbar() {
         <div className="flex items-center space-x-2">
           <Link to="/" className="flex items-center">
             <img
-              src={theme === "dark" ? "/icons/logo-white.png" : "/icons/logo-black.png"}
+              src={
+                theme === "dark"
+                  ? "/icons/logo-white.png"
+                  : "/icons/logo-black.png"
+              }
               alt="Logo"
               className="w-12 h-12"
               style={{ height: "50px", width: "50px", marginRight: "20px" }}
@@ -61,6 +65,8 @@ function Navbar() {
         {/* Menu */}
         <ul
           className={`flex flex-col md:flex-row md:space-x-8 fixed md:static top-0 right-0 h-full w-1/2 md:w-auto text-black dark:text-white transition-all duration-300 ${
+            isMenuOpen ? "bg-white" : ""
+          } md:bg-transparent ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } md:translate-x-0`}
         >
@@ -105,7 +111,7 @@ function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="toggle-theme-btn flex items-center text-xl space-x-2"              
+              className="toggle-theme-btn flex items-center text-xl space-x-2"
             >
               {theme === "light" ? <FaMoon /> : <FaSun />}
             </button>

@@ -94,11 +94,19 @@ button:focus-visible {
   padding: 1.5rem;
 }
 
+.dark .carousel-card {
+  background-color: #2d3748;  
+}
+
 .carousel-card-title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #1f2937;
+}
+
+.dark .carousel-card-title {
+  color: #e2e8f0;
 }
 
 /* Navigation Buttons */
@@ -162,10 +170,14 @@ button:focus-visible {
 }
 
 .carousel-indicator.active {
-  background-color: #000000;
+  background-color: #14b8a6;
   border : none !important;
   border-color: none !important;
   outline: none !important;
+}
+
+.dark .carousel-indicator.active {
+  background-color: #2dd4bf;
 }
 
 /* Tech tags */
@@ -218,7 +230,10 @@ button:focus-visible {
 
 .toggle-theme-btn {
   padding: 0 !important;
-  margin: 0 !important;
+  margin: 0 !important;  
+}
+
+.toggle-navigation-btn, .toggle-theme-btn {  
   vertical-align: middle !important;
   background: transparent !important;
   border: none !important;
@@ -226,11 +241,11 @@ button:focus-visible {
   outline: none !important;
 }
 
-.dark .toggle-theme-btn {
+.dark .toggle-theme-btn, .dark .toggle-navigation-btn {
   color: #ffffff;
 }
 
-.toggle-theme-btn:hover {
+.toggle-navigation-btn:hover, .toggle-theme-btn:hover {
   color: #747bff;
   transform: scale(1.1);
 }
