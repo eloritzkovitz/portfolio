@@ -29,7 +29,8 @@ function Navbar() {
     if (touchStartX.current !== null) {
       const touchEndX = e.changedTouches[0].clientX;
       const deltaX = touchEndX - touchStartX.current;
-      if (deltaX > 80) { // swipe right threshold
+      if (deltaX > 80) {
+        // swipe right threshold
         setIsMenuOpen(false);
       }
       touchStartX.current = null;
@@ -134,6 +135,9 @@ function Navbar() {
               className="toggle-theme-btn flex items-center text-xl space-x-2"
             >
               {theme === "light" ? <FaMoon /> : <FaSun />}
+              <span className="ml-2 md:hidden">
+                {theme === "light" ? "Dark Mode" : "Light Mode"}
+              </span>
             </button>
           </li>
         </ul>

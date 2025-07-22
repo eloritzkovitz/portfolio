@@ -16,12 +16,10 @@ const ProjectPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Handle the next image in the carousel
   const handleNextImage = useCallback(() => {
     if (project) {
       setCurrentImageIndex((prevIndex) =>
@@ -30,7 +28,6 @@ const ProjectPage: React.FC = () => {
     }
   }, [project]);
 
-  // Handle the previous image in the carousel
   const handlePrevImage = useCallback(() => {
     if (project) {
       setCurrentImageIndex((prevIndex) =>
@@ -39,7 +36,6 @@ const ProjectPage: React.FC = () => {
     }
   }, [project]);
 
-  // Handle keyboard navigation for next and previous images
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
@@ -55,12 +51,10 @@ const ProjectPage: React.FC = () => {
     };
   }, [handleNextImage, handlePrevImage]);
 
-  // Handle touch start event to detect swipe gestures
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
 
-  // Handle touch end event to detect swipe gestures
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX !== null) {
       const touchEnd = e.changedTouches[0].clientX;
@@ -83,54 +77,52 @@ const ProjectPage: React.FC = () => {
     );
   }
 
-  // Open the image viewer when clicking on a screenshot
   const handleOpenImageViewer = (index: number) => {
     setCurrentImageIndex(index);
     setShowImageViewer(true);
   };
 
-  // Close the image viewer when clicking outside of it
   const handleCloseImageViewer = () => {
     setShowImageViewer(false);
   };
 
   return (
     <div
-      className="project-page p-8"
+      className="project-page w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {/* Back to Projects Button */}
       <button
         onClick={() => navigate("/projects")}
-        className="toggle-navigation-btn mb-8"
+        className="toggle-navigation-btn mb-8 text-base sm:text-lg px-2 py-1 sm:px-4 sm:py-2"
       >
         ← Back to Projects
       </button>
 
       {/* Project Header */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <div className="flex items-center gap-6">
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
+        <div className="flex items-center gap-4 sm:gap-6">
           <img
             src={project.image}
             alt={project.name}
-            className="rounded-lg w-20 h-20 object-contain"
+            className="rounded-lg w-16 h-16 sm:w-20 sm:h-20 object-contain"
           />
-          <h1 className="text-4xl font-bold">{project.name}</h1>
+          <h1 className="text-2xl sm:text-4xl font-bold">{project.name}</h1>
         </div>
       </div>
 
       {/* Details */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
         {/* Screenshots Carousel */}
         {project.screenshots && project.screenshots.length > 0 && (
-          <div className="mb-12 relative">
+          <div className="mb-8 sm:mb-12 relative">
             {/* Current Screenshot */}
             <div className="flex items-center justify-center">
               <img
                 src={project.screenshots[currentImageIndex]}
                 alt={`Screenshot ${currentImageIndex + 1}`}
-                className="rounded-lg object-contain w-full max-h-[500px] cursor-pointer"
+                className="rounded-lg object-contain w-full max-h-[250px] sm:max-h-[500px] cursor-pointer"
                 onClick={() => handleOpenImageViewer(currentImageIndex)}
               />
             </div>
@@ -138,25 +130,28 @@ const ProjectPage: React.FC = () => {
             {/* Navigation Buttons */}
             <button
               onClick={handlePrevImage}
-              className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-4 sm:p-8 text-4xl sm:text-6xl"
+              aria-label="Previous screenshot"
+              className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10"
             >
-              <FaChevronLeft className="w-8 h-8 sm:w-12 sm:h-12" />
+              <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10" />
             </button>
             <button
               onClick={handleNextImage}
-              className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-4 sm:p-8 text-4xl sm:text-6xl"
+              aria-label="Next screenshot"
+              className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10"
             >
-              <FaChevronRight className="w-8 h-8 sm:w-12 sm:h-12" />
+              <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10" />
             </button>
 
             {/* Indicators */}
-            <div className="carousel-indicators">
+            <div className="carousel-indicators flex justify-center gap-2 mt-4">
               {project.screenshots.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`carousel-indicator ${
-                    index === currentImageIndex ? "active" : ""
+                  aria-label={`Go to screenshot ${index + 1}`}
+                  className={`carousel-indicator rounded-full transition-all duration-200 w-3 h-3 sm:w-5 sm:h-5${
+                    index === currentImageIndex ? " active" : ""
                   }`}
                 ></button>
               ))}
@@ -165,15 +160,24 @@ const ProjectPage: React.FC = () => {
         )}
 
         {/* Description */}
-        <h2 className="text-3xl font-semibold mb-6">Description</h2>
-        <p className="text-xl text-gray-700 mb-6">{project.description}</p>
+        <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          Description
+        </h2>
+        <p className="text-base sm:text-xl text-gray-700 mb-4 sm:mb-6">
+          {project.description}
+        </p>
 
         {/* Tech Stack */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6">Tech Stack</h2>
-          <div className="flex flex-wrap gap-3">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+            Tech Stack
+          </h2>
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {project.tech.map((tech, index) => (
-              <span key={index} className="tech-tag">
+              <span
+                key={index}
+                className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
+              >
                 {tech}
               </span>
             ))}
@@ -181,9 +185,11 @@ const ProjectPage: React.FC = () => {
         </div>
 
         {/* My Involvement */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6">My Involvement</h2>
-          <ul className="list-disc list-inside text-xl text-gray-700">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+            My Involvement
+          </h2>
+          <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
             {(project.involvement ?? []).map((item, index) => (
               <li key={index}>{item}</li>
             ))}
@@ -191,9 +197,11 @@ const ProjectPage: React.FC = () => {
         </div>
 
         {/* Links */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6">Links</h2>
-          <ul className="list-disc list-inside text-xl text-gray-700">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+            Links
+          </h2>
+          <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
             {Array.isArray(project.links)
               ? project.links.map((link, index) => (
                   <li key={index}>
