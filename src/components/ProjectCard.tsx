@@ -23,11 +23,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         className="flex flex-col md:flex-row w-full"
       >
         {/* Left Column: Project Image */}
-        <div className="w-full md:w-1/4 p-8">
+        <div className="w-full md:w-1/3 p-8 flex items-center justify-center">
           <img
             src={image}
             alt={name}
-            className="rounded-lg object-cover w-full h-full"
+            className="w-full aspect-square object-cover rounded-2xl max-w-[260px] max-h-[260px]"
           />
         </div>
 
