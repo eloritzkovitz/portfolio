@@ -47,7 +47,7 @@ function Contact() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Elor-Itz
+            eloritzkovitz
           </a>
         </div>
       </div>
