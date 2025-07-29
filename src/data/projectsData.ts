@@ -147,7 +147,11 @@ const projects = [
       "Added a Dockerfile and Docker Compose configuration for easy deployment",      
       "Collaborated with my team to implement CI/CD pipelines using GitHub Actions, following DevOps practices",
     ],
-    screenshots: [      
+    screenshots: [   
+      "/projects/Oopsify/screenshot1.png",
+      "/projects/Oopsify/screenshot2.png",
+      "/projects/Oopsify/screenshot3.png",
+      "/projects/Oopsify/screenshot4.png",      
     ],
   },
   {
