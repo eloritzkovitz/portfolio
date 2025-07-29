@@ -172,7 +172,10 @@ const ProjectPage: React.FC = () => {
         )}
 
         {/* Description */}
-        <h2 id="description" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+        <h2
+          id="description"
+          className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
+        >
           Description
         </h2>
         <p className="text-base sm:text-xl text-gray-700 mb-4 sm:mb-6">
@@ -181,7 +184,10 @@ const ProjectPage: React.FC = () => {
 
         {/* Tech Stack */}
         <div className="mb-8 sm:mb-12">
-          <h2 id="tech-stack" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2
+            id="tech-stack"
+            className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
+          >
             Tech Stack
           </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -198,10 +204,13 @@ const ProjectPage: React.FC = () => {
 
         {/* My Involvement */}
         <div className="mb-8 sm:mb-12">
-          <h2 id="my-involvement" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2
+            id="my-involvement"
+            className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
+          >
             My Involvement
           </h2>
-          <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
+          <ul className="list-disc list-outside pl-6 text-base sm:text-xl text-gray-700">
             {(project.involvement ?? []).map((item, index) => (
               <li key={index}>{item}</li>
             ))}
@@ -210,7 +219,10 @@ const ProjectPage: React.FC = () => {
 
         {/* Links */}
         <div className="mb-8 sm:mb-12">
-          <h2 id="links" className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6">
+          <h2
+            id="links"
+            className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
+          >
             Links
           </h2>
           <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
