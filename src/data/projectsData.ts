@@ -55,6 +55,37 @@ const projects = [
     ],
   },
   {
+    name: "Voltrico",
+    description:
+      "Voltrico is an online appliances store built with a microservices architecture. Users can browse and search for products, add them to their cart, place orders, and view their order history. Administrators have access to advanced management features, including product and order management as well as analytics.",
+    tech: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "JavaScript",      
+      "Bootstrap",
+      "CSS",
+      "HTML",
+      "Node.js",
+      "Go",
+      "MongoDB",
+      "PostgreSQL",
+      "JWT",
+      "Swagger",            
+      "Docker",
+      "Docker Compose",
+    ],
+    image: "/projects/Voltrico/icon.png",
+    links: { url: "https://github.com/eloritzkovitz/voltrico", label: "GitHub" },
+    involvement: [
+      "Refactored legacy code from JavaScript/CSS/HTML to React and TypeScript",
+      "Redesigned the application interface to a modern and user-friendly layout using Bootstrap and custom CSS",
+      "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
+      "Designed the backend to follow a microservice architecture, using various technologies such as Node.js, MongoDB, PostgreSQL and Go"      
+    ],
+    screenshots: [],
+  },  
+  {
     name: "Trevel",
     description:
       "Trevel is a social networking platform designed for users to share their travel experiences, post trip highlights, and interact with fellow travelers. Users can upload photos, write travel stories, comment on posts, and mark their favorite content. The platform integrates AI-powered content suggestions to enhance user experience and provide relevant travel insights.",
@@ -72,7 +103,7 @@ const projects = [
       "GCP",
     ],
     image: "/projects/Trevel/icon.png",
-    links: { url: "https://github.com/eloritzkovitz/Trevel", label: "GitHub" },
+    links: { url: "https://github.com/eloritzkovitz/trevel", label: "GitHub" },
     involvement: [
       "Designed and implemented the application interface and frontend using React + Vite and TypeScript",
       "Developed the backend server (Node.js + Express.js, TypeScript, MongoDB) and deployed it to a remote server using PM2",
@@ -89,33 +120,7 @@ const projects = [
       "/projects/Trevel/screenshot6.png",
       "/projects/Trevel/screenshot7.png",
     ],
-  },
-  {
-    name: "Voltrico",
-    description:
-      "An online appliances store, allowing users to browse products, add them to cart, perform orders and view them. Administrators can also add, edit and delete items, as well as view order history and statistics. Originally a college project written in JavaScript/CSS/HTML, this version has been completely rewritten in React and TypeScript to match newer standards.",
-    tech: [
-      "React",
-      "Vite",
-      "TypeScript",
-      "Bootstrap",
-      "CSS",
-      "Node.js",
-      "MongoDB",
-      "JWT",
-      "Swagger",
-      "JavaScript",
-      "HTML",
-    ],
-    image: "/projects/Voltrico/icon.png",
-    links: { url: "https://github.com/eloritzkovitz/Voltrico", label: "GitHub" },
-    involvement: [
-      "Refactored legacy code from JavaScript/CSS/HTML to React and TypeScript",
-      "Redesigned the application interface to a modern and user-friendly layout using Bootstrap",
-      "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
-    ],
-    screenshots: [],
-  },
+  },  
   {
     name: "Oopsify",
     description:
@@ -151,7 +156,7 @@ const projects = [
       "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",
     tech: ["React", "Vite", "JavaScript", "CSS", "HTML"],
     image: "/projects/HexGame/icon.png",
-    links: { url: "https://github.com/eloritzkovitz/HexGame", label: "GitHub" },
+    links: { url: "https://github.com/eloritzkovitz/hex-game", label: "GitHub" },
     involvement: [
       "Implemented the game logic using disjoint-set data structures",
       "Expanded a simple college assignment into a fully functional game using React",
