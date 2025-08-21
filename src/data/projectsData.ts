@@ -57,7 +57,7 @@ const projects = [
   {
     name: "Voltrico",
     description:
-      "Voltrico is an appliances e-commerce platform built with a microservices architecture. Users can browse and search products, add items to their cart, place orders, and view their order history. Administrators benefit from advanced management features, including product and order control, as well as analytics dashboards.",
+      "Voltrico is an appliances e-commerce platform built with a microservices architecture. Users can browse and search products, add items to their cart, place orders and view their order history. Administrators benefit from advanced management features, including product and order control, as well as analytics dashboards.",
     tech: [
       "React",
       "Next.js",
@@ -69,6 +69,7 @@ const projects = [
       "MongoDB",
       "PostgreSQL",
       "Elasticsearch",
+      "RabbitMQ",
       "JWT",
       "Swagger",            
       "Docker",
