@@ -14,6 +14,7 @@ function About() {
   // Section anchors for navigation
   const sectionAnchors = [
     { id: "introduction", label: "Introduction" },
+    { id: "contributions", label: "Contributions" },
     { id: "skills", label: "Skills" },
     { id: "hobbies", label: "Hobbies & Interests" },
   ];
@@ -23,17 +24,43 @@ function About() {
     setExpandedStates(skillsData.map(() => false));
   }, [isFlatView]);
 
+  // Render content with links
+  function renderContent(
+    content: string,
+    links?: Record<string, { url: string; text: string }>
+  ) {
+    if (!links) return content;
+    return content.split(/({link:[^}]+})/g).map((part, idx) => {
+      const match = part.match(/{link:([^}]+)}/);
+      if (match && links[match[1]]) {
+        const { url, text } = links[match[1]];
+        return (
+          <a
+            key={idx}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-teal-500 hover:text-teal-700 underline"
+          >
+            {text}
+          </a>
+        );
+      }
+      return part;
+    });
+  }
+
   return (
     <div className="relative">
       {/* Sections Navigator */}
       <SectionsNavigator sections={sectionAnchors} />
 
-      <section
-        className="about-section w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8"
-      >
+      <section className="about-section w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8">
         {/* Intro Card */}
         <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">About Me</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
+            About Me
+          </h1>
         </div>
 
         <div className="desktop-cards">
@@ -88,7 +115,8 @@ function About() {
                             className="flex justify-between items-center cursor-pointer bg-gray-100 p-3 rounded-md shadow-md"
                             onClick={() => {
                               const newStates = [...expandedStates];
-                              newStates[categoryIndex] = !newStates[categoryIndex];
+                              newStates[categoryIndex] =
+                                !newStates[categoryIndex];
                               setExpandedStates(newStates);
                             }}
                           >
@@ -104,7 +132,10 @@ function About() {
                           {isExpanded && (
                             <div className="flex flex-wrap gap-2 sm:gap-3 mt-2">
                               {skillCategory.skills.map((skill, skillIndex) => (
-                                <span key={skillIndex} className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5">
+                                <span
+                                  key={skillIndex}
+                                  className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
+                                >
                                   {skill}
                                 </span>
                               ))}
@@ -117,8 +148,10 @@ function About() {
                 </div>
               ) : (
                 <div className="text-base sm:text-lg leading-relaxed">
-                  {card.content.map((p: string, i: number) => (
-                    <p key={i} className={i > 0 ? "mt-4" : ""}>{p}</p>
+                  {card.content.map((p, i) => (
+                    <p key={i} className={i > 0 ? "mt-4" : ""}>
+                      {renderContent(p, card.links)}
+                    </p>
                   ))}
                 </div>
               )}

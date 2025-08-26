@@ -12,6 +12,18 @@ export const aboutCards = [
     content: [],
   },
   {
+    title: "Contributions",
+    content: [
+      "I enjoy building reusable tools to support my projects. One example is {link:server-essentials}, an npm package written in TypeScript for Node.js servers, which includes a collection of reusable utilities and is publicly available.",
+    ],
+    links: {
+      "server-essentials": {
+        url: "https://www.npmjs.com/package/@eloritzkovitz/server-essentials",
+        text: "server-essentials",
+      },
+    },
+  },  
+  {
     title: "Hobbies & Interests",
     content: [
       "When I'm not coding or studying, I try my best to devote my free time to my long list of hobbies and interests. For example, I really like integrating my love for drawing and graphic design with my projects.",

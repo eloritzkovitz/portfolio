@@ -1,11 +1,11 @@
 const skillsData = [
   {
     category: "Frontend Development",
-    skills: ["React", "Vite", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Bootstrap", "CSS", "HTML"],
+    skills: ["React", "Next.js", "Vite", "TypeScript", "JavaScript", "Tailwind CSS", "Bootstrap", "CSS", "HTML"],
   },
   {
     category: "Backend Development",
-    skills: ["Node.js", "Express.js", "REST API", "Swagger", "WebSockets", "C#", ".NET", "Python"],
+    skills: ["Node.js", "Express", "REST API", "Swagger", "WebSockets", "C#", ".NET", "Python"],
   },
   {
     category: "Mobile Development",
@@ -13,7 +13,7 @@ const skillsData = [
   },
   {
     category: "Database Management",
-    skills: ["MongoDB", "SQL", "SQLite"],
+    skills: ["MongoDB", "SQL", "SQLite", "PostgreSQL"],
   },
   {
     category: "Version Control",
