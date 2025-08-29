@@ -1,6 +1,6 @@
 # My Portfolio
 
-This is my personal portfolio website built with **React + Vite**, **TypeScript**, and **Tailwind CSS**. It showcases my skills, projects, and contact information in a modern and responsive design.
+This is my personal portfolio website built with **React**, **Vite**, **TypeScript**, and **Tailwind CSS**. It showcases my skills, projects, and contact information in a modern and responsive design.
 
 ## Features
 
