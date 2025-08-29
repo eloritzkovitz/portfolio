@@ -4,11 +4,12 @@ import {
   FaHome,
   FaUser,
   FaProjectDiagram,
+  FaGithub,
   FaEnvelope,
   FaBars,
   FaTimes,
   FaMoon,
-  FaSun,
+  FaSun,  
 } from "react-icons/fa";
 import "../styles/Navbar.css";
 
@@ -37,15 +38,18 @@ function Navbar() {
     }
   };
 
+  // Update theme class on document element
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Toggle theme
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -63,16 +67,16 @@ function Navbar() {
                   : "/icons/logo-black.png"
               }
               alt="Logo"
-              className="w-12 h-12"
+              className="logo w-12 h-12"
               style={{ height: "50px", width: "50px", marginRight: "20px" }}
             />
           </Link>
-          <h1 className="hidden md:block text-2xl font-bold">
+          <h2 className="hidden md:block text-3xl font-bold">
             <Link to="/">Elor Itzkovitz</Link>
-          </h1>
+          </h2>
         </div>
 
-        {/* Hamburger Menu Button (Visible Only on Mobile) */}
+        {/* Hamburger Menu Button (Visible only on Mobile) */}
         <button
           className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""}`}
           onClick={toggleMenu}
@@ -116,6 +120,15 @@ function Navbar() {
               onClick={() => setIsMenuOpen(false)}
             >
               <FaProjectDiagram /> <span>Projects</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/github"
+              className="flex items-center space-x-2 px-4 py-4"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaGithub /> <span>GitHub</span>
             </Link>
           </li>
           <li>

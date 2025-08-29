@@ -1,9 +1,4 @@
 /* Section Styling */
-.about-section {
-  padding: 2rem;  
-  min-height: 100vh;
-}
-
 .about-title {
   font-size: 2.5rem;
   font-weight: bold;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaList, FaTh } from "react-icons/fa";
+import { FaList, FaTh, FaIdBadge } from "react-icons/fa";
 import SectionsNavigator from "../components/SectionsNavigator";
 import { aboutCards } from "../data/aboutData";
 import skillsData from "../data/skillsData";
@@ -55,7 +55,7 @@ function About() {
       {/* Sections Navigator */}
       <SectionsNavigator sections={sectionAnchors} />
 
-      <section className="about-section w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8">
+      <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
         {/* Intro Card */}
         <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
@@ -153,6 +153,20 @@ function About() {
                       {renderContent(p, card.links)}
                     </p>
                   ))}
+                  {/* CV Link */}
+                  {card.title === "Introduction" && (
+                    <div className="mt-6">
+                      <a
+                        href="https://drive.google.com/file/d/1OpVt_u-JYBrR1lzfSVPQL-Hv7yBLbxXr/view?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="submit-button inline-flex items-center px-5 py-2 text-white rounded-lg font-semibold transform hover:scale-110"
+                      >
+                        <FaIdBadge className="text-xl mr-2" />
+                        View My CV
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

@@ -44,11 +44,33 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: #646cff !important;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.dark button:hover {
+  border-color: #4a5568 !important;
+}
+
+/* Submit Form button */
+
+.submit-button {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dark .submit-button {
+  background-color: #e2e8f0 !important;
+  color: #2d3748 !important;
+}
+
+.submit-button:hover {
+  background-color: #646cff !important;
+  border-color: #646cff !important;
+  color: #ffffff !important;
 }
 
 /* Transparent button */
@@ -71,6 +93,40 @@ button:focus-visible {
 .t-button:focus-visible {
   background-color: transparent !important;
   border-color: transparent !important;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 350px;
+  background-image: url('/images/banner_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .banner {
+    min-height: 900px;
+  }
+}
+
+.banner h1 {
+  font-size: 6rem;
+}
+
+.banner h2 {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+
+.banner p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 /* Carousel Container */

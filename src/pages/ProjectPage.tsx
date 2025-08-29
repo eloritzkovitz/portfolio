@@ -23,12 +23,9 @@ const ProjectPage: React.FC = () => {
 
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);  
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  // Handle next image
   const handleNextImage = useCallback(() => {
     if (project) {
       setCurrentImageIndex((prevIndex) =>
@@ -37,6 +34,7 @@ const ProjectPage: React.FC = () => {
     }
   }, [project]);
 
+  // Handle previous image
   const handlePrevImage = useCallback(() => {
     if (project) {
       setCurrentImageIndex((prevIndex) =>
@@ -45,6 +43,7 @@ const ProjectPage: React.FC = () => {
     }
   }, [project]);
 
+  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
@@ -60,10 +59,12 @@ const ProjectPage: React.FC = () => {
     };
   }, [handleNextImage, handlePrevImage]);
 
+  // Handle touch event start
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
 
+  // Handle touch event end
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX !== null) {
       const touchEnd = e.changedTouches[0].clientX;
@@ -86,18 +87,20 @@ const ProjectPage: React.FC = () => {
     );
   }
 
+  // Open Image Viewer
   const handleOpenImageViewer = (index: number) => {
     setCurrentImageIndex(index);
     setShowImageViewer(true);
   };
 
+  // Close Image Viewer
   const handleCloseImageViewer = () => {
     setShowImageViewer(false);
   };
 
   return (
     <div
-      className="project-page w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8"
+      className="project-page w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
