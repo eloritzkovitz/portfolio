@@ -17,8 +17,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
   index,
 }) => {
-  // Left side content
-  const left = (
+  // Details section content
+  const detailsSection = (
     <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col justify-center p-6 md:p-8">
       <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4">
         {name}
@@ -50,8 +50,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     </div>
   );
 
-  // Right side content
-  const right = (
+  // Image section content
+  const imageSection = (
     <div className="relative w-full md:w-1/2 h-48 md:h-full flex items-center justify-center">
       <div className="w-[90%] h-[90%] flex items-center justify-center overflow-hidden">
         <img src={image} alt={name} className="w-full h-full object-contain" />
@@ -60,20 +60,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-auto md:h-[80vh] rounded-none overflow-hidden mb-8 shadow-none">
+    <div className="project-card-mobile flex flex-col md:flex-row w-full h-auto md:h-[80vh] rounded-none overflow-hidden mb-8 shadow-none">
       <Link
         to={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
         className="flex flex-col md:flex-row w-full h-full"
       >
         {index % 2 === 0 ? (
           <>
-            {left}
-            {right}
+            {detailsSection}
+            {imageSection}
           </>
         ) : (
           <>
-            {right}
-            {left}
+            {imageSection}
+            {detailsSection}
           </>
         )}
       </Link>

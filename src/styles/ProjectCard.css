@@ -1,14 +1,30 @@
+@media (max-width: 767px) {
+  .project-card-mobile > a {
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card-mobile > a > div {
+    order: 0;
+  }
+  .project-card-mobile > a > div:nth-child(1) {
+    order: 1;
+  }
+  .project-card-mobile > a > div:nth-child(2) {
+    order: 2;
+  }
+}
+
 .tech-tag {
-    background-color: #f5f5dc;
-    color: #333333;
-    font-size: 1.25rem;
-    font-weight: 500;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .tech-tag:hover {
-    background-color: #38b2ac;
-    color: #ffffff;
-  }
+  background-color: #f5f5dc;
+  color: #333333;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tech-tag:hover {
+  background-color: #38b2ac;
+  color: #ffffff;
+}
