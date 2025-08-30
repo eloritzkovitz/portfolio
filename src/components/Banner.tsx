@@ -1,6 +1,7 @@
 import { FaLinkedin, FaGithub, FaIdBadge } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import TechTag from "./TechTag";
 
 const primarySkills = [
   "React",
@@ -32,19 +33,15 @@ function Banner() {
             Full-Stack Developer
           </h2>
           <p className="text-sm sm:text-lg md:text-2xl text-gray-900 mb-8">
-            Building robust web apps with React, Node.js, and modern cloud tools.
+            Building robust web apps with React, Node.js, and modern cloud
+            tools.
           </p>
           <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-8">
             {primarySkills.map((skill, idx) => (
-              <span
-                key={idx}
-                className="tech-tag text-xs sm:text-sm md:text-base px-2 py-1 sm:px-3 sm:py-1.5 rounded"
-              >
-                {skill}
-              </span>
+              <TechTag key={idx}>{skill}</TechTag>
             ))}
           </div>
-          <div className="flex gap-4 justify-center md:justify-start mb-6">
+          <div className="flex gap-8 justify-center md:justify-start mb-6">
             <a
               href="https://linkedin.com/in/elor-itzkovitz"
               target="_blank"

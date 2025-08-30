@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/ProjectCard.css";
+import TechTag from "./TechTag";
 
 interface ProjectCardProps {
   name: string;
@@ -28,12 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </p>
       <div className="flex flex-wrap gap-2 mb-4 md:mb-8">
         {tech.map((t, idx) => (
-          <span
-            key={idx}
-            className="tech-tag bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white px-2 py-1 rounded"
-          >
-            {t}
-          </span>
+          <TechTag key={idx}>{t}</TechTag>
         ))}
       </div>
       {/* Link */}

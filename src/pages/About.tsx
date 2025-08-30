@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaList, FaTh, FaIdBadge } from "react-icons/fa";
 import SectionsNavigator from "../components/SectionsNavigator";
+import TechTag from "../components/TechTag";
 import { aboutCards } from "../data/aboutData";
 import skillsData from "../data/skillsData";
 import "../styles/About.css";
@@ -94,12 +95,11 @@ function About() {
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {skillsData.flatMap((skillCategory) =>
                         skillCategory.skills.map((skill, skillIndex) => (
-                          <span
+                          <TechTag
                             key={`${skillCategory.category}-${skillIndex}`}
-                            className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
                           >
                             {skill}
-                          </span>
+                          </TechTag>
                         ))
                       )}
                     </div>
@@ -132,12 +132,7 @@ function About() {
                           {isExpanded && (
                             <div className="flex flex-wrap gap-2 sm:gap-3 mt-2">
                               {skillCategory.skills.map((skill, skillIndex) => (
-                                <span
-                                  key={skillIndex}
-                                  className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
-                                >
-                                  {skill}
-                                </span>
+                                <TechTag key={skillIndex}>{skill}</TechTag>
                               ))}
                             </div>
                           )}

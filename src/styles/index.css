@@ -104,6 +104,21 @@ button:focus-visible {
   justify-content: center;
 }
 
+/* Tech tags */
+.tech-tag {
+  background-color: #f5f5dc;
+  color: #333333;  
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tech-tag:hover {
+  background-color: #38b2ac;
+  color: #ffffff;
+}
+
 /* Carousel Container */
 .carousel-container {
   position: relative;
@@ -209,22 +224,6 @@ button:focus-visible {
 
 .dark .carousel-indicator.active {
   background-color: #2dd4bf;
-}
-
-/* Tech tags */
-.tech-tag {
-  background-color: #f5f5dc;
-  color: #333333;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.tech-tag:hover {
-  background-color: #38b2ac;
-  color: #ffffff;
 }
 
 .flex {

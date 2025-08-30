@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ImageViewer from "../components/ImageViewer";
 import SectionsNavigator from "../components/SectionsNavigator";
+import TechTag from "../components/TechTag";
 import projects from "../data/projectsData";
 
 const ProjectPage: React.FC = () => {
@@ -23,7 +24,7 @@ const ProjectPage: React.FC = () => {
 
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);  
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   // Handle next image
   const handleNextImage = useCallback(() => {
@@ -195,12 +196,7 @@ const ProjectPage: React.FC = () => {
           </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {project.tech.map((tech, index) => (
-              <span
-                key={index}
-                className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
-              >
-                {tech}
-              </span>
+              <TechTag key={index}>{tech}</TechTag>
             ))}
           </div>
         </div>
