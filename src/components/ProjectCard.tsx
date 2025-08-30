@@ -60,22 +60,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 
   return (
-    <div className="project-card-mobile flex flex-col md:flex-row w-full h-auto md:h-[80vh] rounded-none overflow-hidden mb-8 shadow-none">
+    <div className="project-card-mobile flex flex-col w-full h-auto md:h-[80vh] rounded-none overflow-hidden mb-8 shadow-none">
       <Link
         to={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
-        className="flex flex-col md:flex-row w-full h-full"
+        className={`flex flex-col ${
+          index % 2 !== 0 ? "md:flex-row-reverse" : "md:flex-row"
+        } w-full h-full`}
       >
-        {index % 2 === 0 ? (
-          <>
-            {detailsSection}
-            {imageSection}
-          </>
-        ) : (
-          <>
-            {imageSection}
-            {detailsSection}
-          </>
-        )}
+        {imageSection}
+        {detailsSection}
       </Link>
     </div>
   );
