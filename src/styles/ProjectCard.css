@@ -7,10 +7,10 @@
     order: 0;
   }
   .project-card-mobile > a > div:nth-child(1) {
-    order: 1;
+    order: 2;
   }
   .project-card-mobile > a > div:nth-child(2) {
-    order: 2;
+    order: 1;
   }
 }
 
