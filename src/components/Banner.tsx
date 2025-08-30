@@ -14,7 +14,7 @@ const primarySkills = [
 
 function Banner() {
   return (
-    <div className="banner mb-8 flex items-center justify-center overflow-hidden">
+    <div className="banner h-[calc(100vh-4rem)] mb-8 flex items-center justify-center overflow-hidden">
       <div className="relative z-10 w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-10 flex flex-col sm:flex-row items-center">
         <div className="flex-1 text-center sm:text-left">
           <h1 className="text-7xl sm:text-9xl font-extrabold mb-4 text-gray-900">

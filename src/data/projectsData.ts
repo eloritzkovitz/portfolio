@@ -22,6 +22,8 @@ const projects = [
       "Socket.IO",
     ],
     image: "/projects/SnapChef/icon.png",
+    thumbnail: "/projects/SnapChef/thumbnail.gif",
+    color: "#f37750",
     links: [
       { url: "https://snapchef-app.vercel.app/", label: "App Website" },
       { url: "https://github.com/eloritzkovitz/SnapChef", label: "GitHub - App" },
@@ -76,6 +78,7 @@ const projects = [
       "Docker Compose",
     ],
     image: "/projects/Voltrico/icon.png",
+    thumbnail: "/projects/Voltrico/thumbnail.png",    
     links: { url: "https://github.com/eloritzkovitz/voltrico", label: "GitHub" },
     involvement: [
       "Refactored a college project originally written in JavaScript/CSS/HTML to React and TypeScript",
@@ -104,6 +107,8 @@ const projects = [
       "GCP",
     ],
     image: "/projects/Trevel/icon.png",
+    thumbnail: "/projects/Trevel/thumbnail.png",
+    color: "#549fd7",
     links: { url: "https://github.com/eloritzkovitz/trevel", label: "GitHub" },
     involvement: [
       "Designed and implemented the application interface and frontend using React + Vite and TypeScript",
@@ -141,6 +146,8 @@ const projects = [
       "GitHub Actions",
     ],
     image: "/projects/Oopsify/icon.png",
+    thumbnail: "/projects/Oopsify/thumbnail.png",
+    color: "#9056a3",
     links: [
     ],
     involvement: [
@@ -161,6 +168,8 @@ const projects = [
       "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",
     tech: ["React", "Vite", "JavaScript", "CSS", "HTML"],
     image: "/projects/HexGame/icon.png",
+    thumbnail: "/projects/HexGame/thumbnail.png",
+    color: "#111827",
     links: { url: "https://github.com/eloritzkovitz/hex-game", label: "GitHub" },
     involvement: [
       "Implemented the game logic using disjoint-set data structures",

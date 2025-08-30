@@ -109,12 +109,6 @@ button:focus-visible {
   justify-content: center;
 }
 
-@media (min-width: 640px) {
-  .banner {
-    min-height: 900px;
-  }
-}
-
 .banner h1 {
   font-size: 6rem;
 }
