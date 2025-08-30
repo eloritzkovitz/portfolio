@@ -28,10 +28,10 @@ function Banner() {
               delaySpeed={5000}
             />
           </h1>
-          <h2 className="text-base sm:text-xl md:text-2xl font-bold mb-4 text-gray-900">
+          <h2 className="text-4xl sm:text-4xl md:text-4xl font-bold mb-4 text-gray-900">
             Full-Stack Developer
           </h2>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-900 mb-8">
+          <p className="text-sm sm:text-lg md:text-2xl text-gray-900 mb-8">
             Building robust web apps with React, Node.js, and modern cloud tools.
           </p>
           <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-8">
