@@ -11,7 +11,6 @@ import {
   FaMoon,
   FaSun,
 } from "react-icons/fa";
-import "../styles/Navbar.css";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,7 +77,7 @@ function Navbar() {
 
         {/* Hamburger Menu Button (Visible only on Mobile) */}
         <button
-          className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""} ${
+          className={`md:hidden ${isMenuOpen ? "open" : ""} ${
             theme === "dark"
               ? "text-white bg-gray-800"
               : "text-black bg-gray-100"
@@ -105,7 +104,7 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaHome /> <span>Home</span>
+              <FaHome className="text-base md:text-xl" /> <span>Home</span>
             </Link>
           </li>
           <li>
@@ -114,7 +113,7 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaUser /> <span>About</span>
+              <FaUser className="text-base md:text-xl" /> <span>About</span>
             </Link>
           </li>
           <li>
@@ -123,7 +122,8 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaProjectDiagram /> <span>Projects</span>
+              <FaProjectDiagram className="text-base md:text-xl" />{" "}
+              <span>Projects</span>
             </Link>
           </li>
           <li>
@@ -132,7 +132,7 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaGithub /> <span>GitHub</span>
+              <FaGithub className="text-base md:text-xl" /> <span>GitHub</span>
             </Link>
           </li>
           <li>
@@ -141,7 +141,8 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaEnvelope /> <span>Contact</span>
+              <FaEnvelope className="text-base md:text-xl" />{" "}
+              <span>Contact</span>
             </Link>
           </li>
           {/* Theme Switcher */}
@@ -149,9 +150,11 @@ function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="toggle-theme-btn flex items-center text-xl space-x-2"
+              className="toggle-theme-btn flex items-center space-x-2"
             >
-              {theme === "light" ? <FaMoon /> : <FaSun />}
+              <span className="text-base md:text-xl">
+                {theme === "light" ? <FaMoon /> : <FaSun />}
+              </span>
               <span className="ml-2 md:hidden text-base">
                 {theme === "light" ? "Dark Mode" : "Light Mode"}
               </span>
