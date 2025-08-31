@@ -94,7 +94,7 @@ function About() {
                 )}
               </div>
               {card.title === "Skills" ? (
-                <div className="skills-list">
+                <div>
                   {/* Flat View */}
                   {isFlatView ? (
                     <div className="flex flex-wrap gap-2 sm:gap-3">
