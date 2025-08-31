@@ -9,7 +9,7 @@ import {
   FaBars,
   FaTimes,
   FaMoon,
-  FaSun,  
+  FaSun,
 } from "react-icons/fa";
 import "../styles/Navbar.css";
 
@@ -78,7 +78,11 @@ function Navbar() {
 
         {/* Hamburger Menu Button (Visible only on Mobile) */}
         <button
-          className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""}`}
+          className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""} ${
+            theme === "dark"
+              ? "text-white bg-gray-800"
+              : "text-black bg-gray-100"
+          }`}
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -148,7 +152,7 @@ function Navbar() {
               className="toggle-theme-btn flex items-center text-xl space-x-2"
             >
               {theme === "light" ? <FaMoon /> : <FaSun />}
-              <span className="ml-2 md:hidden">
+              <span className="ml-2 md:hidden text-base">
                 {theme === "light" ? "Dark Mode" : "Light Mode"}
               </span>
             </button>

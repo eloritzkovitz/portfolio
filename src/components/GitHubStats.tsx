@@ -136,7 +136,7 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
               >
                 {repo.name}
               </a>
-              <span className="text-sm text-gray-500 dark:text-gray-200">
+              <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 dark:text-gray-200">
                 {repo.stargazers_count} ⭐
               </span>
             </li>
