@@ -49,7 +49,7 @@ const SectionsNavigator: React.FC<SectionsNavigatorProps> = ({
           </div>
           <button
             onClick={onToggle}
-            className="toggle-show-btn ml-11 bg-white rounded-full shadow-md p-2 transition flex items-center self-center opacity-0 group-hover:opacity-100"
+            className="toggle-show-btn -mr-10 bg-white rounded-full shadow-md p-2 transition flex items-center justify-center opacity-0 group-hover:opacity-100"
             aria-label="Hide navigation panel"
           >
             <FaChevronLeft className="w-5 h-5" />
@@ -67,7 +67,6 @@ const SectionsNavigator: React.FC<SectionsNavigatorProps> = ({
           onClick={onToggle}
           className="toggle-show-btn -ml-30 bg-white rounded-full shadow-md p-2 transition flex items-center justify-center"
           aria-label="Show navigation panel"
-          style={{ width: "48px", height: "48px" }}
         >
           <FaChevronRight className="w-5 h-5" />
         </button>

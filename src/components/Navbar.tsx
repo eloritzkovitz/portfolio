@@ -152,7 +152,7 @@ function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="toggle-theme-btn flex items-center space-x-2"
+              className="toggle-theme-btn flex items-center space-x-2 md:hover:scale-105"
             >
               <span className="text-base md:text-xl">
                 {theme === "light" ? <FaMoon /> : <FaSun />}

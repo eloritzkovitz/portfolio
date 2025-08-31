@@ -301,8 +301,7 @@ button:focus-visible {
 }
 
 .toggle-navigation-btn:hover, .toggle-theme-btn:hover, .toggle-show-btn:hover {
-  color: #747bff;
-  transform: scale(1.1);
+  color: #747bff;  
 }
 
 @media (prefers-color-scheme: light) {

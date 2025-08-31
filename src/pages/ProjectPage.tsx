@@ -157,14 +157,14 @@ const ProjectPage: React.FC = () => {
               aria-label="Previous screenshot"
               className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10" />
+              <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
             </button>
             <button
               onClick={handleNextImage}
               aria-label="Next screenshot"
               className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10" />
+              <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
             </button>
 
             {/* Indicators */}
