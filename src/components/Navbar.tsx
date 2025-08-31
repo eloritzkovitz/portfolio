@@ -77,10 +77,12 @@ function Navbar() {
 
         {/* Hamburger Menu Button (Visible only on Mobile) */}
         <button
-          className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""} ${
+          className={`hamburger-button md:hidden z-50 ${
+            isMenuOpen ? "open" : ""
+          } ${
             theme === "dark"
-              ? "text-white bg-gray-800"
-              : "text-black bg-gray-100"
+              ? "text-white !bg-gray-800"
+              : "text-black !bg-gray-100"
           }`}
           onClick={toggleMenu}
           aria-label="Toggle Menu"

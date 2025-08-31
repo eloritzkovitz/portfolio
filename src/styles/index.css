@@ -67,6 +67,10 @@ button:focus-visible {
   transform: scale(0.95);
 }
 
+.dark .hamburger-button {
+  background-color: #2d3748 !important;
+}
+
 /* Submit Form button */
 .submit-button {
   background-color: #1a1a1a;
@@ -279,11 +283,6 @@ button:focus-visible {
   width: 48px !important;
   border-radius: 50% !important;
   background: #ffffff;
-}
-
-.toggle-theme-btn {
-  padding: 0 !important;
-  margin: 0 !important;  
 }
 
 .toggle-navigation-btn, .toggle-theme-btn, .toggle-show-btn {  
