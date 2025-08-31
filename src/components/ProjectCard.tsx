@@ -48,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   // Image section content
   const imageSection = (
     <div className="relative w-full md:w-1/2 h-48 md:h-full flex items-center justify-center">
-      <div className="w-[90%] h-[90%] flex items-center justify-center overflow-hidden">
+      <div className="w-[70%] h-[70%] flex items-center justify-center overflow-hidden">
         <img src={image} alt={name} className="w-full h-full object-contain" />
       </div>
     </div>

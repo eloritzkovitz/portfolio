@@ -89,7 +89,6 @@ button:focus-visible {
 }
 
 /* Transparent button */
-
 .t-button {
   background-color: transparent !important;
   border: none !important;
@@ -246,6 +245,7 @@ button:focus-visible {
   background-color: #2dd4bf;
 }
 
+/* General styles */
 .flex {
   display: flex;
 }
@@ -302,6 +302,11 @@ button:focus-visible {
 
 .toggle-navigation-btn:hover, .toggle-theme-btn:hover, .toggle-show-btn:hover {
   color: #747bff;  
+}
+
+/* Scroll to section */
+[id] {
+  scroll-margin-top: 6rem;
 }
 
 @media (prefers-color-scheme: light) {

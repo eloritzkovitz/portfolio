@@ -137,7 +137,7 @@ const ProjectPage: React.FC = () => {
       </div>
 
       {/* Details */}
-      <div className="p-4 sm:p-6 mb-8">
+      <div className="w-full max-w-screen-xl mx-auto">
         {/* Screenshots Carousel */}
         {project.screenshots && project.screenshots.length > 0 && (
           <div className="mb-8 sm:mb-12 relative group">
@@ -184,22 +184,18 @@ const ProjectPage: React.FC = () => {
         )}
 
         {/* Description */}
-        <h2
-          id="description"
-          className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
-        >
-          Description
-        </h2>
-        <p className="text-base sm:text-xl text-gray-700 mb-4 sm:mb-6">
-          {project.description}
-        </p>
+        <div id="description" className="p-6 sm:p-4 mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
+            Description
+          </h2>
+          <p className="text-base sm:text-xl text-gray-700">
+            {project.description}
+          </p>
+        </div>
 
         {/* Tech Stack */}
-        <div className="mb-8 sm:mb-12">
-          <h2
-            id="tech-stack"
-            className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
-          >
+        <div id="tech-stack" className="p-6 sm:p-4 mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
             Tech Stack
           </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -210,11 +206,8 @@ const ProjectPage: React.FC = () => {
         </div>
 
         {/* My Involvement */}
-        <div className="mb-8 sm:mb-12">
-          <h2
-            id="my-involvement"
-            className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
-          >
+        <div id="involvement" className="p-6 sm:p-4 mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
             My Involvement
           </h2>
           <ul className="list-disc list-outside pl-6 text-base sm:text-xl text-gray-700">
@@ -225,11 +218,8 @@ const ProjectPage: React.FC = () => {
         </div>
 
         {/* Links */}
-        <div className="mb-8 sm:mb-12">
-          <h2
-            id="links"
-            className="text-xl sm:text-3xl font-semibold mb-4 sm:mb-6"
-          >
+        <div id="links" className="p-6 sm:p-4 mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
             Links
           </h2>
           <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">

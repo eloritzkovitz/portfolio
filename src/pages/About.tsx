@@ -61,7 +61,7 @@ function About() {
         onToggle={() => setNavVisible((v) => !v)}
       />
 
-      <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
+      <section className="w-full max-w-screen-xl mx-auto">
         {/* Header */}
         <div className="p-6 sm:p-8">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">
@@ -74,10 +74,10 @@ function About() {
             <div
               key={`${card.title}-${index}`}
               id={sectionAnchors[index]?.id}
-              className="p-6 sm:p-8 mb-8"
+              className="p-6 sm:p-4 mb-6"
             >
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl sm:text-2xl font-bold">{card.title}</h2>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{card.title}</h2>
                 {card.title === "Skills" && (
                   <button
                     className="toggle-view-btn text-base sm:text-xl"
