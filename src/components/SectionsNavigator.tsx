@@ -20,7 +20,7 @@ const SectionsNavigator: React.FC<SectionsNavigatorProps> = ({
   navVisible,
   onToggle,
 }) => (
-  <div className="group">
+  <div className="group hidden sm:block">
     {/* Sliding Panel */}
     <div
       className={`fixed left-0 top-32 z-40 flex items-center`}
