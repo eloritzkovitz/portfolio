@@ -3,7 +3,7 @@ import { SiNpm } from "react-icons/si";
 
 function Footer() {
   return (
-    <footer className="py-4">
+    <footer className="py-4 mt-10">
       <div className="max-w-7xl mx-auto px-4 text-center">
         {/* Socials Row */}
         <div className="flex justify-center gap-10 mb-8">

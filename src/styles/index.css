@@ -261,7 +261,8 @@ button:focus-visible {
 .toggle-show-btn {
   height: 48px !important;
   width: 48px !important;
-  border-radius: 50% !important;  
+  border-radius: 50% !important;
+  background: #ffffff;
 }
 
 .toggle-theme-btn {
@@ -271,13 +272,13 @@ button:focus-visible {
 
 .toggle-navigation-btn, .toggle-theme-btn, .toggle-show-btn {  
   vertical-align: middle !important;  
-  border: none !important;
-  box-shadow: none !important;
+  border: none !important;  
   outline: none !important;
 }
 
-.toggle-navigation-btn, .toggle-theme-btn {
+.toggle-navigation-btn, .toggle-theme-btn {  
   background: transparent !important;
+  box-shadow: none !important;
 }
 
 .dark .toggle-theme-btn, .dark .toggle-navigation-btn {

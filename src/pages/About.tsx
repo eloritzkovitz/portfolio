@@ -62,9 +62,9 @@ function About() {
       />
 
       <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
-        {/* Intro Card */}
-        <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
+        {/* Header */}
+        <div className="p-6 sm:p-8">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">
             About Me
           </h1>
         </div>
@@ -74,7 +74,7 @@ function About() {
             <div
               key={`${card.title}-${index}`}
               id={sectionAnchors[index]?.id}
-              className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8"
+              className="p-6 sm:p-8 mb-8"
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl sm:text-2xl font-bold">{card.title}</h2>
@@ -117,7 +117,7 @@ function About() {
                         <div key={categoryIndex} className="mb-4">
                           {/* Category Header with Expand/Collapse Button */}
                           <div
-                            className="flex justify-between items-center cursor-pointer bg-gray-100 p-3 rounded-md shadow-md"
+                            className="flex justify-between items-center cursor-pointer bg-white p-3 rounded-md shadow-md"
                             onClick={() => {
                               const newStates = [...expandedStates];
                               newStates[categoryIndex] =
