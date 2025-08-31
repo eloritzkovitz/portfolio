@@ -48,8 +48,26 @@ button:focus-visible {
   border-color: #4a5568 !important;
 }
 
-/* Submit Form button */
+/* Hamburger Button */
+.hamburger-button {  
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none !important;
+}
 
+.hamburger-button:hover {
+  background-color: #4b5563;
+}
+
+.hamburger-button:active {
+  transform: scale(0.95);
+}
+
+/* Submit Form button */
 .submit-button {
   background-color: #1a1a1a;
   color: #ffffff;

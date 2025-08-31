@@ -77,7 +77,7 @@ function Navbar() {
 
         {/* Hamburger Menu Button (Visible only on Mobile) */}
         <button
-          className={`md:hidden ${isMenuOpen ? "open" : ""} ${
+          className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""} ${
             theme === "dark"
               ? "text-white bg-gray-800"
               : "text-black bg-gray-100"
