@@ -11,6 +11,7 @@ function About() {
     skillsData.map(() => false)
   );
   const [isFlatView, setIsFlatView] = useState(true);
+  const [navVisible, setNavVisible] = useState(true);
 
   // Section anchors for navigation
   const sectionAnchors = [
@@ -54,7 +55,11 @@ function About() {
   return (
     <div className="relative">
       {/* Sections Navigator */}
-      <SectionsNavigator sections={sectionAnchors} />
+      <SectionsNavigator
+        sections={sectionAnchors}
+        navVisible={navVisible}
+        onToggle={() => setNavVisible((v) => !v)}
+      />
 
       <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
         {/* Intro Card */}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useParams, useNavigate } from "react-router-dom";
 import ImageViewer from "../components/ImageViewer";
 import SectionsNavigator from "../components/SectionsNavigator";
 import TechTag from "../components/TechTag";
@@ -9,6 +9,8 @@ import projects from "../data/projectsData";
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+
+  const [navVisible, setNavVisible] = useState(true);
 
   // Section anchors for navigation
   const sectionAnchors = [
@@ -101,24 +103,30 @@ const ProjectPage: React.FC = () => {
 
   return (
     <div
-      className="project-page w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10"
+      className="project-page w-full max-w-screen-xl mx-auto"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Sections Navigator */}
-      <SectionsNavigator sections={sectionAnchors} />
-
-      {/* Back to Projects Button */}
-      <button
-        onClick={() => navigate("/projects")}
-        className="toggle-navigation-btn mb-8 text-base sm:text-lg px-2 py-1 sm:px-4 sm:py-2"
-      >
-        ← Back to Projects
-      </button>
+      {/* Sections Navigator Panel */}
+      <div className="relative">
+        <SectionsNavigator
+          sections={sectionAnchors}
+          navVisible={navVisible}
+          onToggle={() => setNavVisible((v) => !v)}
+        />
+      </div>
 
       {/* Project Header */}
-      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
+      <div className="p-4 sm:p-6 mb-8">
         <div className="flex items-center gap-4 sm:gap-6">
+          {/* Return Button */}
+          <button
+            onClick={() => navigate("/projects")}
+            className="toggle-navigation-btn px-2 py-1 sm:px-4 sm:py-2"
+            aria-label="Back to Projects"
+          >
+            <FaChevronLeft className="w-5 h-5" />
+          </button>
           <img
             src={project.image}
             alt={project.name}
@@ -129,7 +137,7 @@ const ProjectPage: React.FC = () => {
       </div>
 
       {/* Details */}
-      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
+      <div className="p-4 sm:p-6 mb-8">
         {/* Screenshots Carousel */}
         {project.screenshots && project.screenshots.length > 0 && (
           <div className="mb-8 sm:mb-12 relative">

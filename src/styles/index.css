@@ -258,24 +258,33 @@ button:focus-visible {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.toggle-show-btn {
+  height: 48px !important;
+  width: 48px !important;
+  border-radius: 50% !important;  
+}
+
 .toggle-theme-btn {
   padding: 0 !important;
   margin: 0 !important;  
 }
 
-.toggle-navigation-btn, .toggle-theme-btn {  
-  vertical-align: middle !important;
-  background: transparent !important;
+.toggle-navigation-btn, .toggle-theme-btn, .toggle-show-btn {  
+  vertical-align: middle !important;  
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+.toggle-navigation-btn, .toggle-theme-btn {
+  background: transparent !important;
 }
 
 .dark .toggle-theme-btn, .dark .toggle-navigation-btn {
   color: #ffffff;
 }
 
-.toggle-navigation-btn:hover, .toggle-theme-btn:hover {
+.toggle-navigation-btn:hover, .toggle-theme-btn:hover, .toggle-show-btn:hover {
   color: #747bff;
   transform: scale(1.1);
 }
