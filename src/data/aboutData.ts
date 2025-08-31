@@ -4,7 +4,7 @@ export const aboutCards = [
     content: [
       "Hi! My name is Elor. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas, and interests - and shape them into reality.",
       "I am very passionate about building modern, scalable, and user-friendly applications, as well as learning and adapting to new technologies and frameworks. I am always eager to learn and grow, and I believe that the best way to do that is by constantly challenging ourselves.",
-      "Currently, I am a third-year computer science student, exploring the world of full-stack development, learning and experimenting with various technologies and frameworks, mainly React and Node.js.",
+      "Currently, I am a fresh computer science graduate, exploring the world of full-stack development, learning and experimenting with various technologies and frameworks - mainly React, Node.js and microservices.",
     ],
   },
   {

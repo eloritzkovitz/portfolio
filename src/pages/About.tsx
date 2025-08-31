@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { FaList, FaTh } from "react-icons/fa";
+import { FaList, FaTh, FaIdBadge } from "react-icons/fa";
 import SectionsNavigator from "../components/SectionsNavigator";
+import TechTag from "../components/TechTag";
 import { aboutCards } from "../data/aboutData";
 import skillsData from "../data/skillsData";
 import "../styles/About.css";
@@ -10,6 +11,7 @@ function About() {
     skillsData.map(() => false)
   );
   const [isFlatView, setIsFlatView] = useState(true);
+  const [navVisible, setNavVisible] = useState(true);
 
   // Section anchors for navigation
   const sectionAnchors = [
@@ -53,12 +55,16 @@ function About() {
   return (
     <div className="relative">
       {/* Sections Navigator */}
-      <SectionsNavigator sections={sectionAnchors} />
+      <SectionsNavigator
+        sections={sectionAnchors}
+        navVisible={navVisible}
+        onToggle={() => setNavVisible((v) => !v)}
+      />
 
-      <section className="about-section w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8">
-        {/* Intro Card */}
-        <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
+      <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
+        {/* Header */}
+        <div className="p-6 sm:p-8">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">
             About Me
           </h1>
         </div>
@@ -68,7 +74,7 @@ function About() {
             <div
               key={`${card.title}-${index}`}
               id={sectionAnchors[index]?.id}
-              className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8"
+              className="p-6 sm:p-8 mb-8"
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl sm:text-2xl font-bold">{card.title}</h2>
@@ -88,18 +94,17 @@ function About() {
                 )}
               </div>
               {card.title === "Skills" ? (
-                <div className="skills-list">
+                <div>
                   {/* Flat View */}
                   {isFlatView ? (
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {skillsData.flatMap((skillCategory) =>
                         skillCategory.skills.map((skill, skillIndex) => (
-                          <span
+                          <TechTag
                             key={`${skillCategory.category}-${skillIndex}`}
-                            className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
                           >
                             {skill}
-                          </span>
+                          </TechTag>
                         ))
                       )}
                     </div>
@@ -112,7 +117,7 @@ function About() {
                         <div key={categoryIndex} className="mb-4">
                           {/* Category Header with Expand/Collapse Button */}
                           <div
-                            className="flex justify-between items-center cursor-pointer bg-gray-100 p-3 rounded-md shadow-md"
+                            className="flex justify-between items-center cursor-pointer bg-white p-3 rounded-md shadow-md"
                             onClick={() => {
                               const newStates = [...expandedStates];
                               newStates[categoryIndex] =
@@ -132,12 +137,7 @@ function About() {
                           {isExpanded && (
                             <div className="flex flex-wrap gap-2 sm:gap-3 mt-2">
                               {skillCategory.skills.map((skill, skillIndex) => (
-                                <span
-                                  key={skillIndex}
-                                  className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
-                                >
-                                  {skill}
-                                </span>
+                                <TechTag key={skillIndex}>{skill}</TechTag>
                               ))}
                             </div>
                           )}
@@ -153,6 +153,20 @@ function About() {
                       {renderContent(p, card.links)}
                     </p>
                   ))}
+                  {/* CV Link */}
+                  {card.title === "Introduction" && (
+                    <div className="mt-6">
+                      <a
+                        href="https://drive.google.com/file/d/1OpVt_u-JYBrR1lzfSVPQL-Hv7yBLbxXr/view?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="submit-button inline-flex items-center px-5 py-2 text-white rounded-lg font-semibold transform hover:scale-110"
+                      >
+                        <FaIdBadge className="text-xl mr-2" />
+                        View My CV
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

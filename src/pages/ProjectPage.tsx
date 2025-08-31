@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useParams, useNavigate } from "react-router-dom";
 import ImageViewer from "../components/ImageViewer";
 import SectionsNavigator from "../components/SectionsNavigator";
+import TechTag from "../components/TechTag";
 import projects from "../data/projectsData";
 
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+
+  const [navVisible, setNavVisible] = useState(true);
 
   // Section anchors for navigation
   const sectionAnchors = [
@@ -25,10 +28,7 @@ const ProjectPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  // Handle next image
   const handleNextImage = useCallback(() => {
     if (project) {
       setCurrentImageIndex((prevIndex) =>
@@ -37,6 +37,7 @@ const ProjectPage: React.FC = () => {
     }
   }, [project]);
 
+  // Handle previous image
   const handlePrevImage = useCallback(() => {
     if (project) {
       setCurrentImageIndex((prevIndex) =>
@@ -45,6 +46,7 @@ const ProjectPage: React.FC = () => {
     }
   }, [project]);
 
+  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
@@ -60,10 +62,12 @@ const ProjectPage: React.FC = () => {
     };
   }, [handleNextImage, handlePrevImage]);
 
+  // Handle touch event start
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
 
+  // Handle touch event end
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX !== null) {
       const touchEnd = e.changedTouches[0].clientX;
@@ -86,35 +90,43 @@ const ProjectPage: React.FC = () => {
     );
   }
 
+  // Open Image Viewer
   const handleOpenImageViewer = (index: number) => {
     setCurrentImageIndex(index);
     setShowImageViewer(true);
   };
 
+  // Close Image Viewer
   const handleCloseImageViewer = () => {
     setShowImageViewer(false);
   };
 
   return (
     <div
-      className="project-page w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8"
+      className="project-page w-full max-w-screen-xl mx-auto"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Sections Navigator */}
-      <SectionsNavigator sections={sectionAnchors} />
-
-      {/* Back to Projects Button */}
-      <button
-        onClick={() => navigate("/projects")}
-        className="toggle-navigation-btn mb-8 text-base sm:text-lg px-2 py-1 sm:px-4 sm:py-2"
-      >
-        ← Back to Projects
-      </button>
+      {/* Sections Navigator Panel */}
+      <div className="relative">
+        <SectionsNavigator
+          sections={sectionAnchors}
+          navVisible={navVisible}
+          onToggle={() => setNavVisible((v) => !v)}
+        />
+      </div>
 
       {/* Project Header */}
-      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
+      <div className="p-4 sm:p-6 mb-8">
         <div className="flex items-center gap-4 sm:gap-6">
+          {/* Return Button */}
+          <button
+            onClick={() => navigate("/projects")}
+            className="toggle-navigation-btn px-2 py-1 sm:px-4 sm:py-2"
+            aria-label="Back to Projects"
+          >
+            <FaChevronLeft className="w-5 h-5" />
+          </button>
           <img
             src={project.image}
             alt={project.name}
@@ -125,10 +137,10 @@ const ProjectPage: React.FC = () => {
       </div>
 
       {/* Details */}
-      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-8">
+      <div className="p-4 sm:p-6 mb-8">
         {/* Screenshots Carousel */}
         {project.screenshots && project.screenshots.length > 0 && (
-          <div className="mb-8 sm:mb-12 relative">
+          <div className="mb-8 sm:mb-12 relative group">
             {/* Current Screenshot */}
             <div className="flex items-center justify-center">
               <img
@@ -139,32 +151,32 @@ const ProjectPage: React.FC = () => {
               />
             </div>
 
-            {/* Navigation Buttons */}
+            {/* Navigation Buttons - only visible on hover */}
             <button
               onClick={handlePrevImage}
               aria-label="Previous screenshot"
-              className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10"
+              className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10" />
+              <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
             </button>
             <button
               onClick={handleNextImage}
               aria-label="Next screenshot"
-              className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10"
+              className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
             >
-              <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10" />
+              <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
             </button>
 
             {/* Indicators */}
-            <div className="carousel-indicators flex justify-center gap-2 mt-4">
+            <div className="carousel-indicators flex justify-center gap-2 mt-8">
               {project.screenshots.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   aria-label={`Go to screenshot ${index + 1}`}
-                  className={`carousel-indicator rounded-full transition-all duration-200 w-3 h-3 sm:w-5 sm:h-5${
-                    index === currentImageIndex ? " active" : ""
-                  }`}
+                  className={`carousel-indicator aspect-square rounded-full w-2 sm:w-4 lg:w-6 border-2 transition-all duration-200
+            ${index === currentImageIndex ? " active" : ""}
+          `}
                 ></button>
               ))}
             </div>
@@ -192,12 +204,7 @@ const ProjectPage: React.FC = () => {
           </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {project.tech.map((tech, index) => (
-              <span
-                key={index}
-                className="tech-tag text-xs sm:text-base px-2 py-1 sm:px-3 sm:py-1.5"
-              >
-                {tech}
-              </span>
+              <TechTag key={index}>{tech}</TechTag>
             ))}
           </div>
         </div>

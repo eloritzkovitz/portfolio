@@ -4,13 +4,13 @@ import {
   FaHome,
   FaUser,
   FaProjectDiagram,
+  FaGithub,
   FaEnvelope,
   FaBars,
   FaTimes,
   FaMoon,
   FaSun,
 } from "react-icons/fa";
-import "../styles/Navbar.css";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,15 +37,18 @@ function Navbar() {
     }
   };
 
+  // Update theme class on document element
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Toggle theme
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -63,18 +66,24 @@ function Navbar() {
                   : "/icons/logo-black.png"
               }
               alt="Logo"
-              className="w-12 h-12"
+              className="logo w-12 h-12"
               style={{ height: "50px", width: "50px", marginRight: "20px" }}
             />
           </Link>
-          <h1 className="hidden md:block text-2xl font-bold">
+          <h2 className="hidden md:block text-3xl font-bold">
             <Link to="/">Elor Itzkovitz</Link>
-          </h1>
+          </h2>
         </div>
 
-        {/* Hamburger Menu Button (Visible Only on Mobile) */}
+        {/* Hamburger Menu Button (Visible only on Mobile) */}
         <button
-          className={`hamburger-button md:hidden ${isMenuOpen ? "open" : ""}`}
+          className={`hamburger-button md:hidden z-50 ${
+            isMenuOpen ? "open" : ""
+          } ${
+            theme === "dark"
+              ? "text-white !bg-gray-800"
+              : "text-black !bg-gray-100"
+          }`}
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -97,7 +106,7 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaHome /> <span>Home</span>
+              <FaHome className="text-base md:text-xl" /> <span>Home</span>
             </Link>
           </li>
           <li>
@@ -106,7 +115,7 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaUser /> <span>About</span>
+              <FaUser className="text-base md:text-xl" /> <span>About</span>
             </Link>
           </li>
           <li>
@@ -115,7 +124,17 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaProjectDiagram /> <span>Projects</span>
+              <FaProjectDiagram className="text-base md:text-xl" />{" "}
+              <span>Projects</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/github"
+              className="flex items-center space-x-2 px-4 py-4"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaGithub className="text-base md:text-xl" /> <span>GitHub</span>
             </Link>
           </li>
           <li>
@@ -124,7 +143,8 @@ function Navbar() {
               className="flex items-center space-x-2 px-4 py-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaEnvelope /> <span>Contact</span>
+              <FaEnvelope className="text-base md:text-xl" />{" "}
+              <span>Contact</span>
             </Link>
           </li>
           {/* Theme Switcher */}
@@ -132,10 +152,12 @@ function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="toggle-theme-btn flex items-center text-xl space-x-2"
+              className="toggle-theme-btn flex items-center space-x-2"
             >
-              {theme === "light" ? <FaMoon /> : <FaSun />}
-              <span className="ml-2 md:hidden">
+              <span className="text-base md:text-xl">
+                {theme === "light" ? <FaMoon /> : <FaSun />}
+              </span>
+              <span className="md:hidden text-base">
                 {theme === "light" ? "Dark Mode" : "Light Mode"}
               </span>
             </button>

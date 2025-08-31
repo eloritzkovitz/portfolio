@@ -1,54 +1,78 @@
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import { FaEnvelopeOpen } from "react-icons/fa";
 
 function Contact() {
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
   return (
-    <section className="w-full max-w-screen-lg mx-auto px-4 sm:px-8 py-4 sm:py-8">
-      {/* Intro Card */}
-      <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
+    <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
+      {/* Header */}
+      <div className="p-6 sm:p-8">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">
           Contact Me
         </h1>
       </div>
-      
-      <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
-        {/* Email Card */}
-        <div className="flex-1 bg-white shadow-md rounded-lg p-6 sm:p-8 flex flex-col items-center text-center">
-          <FaEnvelope className="text-3xl sm:text-4xl mb-4" />         
-          <div className="flex justify-center w-full">
-            <a
-              href="mailto:eloritzkovitz@gmail.com"
-              className="text-xl sm:text-2xl hover:underline truncate max-w-[180px] sm:max-w-xs"
-              style={{ display: "inline-block" }}
+
+      {/* Contact Information & Form */}
+      <div className="flex flex-col rounded-lg overflow-hidden mb-8">
+        <div className="p-8 flex flex-col items-center justify-center">
+          <form
+            action="https://formspree.io/f/xrbaervw"
+            method="POST"
+            className="w-full max-w-2xl flex flex-col gap-6 rounded-xl"
+            onSubmit={() => {
+              setStatus("idle");
+              setTimeout(() => {
+                setStatus("success");
+              }, 1200);
+            }}
+          >
+            <input
+              type="text"
+              name="_gotcha"
+              style={{ display: "none" }}
+              tabIndex={-1}
+            />
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              className="flex justify-between items-center bg-white border-none p-4 rounded-lg shadow-sm text-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              className="flex justify-between items-center bg-white border-none p-4 rounded-lg shadow-sm text-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              required
+              rows={10}
+              className="flex justify-between items-center bg-white border-none p-4 rounded-lg shadow-sm text-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
+            />
+            <button
+              type="submit"
+              className="submit-button px-6 py-3 rounded-lg font-semibold text-lg shadow transform hover:scale-105 flex items-center justify-center"
             >
-              eloritzkovitz@gmail.com
-            </a>
-          </div>
-        </div>
-
-        {/* LinkedIn Card */}
-        <div className="flex-1 bg-white shadow-md rounded-lg p-6 sm:p-8 flex flex-col items-center text-center">
-          <FaLinkedin className="text-3xl sm:text-4xl mb-4" />          
-          <a
-            href="https://linkedin.com/in/elor-itzkovitz"
-            className="text-xl sm:text-2xl hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Elor Itzkovitz
-          </a>
-        </div>
-
-        {/* GitHub Card */}
-        <div className="flex-1 bg-white shadow-md rounded-lg p-6 sm:p-8 flex flex-col items-center text-center">
-          <FaGithub className="text-3xl sm:text-4xl mb-4" />         
-          <a
-            href="https://github.com/eloritzkovitz"
-            className="text-xl sm:text-2xl hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            eloritzkovitz
-          </a>
+              <FaEnvelopeOpen className="text-xl mr-2" />
+              Send Message
+            </button>
+            {status === "success" && (
+              <p className="text-green-600 font-semibold mt-2 text-center">
+                Thank you! Your message has been sent.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-red-600 font-semibold mt-2 text-center">
+                Sorry, there was an error sending your message. Please try
+                again.
+              </p>
+            )}
+          </form>
         </div>
       </div>
     </section>

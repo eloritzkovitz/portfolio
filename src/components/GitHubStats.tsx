@@ -101,7 +101,7 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
               return (
                 <div
                   key={language}
-                  className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-sm"
+                  className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-sm hover:scale-105"
                 >
                   <div
                     className="w-8 h-8 rounded-full"
@@ -120,23 +120,23 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
       </div>
 
       {/* Top Repositories Widget */}
-      <div className="bg-white shadow-md rounded-lg p-6 text-center col-span-1 md:col-span-2 lg:col-span-3">
+      <div className="p-6 text-center col-span-1 md:col-span-2 lg:col-span-3">
         <h2 className="text-3xl font-bold mb-4">Top Repositories</h2>
         <ul className="space-y-4">
           {repos.slice(0, 5).map((repo) => (
             <li
               key={repo.name}
-              className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm"
+              className="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm hover:scale-102"
             >
               <a
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl font-semibold hover:underline"
+                className="text-2xl font-semibold"
               >
                 {repo.name}
               </a>
-              <span className="text-sm text-gray-500 dark:text-gray-200">
+              <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 dark:text-gray-200">
                 {repo.stargazers_count} ⭐
               </span>
             </li>
