@@ -19,11 +19,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   // Details section content
   const detailsSection = (
-    <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col justify-center p-6 md:p-8">
-      <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4">
+    <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col justify-center">
+      <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4 hover:text-[#646cff]">
         {name}
       </h2>
-      <p className="text-base sm:text-lg md:text-2xl text-gray-700 dark:text-gray-200 mb-4 md:mb-6">
+      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 md:mb-6">
         {description}
       </p>
       <div className="flex flex-wrap gap-2 mb-4 md:mb-8">
@@ -48,19 +48,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   // Image section content
   const imageSection = (
     <div className="relative w-full md:w-1/2 h-48 md:h-full flex items-center justify-center">
-      <div className="w-[70%] h-[70%] flex items-center justify-center overflow-hidden">
+      <div className="w-[80%] h-[80%] flex items-center justify-center overflow-hidden">
         <img src={image} alt={name} className="w-full h-full object-contain" />
       </div>
     </div>
   );
 
   return (
-    <div className="project-card-mobile flex flex-col w-full h-auto md:h-[80vh] rounded-none overflow-hidden mb-8 shadow-none">
+    <div className="flex flex-col w-full h-auto md:h-[80vh] rounded-none overflow-hidden mb-8 shadow-none">
       <Link
         to={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
-        className={`flex flex-col ${
+        className={`flex flex-col gap-8 ${
           index % 2 !== 0 ? "md:flex-row-reverse" : "md:flex-row"
-        } w-full h-full`}
+        } w-full h-full md:gap-x-15`}
       >
         {imageSection}
         {detailsSection}
