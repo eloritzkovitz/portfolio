@@ -4,7 +4,6 @@ import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
 import ProjectPage from "./ProjectPage";
-import GitHub from "./GitHub";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
@@ -25,8 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:projectId" element={<ProjectPage />} />
-            <Route path="/github" element={<GitHub />} />
+            <Route path="/projects/:projectId" element={<ProjectPage />} />            
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

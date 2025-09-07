@@ -1,17 +1,5 @@
 import { FaLinkedin, FaGithub, FaIdBadge } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
-import TechTag from "./TechTag";
-
-const primarySkills = [
-  "React",
-  "TypeScript",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "C#",
-];
 
 function Banner() {
   return (
@@ -35,18 +23,14 @@ function Banner() {
           <p className="text-sm sm:text-lg md:text-2xl text-gray-900 mb-8">
             Building robust web apps with React, Node.js, and modern cloud
             tools.
-          </p>
-          <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-8">
-            {primarySkills.map((skill, idx) => (
-              <TechTag key={idx}>{skill}</TechTag>
-            ))}
-          </div>
-          <div className="flex gap-8 justify-center md:justify-start mb-6">
+          </p>          
+          {/* Social Links */}
+          <div className="hidden md:flex gap-8 justify-center md:justify-start mb-6">
             <a
               href="https://linkedin.com/in/elor-itzkovitz"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-200 hover:text-teal-600 transition-transform duration-200 hover:scale-125"
+              className="text-gray-900 hover:text-teal-600 transition-transform duration-200 hover:scale-125"
               aria-label="LinkedIn"
             >
               <FaLinkedin className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
@@ -55,7 +39,7 @@ function Banner() {
               href="https://github.com/eloritzkovitz"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-200 hover:text-black transition-transform duration-200 hover:scale-125"
+              className="text-gray-900 hover:text-black transition-transform duration-200 hover:scale-125"
               aria-label="GitHub"
             >
               <FaGithub className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
@@ -64,19 +48,11 @@ function Banner() {
               href="https://drive.google.com/file/d/1OpVt_u-JYBrR1lzfSVPQL-Hv7yBLbxXr/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-200 hover:text-black transition-transform duration-200 hover:scale-125"
+              className="text-gray-900 hover:text-black transition-transform duration-200 hover:scale-125"
               aria-label="Resume"
             >
               <FaIdBadge className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
             </a>
-          </div>
-          <div className="mt-4">
-            <Link
-              to="/about"
-              className="inline-flex text-gray-200 text-sm sm:text-lg md:text-xl font-bold py-2 transform hover:scale-110"
-            >
-              Learn more &rarr;
-            </Link>
           </div>
         </div>
       </div>

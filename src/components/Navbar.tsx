@@ -4,7 +4,6 @@ import {
   FaHome,
   FaUser,
   FaProjectDiagram,
-  FaGithub,
   FaEnvelope,
   FaBars,
   FaTimes,
@@ -127,16 +126,7 @@ function Navbar() {
               <FaProjectDiagram className="text-base md:text-xl" />{" "}
               <span>Projects</span>
             </Link>
-          </li>
-          <li>
-            <Link
-              to="/github"
-              className="flex items-center space-x-2 px-4 py-4"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaGithub className="text-base md:text-xl" /> <span>GitHub</span>
-            </Link>
-          </li>
+          </li>          
           <li>
             <Link
               to="/contact"
