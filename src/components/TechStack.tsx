@@ -10,7 +10,7 @@ import {
 const iconClass = "w-10 h-10 mb-3 flex-shrink-0";
 
 const techStack = [
-  { name: "React", icon: <SiReact className="text-blue-500 w-10 h-10 mb-3" /> },
+  { name: "React", icon: <SiReact className="text-[#61DAFB] w-10 h-10 mb-3" /> },
   { name: "TypeScript", icon: <SiTypescript className="text-blue-600 w-10 h-10 mb-3" /> },
   { name: "Next.js", icon: <SiNextdotjs className="text-black w-10 h-10 mb-3" /> },
   {
