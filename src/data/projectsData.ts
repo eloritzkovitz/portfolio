@@ -28,13 +28,13 @@ const projects = [
     color: "#f37750",
     links: [
       { url: "https://snapchef-app.vercel.app/", label: "App Website" },
-      { url: "https://github.com/eloritzkovitz/SnapChef", label: "GitHub - App" },
+      { url: "https://github.com/eloritzkovitz/snapchef", label: "GitHub - App" },
       {
-        url: "https://github.com/eloritzkovitz/SnapChef-Server",
+        url: "https://github.com/eloritzkovitz/snapchef-server",
         label: "GitHub - Server",
       },
       {
-        url: "https://github.com/eloritzkovitz/SnapChef-Web",
+        url: "https://github.com/eloritzkovitz/snapchef-web",
         label: "GitHub - Web",
       },
     ],

@@ -3,6 +3,7 @@ import { FaList, FaTh, FaIdBadge } from "react-icons/fa";
 import SectionsNavigator from "../components/SectionsNavigator";
 import TechTag from "../components/TechTag";
 import { aboutCards } from "../data/aboutData";
+import linksData from "../data/linksData";
 import skillsData from "../data/skillsData";
 import "../styles/About.css";
 
@@ -157,13 +158,13 @@ function About() {
                   {card.title === "Introduction" && (
                     <div className="mt-6">
                       <a
-                        href="https://drive.google.com/file/d/1OpVt_u-JYBrR1lzfSVPQL-Hv7yBLbxXr/view?usp=drive_link"
+                        href={linksData.cv.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="submit-button inline-flex items-center px-5 py-2 text-white rounded-lg font-semibold transform hover:scale-110"
                       >
                         <FaIdBadge className="text-xl mr-2" />
-                        View My CV
+                        {linksData.cv.text}
                       </a>
                     </div>
                   )}

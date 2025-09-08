@@ -14,3 +14,4 @@ Feel free to reach out to me via:
 - **Email**: [eloritzkovitz@gmail.com](mailto:eloritzkovitz@gmail.com)
 - **LinkedIn**: [linkedin.com/in/elor-itzkovitz](https://linkedin.com/in/elor-itzkovitz)
 - **GitHub**: [github.com/eloritzkovitz](https://github.com/eloritzkovitz)
+- **npm**: [npm](https://www.npmjs.com/~eloritzkovitz)

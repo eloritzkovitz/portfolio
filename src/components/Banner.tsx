@@ -1,5 +1,6 @@
 import { FaLinkedin, FaGithub, FaIdBadge } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
+import linksData from "../data/linksData";
 
 function Banner() {
   return (
@@ -27,7 +28,7 @@ function Banner() {
           {/* Social Links */}
           <div className="hidden md:flex gap-8 justify-center md:justify-start mb-6">
             <a
-              href="https://linkedin.com/in/elor-itzkovitz"
+              href={linksData.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-900 hover:text-teal-600 transition-transform duration-200 hover:scale-125"
@@ -36,7 +37,7 @@ function Banner() {
               <FaLinkedin className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
             </a>
             <a
-              href="https://github.com/eloritzkovitz"
+              href={linksData.github.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-900 hover:text-black transition-transform duration-200 hover:scale-125"
@@ -45,7 +46,7 @@ function Banner() {
               <FaGithub className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
             </a>
             <a
-              href="https://drive.google.com/file/d/1OpVt_u-JYBrR1lzfSVPQL-Hv7yBLbxXr/view?usp=drive_link"
+              href={linksData.cv.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-900 hover:text-black transition-transform duration-200 hover:scale-125"
