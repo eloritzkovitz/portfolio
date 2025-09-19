@@ -1,5 +1,5 @@
 import Banner from "../components/Banner";
-import GitHubStats from "../components/GitHubStats";
+import GitHubOverview from "../components/github/GitHubOverview";
 import TechStackSection from "../components/TechStack";
 
 function Home() {
@@ -11,8 +11,8 @@ function Home() {
       {/* Tech Stack Section */}
       <TechStackSection />
 
-      {/* GitHub Stats Section */}
-      <GitHubStats />      
+      {/* GitHub Overview Section */}
+      <GitHubOverview />      
     </div>
   );
 }
