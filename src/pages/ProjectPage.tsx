@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useParams, useNavigate } from "react-router-dom";
-import ImageViewer from "../components/ImageViewer";
-import SectionsNavigator from "../components/SectionsNavigator";
-import TechTag from "../components/TechTag";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import SectionsNavigator from "../components/ui/sections/SectionsNavigator";
+import Section from "../components/layout/Section";
+import ProjectHeader from "../components/projects/ProjectHeader";
+import InvolvementList from "../components/projects/InvolvementList";
+import LinksList from "../components/projects/LinksList";
+import TechTagList from "../components/tech/TechTagList";
+import ImageViewer from "../components/ui/media/ImageViewer";
+import ScreenshotsCarousel from "../components/ui/media/ScreenshotsCarousel";
 import projects from "../data/projectsData";
 
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
-  const navigate = useNavigate();
-
   const [navVisible, setNavVisible] = useState(true);
 
   // Section anchors for navigation
@@ -26,61 +28,6 @@ const ProjectPage: React.FC = () => {
 
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-
-  // Handle next image
-  const handleNextImage = useCallback(() => {
-    if (project) {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === project.screenshots.length - 1 ? 0 : prevIndex + 1
-      );
-    }
-  }, [project]);
-
-  // Handle previous image
-  const handlePrevImage = useCallback(() => {
-    if (project) {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === 0 ? project.screenshots.length - 1 : prevIndex - 1
-      );
-    }
-  }, [project]);
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        handlePrevImage();
-      } else if (event.key === "ArrowRight") {
-        handleNextImage();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [handleNextImage, handlePrevImage]);
-
-  // Handle touch event start
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  // Handle touch event end
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX !== null) {
-      const touchEnd = e.changedTouches[0].clientX;
-      const swipeDistance = touchStartX - touchEnd;
-
-      if (swipeDistance > 50) {
-        handleNextImage();
-      } else if (swipeDistance < -50) {
-        handlePrevImage();
-      }
-    }
-    setTouchStartX(null);
-  };
 
   if (!project) {
     return (
@@ -102,11 +49,7 @@ const ProjectPage: React.FC = () => {
   };
 
   return (
-    <div
-      className="project-page w-full max-w-screen-xl mx-auto"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className="project-page w-full max-w-screen-xl mx-auto">
       {/* Sections Navigator Panel */}
       <div className="relative">
         <SectionsNavigator
@@ -117,139 +60,39 @@ const ProjectPage: React.FC = () => {
       </div>
 
       {/* Project Header */}
-      <div className="p-4 sm:p-6 mb-8">
-        <div className="flex items-center gap-4 sm:gap-6">
-          {/* Return Button */}
-          <button
-            onClick={() => navigate("/projects")}
-            className="toggle-navigation-btn px-2 py-1 sm:px-4 sm:py-2"
-            aria-label="Back to Projects"
-          >
-            <FaChevronLeft className="w-5 h-5" />
-          </button>
-          <img
-            src={project.image}
-            alt={project.name}
-            className="rounded-lg w-16 h-16 sm:w-20 sm:h-20 object-contain"
-          />
-          <h1 className="text-2xl sm:text-4xl font-bold">{project.name}</h1>
-        </div>
-      </div>
+      <ProjectHeader name={project.name} image={project.image} />
 
       {/* Details */}
       <div className="w-full max-w-screen-xl mx-auto">
         {/* Screenshots Carousel */}
         {project.screenshots && project.screenshots.length > 0 && (
-          <div className="mb-8 sm:mb-12 relative group">
-            {/* Current Screenshot */}
-            <div className="flex items-center justify-center">
-              <img
-                src={project.screenshots[currentImageIndex]}
-                alt={`Screenshot ${currentImageIndex + 1}`}
-                className="rounded-lg object-contain w-full max-h-[250px] sm:max-h-[500px] cursor-pointer"
-                onClick={() => handleOpenImageViewer(currentImageIndex)}
-              />
-            </div>
-
-            {/* Navigation Buttons - only visible on hover */}
-            <button
-              onClick={handlePrevImage}
-              aria-label="Previous screenshot"
-              className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
-            </button>
-            <button
-              onClick={handleNextImage}
-              aria-label="Next screenshot"
-              className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
-            </button>
-
-            {/* Indicators */}
-            <div className="carousel-indicators flex justify-center gap-2 mt-8">
-              {project.screenshots.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  aria-label={`Go to screenshot ${index + 1}`}
-                  className={`carousel-indicator aspect-square rounded-full w-2 sm:w-4 lg:w-6 border-2 transition-all duration-200
-            ${index === currentImageIndex ? " active" : ""}
-          `}
-                ></button>
-              ))}
-            </div>
-          </div>
+          <ScreenshotsCarousel
+            screenshots={project.screenshots}
+            onOpenViewer={handleOpenImageViewer}
+          />
         )}
 
         {/* Description */}
-        <div id="description" className="p-6 sm:p-4 mb-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
-            Description
-          </h2>
+        <Section id="description" title="Description">
           <p className="text-base sm:text-xl text-gray-700">
             {project.description}
           </p>
-        </div>
+        </Section>
 
         {/* Tech Stack */}
-        <div id="tech-stack" className="p-6 sm:p-4 mb-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
-            Tech Stack
-          </h2>
-          <div className="flex flex-wrap gap-2 sm:gap-3">
-            {project.tech.map((tech, index) => (
-              <TechTag key={index}>{tech}</TechTag>
-            ))}
-          </div>
-        </div>
+        <Section id="tech-stack" title="Tech Stack">
+          <TechTagList tech={project.tech} />
+        </Section>
 
         {/* My Involvement */}
-        <div id="involvement" className="p-6 sm:p-4 mb-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
-            My Involvement
-          </h2>
-          <ul className="list-disc list-outside pl-6 text-base sm:text-xl text-gray-700">
-            {(project.involvement ?? []).map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
+        <Section id="involvement" title="My Involvement">
+          <InvolvementList involvement={project.involvement ?? []} />
+        </Section>
 
         {/* Links */}
-        <div id="links" className="p-6 sm:p-4 mb-6">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
-            Links
-          </h2>
-          <ul className="list-disc list-inside text-base sm:text-xl text-gray-700">
-            {Array.isArray(project.links)
-              ? project.links.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-teal-500 hover:text-teal-700"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))
-              : project.links && (
-                  <li>
-                    <a
-                      href={project.links.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-teal-500 hover:text-teal-700"
-                    >
-                      {project.links.label}
-                    </a>
-                  </li>
-                )}
-          </ul>
-        </div>
+        <Section id="links" title="Links">
+          <LinksList links={project.links} />
+        </Section>
       </div>
 
       {/* Image Viewer Modal */}
@@ -257,10 +100,8 @@ const ProjectPage: React.FC = () => {
         <ImageViewer
           show={showImageViewer}
           images={project.screenshots}
-          currentIndex={currentImageIndex}
+          initialIndex={currentImageIndex}
           onClose={handleCloseImageViewer}
-          onNext={handleNextImage}
-          onPrev={handlePrevImage}
         />
       )}
     </div>

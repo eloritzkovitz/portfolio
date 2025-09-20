@@ -1,11 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-
-interface Repository {
-  name: string;
-  html_url: string;
-  stargazers_count: number;
-}
+import { Repository } from "../../types/github";
 
 interface TopRepositoriesCardProps {
   repos: Repository[];

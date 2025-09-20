@@ -1,5 +1,6 @@
-export const aboutCards = [
+const aboutData = [
   {
+    id: "introduction",
     title: "Introduction",
     content: [
       "Hi! My name is Elor. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas, and interests - and shape them into reality.",
@@ -8,10 +9,12 @@ export const aboutCards = [
     ],
   },
   {
+    id: "skills",
     title: "Skills",
     content: [],
   },
   {
+    id: "contributions",
     title: "Contributions",
     content: [
       "I enjoy building reusable tools to support my projects. One example is {link:server-essentials}, an npm package written in TypeScript for Node.js servers, which includes a collection of reusable utilities and is publicly available.",
@@ -24,6 +27,7 @@ export const aboutCards = [
     },
   },  
   {
+    id: "hobbies",
     title: "Hobbies & Interests",
     content: [
       "When I'm not coding or studying, I try my best to devote my free time to my long list of hobbies and interests. For example, I really like integrating my love for drawing and graphic design with my projects.",
@@ -31,3 +35,5 @@ export const aboutCards = [
     ],
   },
 ];
+
+export default aboutData;

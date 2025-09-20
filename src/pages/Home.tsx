@@ -1,6 +1,6 @@
-import Banner from "../components/Banner";
 import GitHubOverview from "../components/github/GitHubOverview";
-import TechStackSection from "../components/TechStack";
+import TechStackSection from "../components/tech/TechStack";
+import Banner from "../components/ui/Banner";
 
 function Home() {
   return (

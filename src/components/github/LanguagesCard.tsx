@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Chart, Tooltip, ArcElement, Legend } from "chart.js";
+import PieChart from "../ui/charts/PieChart";
+import PieLegendCard from "../ui/charts/PieLegendCard";
 import githubColors from "../../data/github-lang-colors.json";
-import PieChart from "../ui/PieChart";
-import PieLegendCard from "../ui/PieLegendCard";
+import { Languages } from "../../types/github";
 
 Chart.register(Tooltip, ArcElement, Legend);
 
 interface LanguagesCardProps {
-  languages: { [key: string]: number };
+  languages: Languages;
 }
 
 const LanguagesCard: React.FC<LanguagesCardProps> = ({ languages }) => {

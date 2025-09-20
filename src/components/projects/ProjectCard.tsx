@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TechTag from "./TechTag";
+import TechTagList from "../tech/TechTagList";
 
 interface ProjectCardProps {
   name: string;
@@ -26,21 +26,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 md:mb-6">
         {description}
       </p>
-      <div className="flex flex-wrap gap-2 mb-4 md:mb-8">
-        {tech.map((t, idx) => (
-          <TechTag key={idx}>{t}</TechTag>
-        ))}
+      <div className="mb-4 md:mb-8">
+        <TechTagList tech={tech} />
       </div>
       {/* Link */}
       <div className="pt-2 md:p-4">
-        <a
-          href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`}
           className="text-teal-500 hover:text-teal-700 font-semibold text-base md:text-xl block text-start"
         >
           Visit project page →
-        </a>
+        </Link>
       </div>
     </div>
   );

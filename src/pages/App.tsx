@@ -4,9 +4,9 @@ import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
 import ProjectPage from "./ProjectPage";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ScrollToTop from "../components/ScrollToTop";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+import ScrollToTop from "../components/layout/ScrollToTop";
 
 function App() {
   return (

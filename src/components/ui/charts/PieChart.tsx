@@ -22,6 +22,7 @@ const PieChart: React.FC<PieChartProps> = ({
 
   const total = data.reduce((sum, val) => sum + val, 0);
 
+  // Chart data
   const pieData = {
     labels,
     datasets: [
@@ -35,6 +36,7 @@ const PieChart: React.FC<PieChartProps> = ({
     ],
   };
 
+  // Chart options
   const pieOptions = {
     plugins: {
       legend: { display: false },
@@ -75,6 +77,7 @@ const PieChart: React.FC<PieChartProps> = ({
     },
   };
 
+  // Update active segment on hover change
   useEffect(() => {
     const chart = pieRef.current;
     if (chart && chart.setActiveElements) {
