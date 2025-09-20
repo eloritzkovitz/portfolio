@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Pie } from "react-chartjs-2";
-import type { Chart as ChartJS } from "chart.js";
+import React, { useState } from "react";
 import { Chart, Tooltip, ArcElement, Legend } from "chart.js";
 import githubColors from "../../data/github-lang-colors.json";
+import PieChart from "../ui/PieChart";
+import PieLegendCard from "../ui/PieLegendCard";
 
 Chart.register(Tooltip, ArcElement, Legend);
 
@@ -12,102 +12,24 @@ interface LanguagesCardProps {
 
 const LanguagesCard: React.FC<LanguagesCardProps> = ({ languages }) => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const pieRef = useRef<ChartJS<"pie"> | null>(null);
 
-  const languageLabels = Object.keys(languages);
-  const languageCounts = Object.values(languages);
-  const total = languageCounts.reduce((sum, val) => sum + val, 0);
-  const languageColors = languageLabels.map(
-    (lang) => githubColors[lang as keyof typeof githubColors] || "#cccccc"
-  );
+  // Prepare and sort data by percentage descending
+  const rawData = Object.entries(languages).map(([language, count]) => ({
+    language,
+    count: Number(count),
+    color: githubColors[language as keyof typeof githubColors] || "#cccccc",
+  }));
+  const total = rawData.reduce((sum, d) => sum + d.count, 0);
+  const sortedData = rawData
+    .map((d) => ({
+      ...d,
+      percentage: total ? (d.count / total) * 100 : 0,
+    }))
+    .sort((a, b) => b.percentage - a.percentage);
 
-  // Chart data
-  const pieData = {
-    labels: languageLabels,
-    datasets: [
-      {
-        data: languageCounts,
-        backgroundColor: languageColors,
-        borderColor: (ctx: any) => {
-          // Highlight border if hovered
-          return ctx.active ? "#14b8a6" : "rgba(0,0,0,0.2)";
-        },
-        borderWidth: (ctx: any) => (ctx.active ? 3 : 2),
-        hoverOffset: 16,
-      },
-    ],
-  };
-
-  // Chart options
-  const pieOptions = {
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        backgroundColor: "#f3f4f6",
-        titleColor: "#111827",
-        bodyColor: "#111827",
-        borderColor: "#e5e7eb",
-        borderWidth: 1,
-        padding: 12,
-        cornerRadius: 8,
-        displayColors: false,
-        callbacks: {
-          title: () => [],
-          label: function (context: any) {
-            const label = context.label || "";
-            const value = context.parsed;
-            const percent = total ? ((value / total) * 100).toFixed(1) : 0;
-            return [`\u2B24 ${label}`, `${percent}%`];
-          },
-          labelTextColor: function (context: any) {
-            return (
-              context.dataset.backgroundColor[context.dataIndex] || "#cccccc"
-            );
-          },
-        },
-      },
-    },
-    maintainAspectRatio: false,
-    radius: "85%",
-    responsive: true,
-    onHover: (_event: any, elements: any[]) => {
-      if (elements && elements.length > 0) {
-        setHoveredIdx(elements[0].index);
-      } else {
-        setHoveredIdx(null);
-      }
-    },
-  };
-
-  // Prepare legend data
-  const legendData = languageLabels
-    .map((language, idx) => {
-      const count = languages[language];
-      const percentage = total ? (count / total) * 100 : 0;
-      return {
-        language,
-        color: languageColors[idx],
-        percentage: percentage.toFixed(1),
-        count,
-        idx,
-      };
-    })
-    .sort((a, b) => Number(b.percentage) - Number(a.percentage));
-
-  // Effect to programmatically set active slice on legend hover
-  useEffect(() => {
-    const chart = pieRef.current;
-    if (chart && chart.setActiveElements) {
-      if (hoveredIdx !== null) {
-        chart.setActiveElements([{ datasetIndex: 0, index: hoveredIdx }]);
-      } else {
-        chart.setActiveElements([]);
-      }
-      chart.update();
-    }
-  }, [hoveredIdx]);
+  const languageLabels = sortedData.map((d) => d.language);
+  const languageCounts = sortedData.map((d) => d.count);
+  const languageColors = sortedData.map((d) => d.color);
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6 text-center hover:scale-102 flex flex-col items-center justify-center">
@@ -116,43 +38,26 @@ const LanguagesCard: React.FC<LanguagesCardProps> = ({ languages }) => {
         {languageLabels.length > 0 ? (
           <>
             {/* Pie Chart */}
-            <div
-              className="relative mx-auto mb-6 overflow-visible"
-              style={{
-                width: "min(90vw, 292px)",
-                height: "min(90vw, 292px)",
-              }}
-            >
-              <Pie ref={pieRef} data={pieData} options={pieOptions} />
-            </div>
-            
+            <PieChart
+              labels={languageLabels}
+              data={languageCounts}
+              colors={languageColors}
+              hoveredIdx={hoveredIdx}
+              setHoveredIdx={setHoveredIdx}
+            />
+
             {/* Legend */}
             <div className="flex flex-wrap justify-center gap-4">
-              {legendData.map(({ language, color, percentage, idx }) => (
-                <div
-                  key={language}
-                  className={`flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-sm transition
-                    ${
-                      hoveredIdx === idx
-                        ? "scale-110 ring-2 ring-teal-400 z-10"
-                        : "hover:scale-105"
-                    }
-                  `}
-                  style={{ zIndex: hoveredIdx === idx ? 1 : 0 }}
+              {sortedData.map((d, idx) => (
+                <PieLegendCard
+                  key={d.language}
+                  label={d.language}
+                  color={d.color}
+                  percentage={d.percentage}
+                  isActive={hoveredIdx === idx}
                   onMouseEnter={() => setHoveredIdx(idx)}
                   onMouseLeave={() => setHoveredIdx(null)}
-                >
-                  <div
-                    className="w-8 h-8 rounded-full"
-                    style={{
-                      backgroundColor: color,
-                    }}
-                  ></div>
-                  <p className="text-sm font-medium mt-2">{language}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-200">
-                    {percentage}%
-                  </p>
-                </div>
+                />
               ))}
             </div>
           </>
