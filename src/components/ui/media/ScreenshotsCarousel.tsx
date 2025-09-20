@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
+import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 
 interface ScreenshotsCarouselProps {
   screenshots: string[];
@@ -14,21 +16,6 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
-  // Update currentIndex if initialIndex changes
-  useEffect(() => {
-    setCurrentIndex(initialIndex);
-  }, [initialIndex]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") handlePrev();
-      else if (event.key === "ArrowRight") handleNext();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  });
-
   // Previous screenshot
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? screenshots.length - 1 : prev - 1));
@@ -42,10 +29,32 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
   // Select specific screenshot
   const handleSelect = (index: number) => setCurrentIndex(index);
 
+  // Centralized swipe navigation
+  const { handleTouchStart, handleTouchEnd } = useSwipeNavigation(
+    handlePrev,
+    handleNext
+  );
+
+  // Centralized keyboard navigation
+  useKeyboardNavigation({
+    onPrev: handlePrev,
+    onNext: handleNext,
+  });
+
+  // Update currentIndex if initialIndex changes
+  useEffect(() => {
+    setCurrentIndex(initialIndex);
+  }, [initialIndex]);  
+
+  // If no screenshots, render nothing
   if (!screenshots || screenshots.length === 0) return null;
 
   return (
-    <div className="mb-8 sm:mb-12 relative group">
+    <div
+      className="mb-8 sm:mb-12 relative group"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Current Screenshot */}
       <div className="flex items-center justify-center">
         <img

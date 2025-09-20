@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
+import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 
 interface ImageViewerProps {
   show: boolean;
@@ -16,29 +18,6 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
-  // Reset index when viewer is opened or initialIndex changes
-  useEffect(() => {
-    if (show) setCurrentIndex(initialIndex);
-  }, [show, initialIndex]);
-
-  // Keyboard navigation (Esc, Left, Right)
-  useEffect(() => {
-    if (!show) return;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      } else if (event.key === "ArrowLeft" && currentIndex > 0) {
-        setCurrentIndex((i) => i - 1);
-      } else if (event.key === "ArrowRight" && currentIndex < images.length - 1) {
-        setCurrentIndex((i) => i + 1);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [show, currentIndex, images.length, onClose]);
-
-  if (!show) return null;
-
   // Previous image
   const handlePrev = () => {
     if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
@@ -49,8 +28,36 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     if (currentIndex < images.length - 1) setCurrentIndex(currentIndex + 1);
   };
 
+  // Centralized swipe navigation
+  const { handleTouchStart, handleTouchEnd } = useSwipeNavigation(
+    handlePrev,
+    handleNext
+  );
+
+  // Centralized keyboard navigation
+  useKeyboardNavigation({
+    enabled: show,
+    onPrev: handlePrev,
+    onNext: handleNext,
+    onClose,
+    canPrev: currentIndex > 0,
+    canNext: currentIndex < images.length - 1,
+  });
+
+  // Reset index when viewer is opened or initialIndex changes
+  useEffect(() => {
+    if (show) setCurrentIndex(initialIndex);
+  }, [show, initialIndex]);
+
+  // If not showing, render nothing
+  if (!show) return null;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="relative w-full h-full flex items-center justify-center">
         {/* Close Button */}
         <button
