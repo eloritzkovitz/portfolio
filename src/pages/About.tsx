@@ -77,7 +77,7 @@ function About() {
                     ))}
                     {card.title === "Introduction" && cvLink && (
                       <div className="mt-6">
-                        <CVButton url={cvLink.url} text={cvLink.text} />
+                        <CVButton url={cvLink?.url ?? ""} text={cvLink?.text ?? ""} />
                       </div>
                     )}
                   </div>

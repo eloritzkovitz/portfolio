@@ -1,4 +1,6 @@
-const projects = [
+import { Project } from "../types/project";
+
+const projects: Project[] = [
   {
     name: "SnapChef",
     description:
@@ -82,8 +84,8 @@ const projects = [
       "Docker Compose",
     ],
     image: "/projects/Voltrico/icon.png",
-    thumbnail: "/projects/Voltrico/thumbnail.png",    
-    links: { url: "https://github.com/eloritzkovitz/voltrico", label: "GitHub" },
+    thumbnail: "/projects/Voltrico/thumbnail.png",
+    links: [ { url: "https://github.com/eloritzkovitz/voltrico", label: "GitHub" } ],
     involvement: [
       "Refactored a college project originally written in JavaScript/CSS/HTML to React and TypeScript",
       "Redesigned the application interface as a modern and user-friendly layout, using Tailwind CSS and custom styles",
@@ -115,7 +117,7 @@ const projects = [
     image: "/projects/Trevel/icon.png",
     thumbnail: "/projects/Trevel/thumbnail.png",
     color: "#549fd7",
-    links: { url: "https://github.com/eloritzkovitz/trevel", label: "GitHub" },
+    links: [ { url: "https://github.com/eloritzkovitz/trevel", label: "GitHub" } ],
     involvement: [
       "Designed and implemented the application interface and frontend using React + Vite and TypeScript",
       "Developed the backend server (Node.js + Express.js, TypeScript, MongoDB) and deployed it to a remote server using PM2",
@@ -176,7 +178,7 @@ const projects = [
     image: "/projects/HexGame/icon.png",
     thumbnail: "/projects/HexGame/thumbnail.png",
     color: "#111827",
-    links: { url: "https://github.com/eloritzkovitz/hex-game", label: "GitHub" },
+    links: [ { url: "https://github.com/eloritzkovitz/hex-game", label: "GitHub" } ],
     involvement: [
       "Implemented the game logic using disjoint-set data structures",
       "Expanded a simple college assignment into a fully functional game using React",

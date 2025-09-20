@@ -7,14 +7,7 @@ function Projects() {
       {/* Project Cards */}
       <div className="space-y-8">
         {projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            name={project.name}
-            description={project.description}
-            tech={project.tech}
-            image={project.image}            
-            index={index}
-          />
+          <ProjectCard key={index} project={project} index={index} />
         ))}
       </div>
     </section>

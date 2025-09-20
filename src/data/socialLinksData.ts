@@ -1,6 +1,6 @@
-import { SocialLink } from "../types/socialLink";
+import { LinkType } from "../types/link";
 
-const socialLinks: SocialLink[] = [
+const socialLinks: LinkType[] = [
   { label: "LinkedIn", url: "https://linkedin.com/in/elor-itzkovitz", iconKey: "linkedin", text: "LinkedIn" },
   { label: "GitHub", url: "https://github.com/eloritzkovitz", iconKey: "github", text: "GitHub" },
   { label: "Resume", url: "https://drive.google.com/file/d/1g8KKtvotnUHM5wPFEXKCIp44IGpwU0Ry/view?usp=drive_link", iconKey: "cv", text: "View My CV" },

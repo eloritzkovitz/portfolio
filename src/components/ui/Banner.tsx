@@ -2,8 +2,8 @@ import { Typewriter } from "react-simple-typewriter";
 import SocialLinkIcon from "../socials/SocialLinkIcon";
 import socialLinks from "../../data/socialLinksData";
 
-const bannerSocials = socialLinks.filter((link) =>
-  ["linkedin", "github", "cv"].includes(link.iconKey)
+const bannerSocials = socialLinks.filter(
+  (link) => typeof link.iconKey === "string" && ["linkedin", "github", "cv"].includes(link.iconKey)
 );
 
 function Banner() {

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import SectionsNavigator from "../components/ui/sections/SectionsNavigator";
 import Section from "../components/layout/Section";
 import ProjectHeader from "../components/projects/ProjectHeader";
 import InvolvementList from "../components/projects/InvolvementList";
 import LinksList from "../components/projects/LinksList";
 import TechTagList from "../components/tech/TechTagList";
 import ImageViewer from "../components/ui/media/ImageViewer";
+import SectionsNavigator from "../components/ui/sections/SectionsNavigator";
 import ScreenshotsCarousel from "../components/ui/media/ScreenshotsCarousel";
 import projects from "../data/projectsData";
+import { Project } from "../types/project";
+import { slugify } from "../utils/string";
 
 const ProjectPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const [navVisible, setNavVisible] = useState(true);
+  const [showImageViewer, setShowImageViewer] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Section anchors for navigation
   const sectionAnchors = [
@@ -22,13 +26,12 @@ const ProjectPage: React.FC = () => {
     { id: "links", label: "Links" },
   ];
 
-  const project = projects.find(
-    (proj) => proj.name.toLowerCase().replace(/\s+/g, "-") === projectId
+  // Find project by slugified name
+  const project: Project | undefined = projects.find(
+    (proj) => slugify(proj.name) === projectId
   );
 
-  const [showImageViewer, setShowImageViewer] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  // If project not found, display message
   if (!project) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -91,7 +94,7 @@ const ProjectPage: React.FC = () => {
 
         {/* Links */}
         <Section id="links" title="Links">
-          <LinksList links={project.links} />
+          <LinksList links={project.links ?? []} />
         </Section>
       </div>
 

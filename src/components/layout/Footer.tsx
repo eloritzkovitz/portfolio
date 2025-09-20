@@ -2,7 +2,7 @@ import socialLinks from "../../data/socialLinksData";
 import iconMap from "../socials/SocialIconMap";
 
 const footerSocials = socialLinks.filter(link =>
-  ["linkedin", "github", "npm"].includes(link.iconKey)
+  typeof link.iconKey === "string" && ["linkedin", "github", "npm"].includes(link.iconKey)
 );
 
 const portfolioLink = socialLinks.find(link => link.iconKey === "portfolio");
@@ -22,7 +22,7 @@ function Footer() {
               className="transition-transform duration-200 hover:scale-125 text-gray-500 text-4xl"
               aria-label={label}
             >
-              {iconMap[iconKey]}
+              {iconKey && iconMap[iconKey as keyof typeof iconMap]}
             </a>
           ))}
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import iconMap from "./SocialIconMap";
-import { SocialLink } from "../../types/socialLink";
+import { LinkType } from "../../types/link";
 
 interface SocialLinkIconProps {
-  link: SocialLink;
+  link: LinkType;
   className?: string;
 }
 
@@ -16,7 +16,7 @@ const SocialLinkIcon: React.FC<SocialLinkIconProps> = ({ link, className }) => (
     className={`text-gray-900 transition-transform duration-200 hover:scale-125 hover:text-teal-600 ${className || ""}`}
     title={link.text || link.label}
   >
-    {iconMap[link.iconKey]}
+    {link.iconKey && iconMap[link.iconKey] ? iconMap[link.iconKey] : null}
   </a>
 );
 
