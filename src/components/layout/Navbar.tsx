@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaHome,
@@ -10,46 +10,22 @@ import {
   FaMoon,
   FaSun,
 } from "react-icons/fa";
+import { useSwipeNavigation } from "../../hooks/useSwipeNavigation";
+import { useTheme } from "../../hooks/useTheme";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
+  const { theme, toggleTheme } = useTheme();
+
+  // Use the centralized swipe hook: swipe right closes menu
+  const { handleTouchStart, handleTouchEnd } = useSwipeNavigation(
+    () => setIsMenuOpen(false), // onPrev (swipe right)
+    () => {} // onNext (swipe left, do nothing)
   );
-
-  // Touch swipe logic for dismissing menu
-  const touchStartX = useRef<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current !== null) {
-      const touchEndX = e.changedTouches[0].clientX;
-      const deltaX = touchEndX - touchStartX.current;
-      if (deltaX > 80) {
-        // swipe right threshold
-        setIsMenuOpen(false);
-      }
-      touchStartX.current = null;
-    }
-  };
-
-  // Update theme class on document element
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   // Toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  // Toggle theme
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -126,7 +102,7 @@ function Navbar() {
               <FaProjectDiagram className="text-base md:text-xl" />{" "}
               <span>Projects</span>
             </Link>
-          </li>          
+          </li>
           <li>
             <Link
               to="/contact"
