@@ -8,11 +8,11 @@ import {
   SiGit,
   SiDocker,
 } from "react-icons/si";
-import type { TechStackItem } from "../../types/tech";
+import type { LinkType } from "../../types/link";
 
 export const techIconClass = "w-10 h-10 mb-3 flex-shrink-0";
 
-const techIconMap: Record<TechStackItem["iconKey"], React.ReactNode> = {
+const techIconMap: Record<NonNullable<LinkType["iconKey"]>, React.ReactNode> = {
   react: <SiReact className={`text-[#61DAFB] ${techIconClass}`} />,
   typescript: <SiTypescript className={`text-blue-600 ${techIconClass}`} />,
   nextdotjs: <SiNextdotjs className={`text-black ${techIconClass}`} />,
