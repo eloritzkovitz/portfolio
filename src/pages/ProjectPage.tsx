@@ -71,7 +71,10 @@ const ProjectPage: React.FC = () => {
         {project.screenshots && project.screenshots.length > 0 && (
           <ScreenshotsCarousel
             screenshots={project.screenshots}
+            currentIndex={currentImageIndex}
+            setCurrentIndex={setCurrentImageIndex}
             onOpenViewer={handleOpenImageViewer}
+            keyboardNavigationEnabled={!showImageViewer}
           />
         )}
 
@@ -103,8 +106,10 @@ const ProjectPage: React.FC = () => {
         <ImageViewer
           show={showImageViewer}
           images={project.screenshots}
-          initialIndex={currentImageIndex}
+          currentIndex={currentImageIndex}
+          setCurrentIndex={setCurrentImageIndex}
           onClose={handleCloseImageViewer}
+          keyboardNavigationEnabled={showImageViewer}
         />
       )}
     </div>

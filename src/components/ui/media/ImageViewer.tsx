@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
 import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
@@ -6,17 +6,19 @@ import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 interface ImageViewerProps {
   show: boolean;
   images: string[];
-  initialIndex?: number;
+  currentIndex: number;
+  setCurrentIndex: (index: number) => void;
   onClose: () => void;
+  keyboardNavigationEnabled?: boolean;
 }
 
 const ImageViewer: React.FC<ImageViewerProps> = ({
   show,
   images,
-  initialIndex = 0,
+  currentIndex,
+  setCurrentIndex,
   onClose,
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+}) => {  
 
   // Previous image
   const handlePrev = () => {
@@ -42,12 +44,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     onClose,
     canPrev: currentIndex > 0,
     canNext: currentIndex < images.length - 1,
-  });
-
-  // Reset index when viewer is opened or initialIndex changes
-  useEffect(() => {
-    if (show) setCurrentIndex(initialIndex);
-  }, [show, initialIndex]);
+    blockAtEdges: true,
+  });  
 
   // If not showing, render nothing
   if (!show) return null;

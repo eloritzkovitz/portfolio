@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
 import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
@@ -6,28 +6,37 @@ import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 interface ScreenshotsCarouselProps {
   screenshots: string[];
   onOpenViewer: (index: number) => void;
-  initialIndex?: number;
+  currentIndex: number;
+  setCurrentIndex?: (index: number) => void;
+  keyboardNavigationEnabled?: boolean;
 }
 
 const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
   screenshots,
   onOpenViewer,
-  initialIndex = 0,
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  currentIndex,
+  setCurrentIndex,
+  keyboardNavigationEnabled = true,
+}) => {  
 
   // Previous screenshot
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? screenshots.length - 1 : prev - 1));
+    if (setCurrentIndex) {
+      setCurrentIndex(currentIndex === 0 ? screenshots.length - 1 : currentIndex - 1);
+    }
   };
 
   // Next screenshot
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === screenshots.length - 1 ? 0 : prev + 1));
+    if (setCurrentIndex) {
+      setCurrentIndex(currentIndex === screenshots.length - 1 ? 0 : currentIndex + 1);
+    }
   };
 
   // Select specific screenshot
-  const handleSelect = (index: number) => setCurrentIndex(index);
+  const handleSelect = (index: number) => {
+    if (setCurrentIndex) setCurrentIndex(index);
+  };
 
   // Centralized swipe navigation
   const { handleTouchStart, handleTouchEnd } = useSwipeNavigation(
@@ -37,14 +46,10 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
 
   // Centralized keyboard navigation
   useKeyboardNavigation({
+    enabled: keyboardNavigationEnabled,
     onPrev: handlePrev,
-    onNext: handleNext,
-  });
-
-  // Update currentIndex if initialIndex changes
-  useEffect(() => {
-    setCurrentIndex(initialIndex);
-  }, [initialIndex]);  
+    onNext: handleNext,    
+  });    
 
   // If no screenshots, render nothing
   if (!screenshots || screenshots.length === 0) return null;
