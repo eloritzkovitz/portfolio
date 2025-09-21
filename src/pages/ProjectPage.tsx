@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Section from "../components/layout/Section";
 import ProjectHeader from "../components/projects/ProjectHeader";
 import InvolvementList from "../components/projects/InvolvementList";
@@ -17,6 +18,7 @@ const ProjectPage: React.FC = () => {
   const [navVisible, setNavVisible] = useState(true);
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { t } = useTranslation();
 
   // Section anchors for navigation
   const sectionAnchors = [
@@ -63,7 +65,7 @@ const ProjectPage: React.FC = () => {
       </div>
 
       {/* Project Header */}
-      <ProjectHeader name={project.name} image={project.image} />
+      <ProjectHeader name={project.name} icon={project.icon} />
 
       {/* Details */}
       <div className="w-full max-w-screen-xl mx-auto">
@@ -79,24 +81,24 @@ const ProjectPage: React.FC = () => {
         )}
 
         {/* Description */}
-        <Section id="description" title="Description">
+        <Section id="description" title={t("projects.description")}>
           <p className="text-base sm:text-xl text-gray-700">
-            {project.description}
+            {t(project.description)}
           </p>
         </Section>
 
         {/* Tech Stack */}
-        <Section id="tech-stack" title="Tech Stack">
+        <Section id="tech-stack" title={t("projects.technologies")}>
           <TechTagList tech={project.tech} />
         </Section>
 
         {/* My Involvement */}
-        <Section id="involvement" title="My Involvement">
-          <InvolvementList involvement={project.involvement ?? []} />
+        <Section id="involvement" title={t("projects.involvement")}>
+          <InvolvementList involvement={(project.involvement ?? []).map((item) => t(item))} />
         </Section>
 
         {/* Links */}
-        <Section id="links" title="Links">
+        <Section id="links" title={t("projects.links")}>
           <LinksList links={project.links ?? []} />
         </Section>
       </div>
