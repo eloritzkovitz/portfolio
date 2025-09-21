@@ -24,26 +24,27 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   className = "",
 }) => {
   return (
-    <ul
-      className={`flex flex-col fixed top-0 ${
+    <nav
+      className={`fixed top-0 ${
         isRTL ? "left-0" : "right-0"
-      } h-full w-1/2 text-black dark:text-white transition-all duration-300 z-50
-  ${
-    isOpen
-      ? "bg-white translate-x-0"
-      : isRTL
-      ? "-translate-x-full"
-      : "translate-x-full"
-  }
-  ${className}
-  `}
+      } h-full w-4/5 max-w-xs text-black dark:text-white transition-all duration-300 z-50
+      ${
+        isOpen
+          ? "bg-white translate-x-0"
+          : isRTL
+          ? "-translate-x-full"
+          : "translate-x-full"
+      }
+      ${className}
+      flex flex-col p-6 space-y-2
+      `}
       onTouchStart={isOpen ? handleTouchStart : undefined}
       onTouchEnd={isOpen ? handleTouchEnd : undefined}
     >
       <NavLinks onClick={onClose} />
       <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
       <LanguageSwitcher />
-    </ul>
+    </nav>
   );
 };
 
