@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  FaHome,
-  FaUser,
-  FaProjectDiagram,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaHome, FaUser, FaProjectDiagram, FaEnvelope } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 const NavLinks = ({ onClick }: { onClick?: () => void }) => {
@@ -33,7 +28,7 @@ const NavLinks = ({ onClick }: { onClick?: () => void }) => {
   ];
 
   return (
-    <ul className="flex flex-col md:flex-row list-none space-y-2 md:space-y-0 md:space-x-8 p-0 m-0">
+    <>
       {navLinks.map(({ to, icon, label }) => (
         <li key={to}>
           <Link
@@ -45,7 +40,7 @@ const NavLinks = ({ onClick }: { onClick?: () => void }) => {
           </Link>
         </li>
       ))}
-    </ul>
+    </>
   );
 };
 

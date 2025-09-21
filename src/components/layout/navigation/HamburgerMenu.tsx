@@ -36,14 +36,21 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           : "translate-x-full"
       }
       ${className}
-      flex flex-col p-6 space-y-2
+      flex flex-col p-6
       `}
       onTouchStart={isOpen ? handleTouchStart : undefined}
       onTouchEnd={isOpen ? handleTouchEnd : undefined}
     >
-      <NavLinks onClick={onClose} />
-      <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
-      <LanguageSwitcher />
+      <ul className="flex flex-col space-y-2 p-0 m-0">
+        {/* Render NavLinks as <li> elements */}
+        {NavLinks({ onClick: onClose })}
+        <li>
+          <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+        </li>
+        <li>
+          <LanguageSwitcher />
+        </li>
+      </ul>
     </nav>
   );
 };

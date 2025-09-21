@@ -34,7 +34,9 @@ function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center">
-          <NavLinks />
+          <ul className="flex flex-row space-x-8 p-0 m-0">
+            <NavLinks />
+          </ul>
           <SettingsDropdown theme={theme} toggleTheme={toggleTheme} />
         </div>
 

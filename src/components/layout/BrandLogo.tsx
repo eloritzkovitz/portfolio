@@ -19,13 +19,7 @@ const BrandLogo = ({ theme }: BrandLogoProps) => {
               : "/icons/logo-black.png"
           }
           alt="Logo"
-          className="logo w-12 h-12"
-          style={{
-            height: "50px",
-            width: "50px",
-            marginLeft: "20px",
-            marginRight: "20px",
-          }}
+          className="logo w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-4"          
         />
       </Link>
       <h2 className="hidden md:block text-3xl font-bold">

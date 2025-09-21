@@ -57,6 +57,7 @@ button:focus-visible {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
+  font-weight: 400 !important;
 }
 
 .dropdown-menu-button:focus,
