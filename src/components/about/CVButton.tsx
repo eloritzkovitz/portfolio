@@ -10,7 +10,7 @@ interface CVButtonProps {
 const CVButton: React.FC<CVButtonProps> = ({
   url,
   rtl = false,
-  textKey = "about.cv",
+  textKey = "social.cv",
 }) => {
   const { t } = useTranslation();
 

@@ -16,14 +16,14 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 text-center">
         {/* Socials Row */}
         <div className="flex justify-center gap-10 mb-8">
-          {footerSocials.map(({ url, label, iconKey }) => (
+          {footerSocials.map(({ url, text, iconKey }) => (
             <a
-              key={label}
+              key={url}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-200 hover:scale-125 text-gray-500 text-4xl"
-              aria-label={label}
+              aria-label={t(text ?? "")}
             >
               {iconKey && iconMap[iconKey as keyof typeof iconMap]}
             </a>
@@ -39,7 +39,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="text-teal-500 hover:text-teal-700 underline"
             >
-              {portfolioLink.text}
+              {t(portfolioLink.text ?? "")}
             </a>
           )}
         </p>

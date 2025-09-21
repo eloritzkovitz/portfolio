@@ -17,9 +17,22 @@
   "footer": {
     "text": "Elor Itzkovitz. All rights reserved."
   },
+  "techStack": {
+    "title": "Tech Stack"
+  },
+  "github": {
+    "overview": "GitHub Overview",
+    "loading": "Loading GitHub data...",
+    "profile": "GitHub Profile",
+    "languages": "Most Used Languages",
+    "repositories": "Repositories",
+    "stars": "Stars",
+    "followers": "Followers",
+    "following": "Following",
+    "topRepositories": "Top Repositories"
+  },
   "about": {
-    "title": "About Me",
-    "cv": "View My CV",
+    "title": "About Me",    
     "introduction": {
       "title": "Introduction",
       "1": "Hi! My name is Elor. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas, and interests - and shape them into reality.",
@@ -50,5 +63,22 @@
     "versionControl": "Version Control",
     "testingAutomation": "Testing & Automation",
     "languages": "Languages"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "yourMessage": "Your Message",
+    "sendMessage": "Send Message",
+    "successMessage": "Thank you for reaching out! I'll get back to you soon.",
+    "errorMessage": "Oops! Something went wrong. Please try again later."    
+  },
+  "social": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "View My CV",
+    "npm": "npm",
+    "portfolio": "View this website's source on GitHub",
+    "email": "Email"
   }
 }
