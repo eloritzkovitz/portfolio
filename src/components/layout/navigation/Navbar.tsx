@@ -1,12 +1,12 @@
 import { useState } from "react";
-import BrandLogo from "./BrandLogo";
+import { useTranslation } from "react-i18next";
+import BrandLogo from "../BrandLogo";
 import HamburgerButton from "./HamburgerButton";
 import HamburgerMenu from "./HamburgerMenu";
 import NavLinks from "./NavLinks";
-import SettingsDropdown from "./SettingsDropdown";
-import { useSwipeNavigation } from "../../hooks/useSwipeNavigation";
-import { useTheme } from "../../hooks/useTheme";
-import { useTranslation } from "react-i18next";
+import SettingsDropdown from "../dropdowns/SettingsDropdown";
+import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
+import { useTheme } from "../../../hooks/useTheme";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -5,7 +5,7 @@ import Contact from "./Contact";
 import Projects from "./Projects";
 import ProjectPage from "./ProjectPage";
 import DirectionProvider from "../components/layout/DirectionProvider";
-import Navbar from "../components/layout/Navbar";
+import Navbar from "../components/layout/navigation/Navbar";
 import Footer from "../components/layout/Footer";
 import ScrollToTop from "../components/layout/ScrollToTop";
 

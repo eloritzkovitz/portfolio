@@ -313,22 +313,22 @@ button:focus-visible {
   background: #ffffff;
 }
 
-.toggle-navigation-btn, .toggle-theme-btn, .toggle-show-btn {  
+.toggle-navigation-btn, .toggle-settings-btn, .toggle-show-btn {  
   vertical-align: middle !important;  
   border: none !important;  
   outline: none !important;
 }
 
-.toggle-navigation-btn, .toggle-theme-btn {  
+.toggle-navigation-btn, .toggle-settings-btn {  
   background: transparent !important;
   box-shadow: none !important;
 }
 
-.dark .toggle-theme-btn, .dark .toggle-navigation-btn {
+.dark .toggle-settings-btn, .dark .toggle-navigation-btn {
   color: #ffffff;
 }
 
-.toggle-navigation-btn:hover, .toggle-theme-btn:hover, .toggle-show-btn:hover {
+.toggle-navigation-btn:hover, .toggle-settings-btn:hover, .toggle-show-btn:hover {
   color: #747bff;  
 }
 
