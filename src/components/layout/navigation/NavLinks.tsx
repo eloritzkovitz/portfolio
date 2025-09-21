@@ -33,7 +33,7 @@ const NavLinks = ({ onClick }: { onClick?: () => void }) => {
   ];
 
   return (
-    <ul className="flex list-none space-x-8 p-0 m-0">
+    <ul className="flex flex-col md:flex-row list-none space-y-2 md:space-y-0 md:space-x-8 p-0 m-0">
       {navLinks.map(({ to, icon, label }) => (
         <li key={to}>
           <Link
