@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "name": "Elor Itzkovitz",
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode"
+  }  
+}
