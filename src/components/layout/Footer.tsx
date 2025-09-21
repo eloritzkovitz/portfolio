@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import socialLinks from "../../data/socialLinksData";
 import iconMap from "../socials/SocialIconMap";
 
@@ -8,6 +9,8 @@ const footerSocials = socialLinks.filter(link =>
 const portfolioLink = socialLinks.find(link => link.iconKey === "portfolio");
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="py-4 mt-10">
       <div className="max-w-7xl mx-auto px-4 text-center">
@@ -27,7 +30,7 @@ function Footer() {
           ))}
         </div>
         <p className="mt-4">
-          &copy; {new Date().getFullYear()} Elor Itzkovitz. All rights reserved.
+          &copy; {new Date().getFullYear()} {t("footer.text")}
           <br />
           {portfolioLink && (
             <a

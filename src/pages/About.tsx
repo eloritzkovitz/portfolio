@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaList, FaTh } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import CVButton from "../components/about/CVButton";
 import SkillsSection from "../components/about/SkillsSection";
 import RichTextWithLinks from "../components/about/RichTextWithLinks";
@@ -15,12 +16,14 @@ function About() {
   const [navVisible, setNavVisible] = useState(true);
   const [isFlatView, setIsFlatView] = useState(true);
 
+  const { t } = useTranslation();
+
   // Section anchors for navigation
   const sectionAnchors = [
-    { id: "introduction", label: "Introduction" },
-    { id: "skills", label: "Skills" },
-    { id: "contributions", label: "Contributions" },
-    { id: "hobbies", label: "Hobbies & Interests" },
+    { id: "introduction", label: t("about.introduction.title") },
+    { id: "skills", label: t("about.skills.title") },
+    { id: "contributions", label: t("about.contributions.title") },
+    { id: "hobbies", label: t("about.hobbies.title") },
   ];
 
   return (
@@ -33,7 +36,7 @@ function About() {
       <section className="w-full max-w-screen-xl mx-auto">
         <div className="p-6 sm:p-8">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">
-            About Me
+            {t("about.title")}
           </h1>
         </div>
         <div className="desktop-cards">
@@ -45,39 +48,39 @@ function About() {
                 key={card.id}
                 id={anchor.id}
                 title={
-                  card.title === "Skills" ? (
+                  card.id === "skills" ? (
                     <span className="flex items-center justify-between w-full">
-                      {card.title}
+                      {t(card.title)}
                       <button
                         className="toggle-view-btn text-base sm:text-xl"
                         onClick={() => setIsFlatView((v) => !v)}
                         aria-label="Toggle View"
                         data-tooltip={
                           isFlatView
-                            ? "Switch to Grouped View"
-                            : "Switch to Flat View"
+                            ? t("about.skills.switchToGrouped")
+                            : t("about.skills.switchToFlat")
                         }
                       >
                         {isFlatView ? <FaList size={20} /> : <FaTh size={20} />}
                       </button>
                     </span>
                   ) : (
-                    card.title
+                    t(card.title)
                   )
                 }
               >
-                {card.title === "Skills" ? (
+                {card.id === "skills" ? (
                   <SkillsSection isFlatView={isFlatView} />
                 ) : (
                   <div className="text-base sm:text-lg leading-relaxed">
-                    {card.content.map((p, i) => (
+                    {card.content.map((key, i) => (
                       <p key={i} className={i > 0 ? "mt-4" : ""}>
-                        <RichTextWithLinks content={p} links={card.links} />
+                        <RichTextWithLinks content={t(key)} links={card.links} />
                       </p>
                     ))}
-                    {card.title === "Introduction" && cvLink && (
+                    {card.id === "introduction" && cvLink && (
                       <div className="mt-6">
-                        <CVButton url={cvLink?.url ?? ""} text={cvLink?.text ?? ""} />
+                        <CVButton url={cvLink?.url ?? ""} />
                       </div>
                     )}
                   </div>

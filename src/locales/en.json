@@ -7,5 +7,47 @@
     "contact": "Contact",
     "dark_mode": "Dark Mode",
     "light_mode": "Light Mode"
-  }  
+  },
+  "banner": {
+    "name": "Elor Itzkovitz",
+    "title": "Full-Stack Developer",
+    "description": "Building robust web apps with React, Node.js, and modern cloud tools."    
+  },
+  "footer": {
+    "text": "Elor Itzkovitz. All rights reserved."
+  },
+  "about": {
+    "title": "About Me",
+    "cv": "View My CV",
+    "introduction": {
+      "title": "Introduction",
+      "1": "Hi! My name is Elor. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas, and interests - and shape them into reality.",
+      "2": "I am very passionate about building modern, scalable, and user-friendly applications, as well as learning and adapting to new technologies and frameworks. I am always eager to learn and grow, and I believe that the best way to do that is by constantly challenging ourselves.",
+      "3": "Currently, I am a fresh computer science graduate, exploring the world of full-stack development, learning and experimenting with various technologies and frameworks - mainly React, Node.js and microservices."
+    },
+    "skills": {
+      "title": "Skills",      
+      "switchToFlat": "Switch to Flat View",
+      "switchToGrouped": "Switch to Grouped View"
+    },
+    "contributions": {
+      "title": "Contributions",
+      "1": "I enjoy building reusable tools to support my projects. One example is {link:server-essentials}, an npm package written in TypeScript for Node.js servers, which includes a collection of reusable utilities and is publicly available."      
+    },
+    "hobbies": {
+      "title": "Hobbies & Interests",
+      "1": "When I'm not coding or studying, I try my best to devote my free time to my long list of hobbies and interests. For example, I really like integrating my love for drawing and graphic design with my projects.",
+      "2": "I also enjoy traveling and exploring new places, photographing architecture, nature, and scenery, as well as spending time with my family."
+    }
+  },
+  "skills": {
+    "programmingLanguages": "Programming Languages",
+    "frontendDevelopment": "Frontend Development",
+    "backendDevelopment": "Backend Development",
+    "databaseManagement": "Database Management",
+    "devOpsCloud": "DevOps & Cloud",
+    "versionControl": "Version Control",
+    "testingAutomation": "Testing & Automation",
+    "languages": "Languages"
+  }
 }
