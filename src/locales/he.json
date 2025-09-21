@@ -6,8 +6,9 @@
     "projects": "פרויקטים",
     "contact": "צור קשר",
     "dark_mode": "מצב כהה",
-    "light_mode": "מצב בהיר"
-  },
+    "light_mode": "מצב בהיר",
+    "language": "שפה"   
+  },  
   "banner": {
     "name": "אלאור איצקוביץ'",
     "title": "מפתח פול-סטאק",

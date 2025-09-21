@@ -6,8 +6,9 @@
     "projects": "Projects",
     "contact": "Contact",
     "dark_mode": "Dark Mode",
-    "light_mode": "Light Mode"
-  },
+    "light_mode": "Light Mode",
+    "language": "Language"    
+  },  
   "banner": {
     "name": "Elor Itzkovitz",
     "title": "Full-Stack Developer",

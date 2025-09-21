@@ -1,5 +1,6 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
 import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 
@@ -18,7 +19,9 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
   currentIndex,
   setCurrentIndex,
   onClose,
-}) => {  
+}) => {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";  
 
   // Previous image
   const handlePrev = () => {
@@ -33,7 +36,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
   // Centralized swipe navigation
   const { handleTouchStart, handleTouchEnd } = useSwipeNavigation(
     handlePrev,
-    handleNext
+    handleNext,
+    isRTL
   );
 
   // Centralized keyboard navigation
@@ -45,7 +49,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     canPrev: currentIndex > 0,
     canNext: currentIndex < images.length - 1,
     blockAtEdges: true,
-  });  
+    isRTL
+  });
 
   // If not showing, render nothing
   if (!show) return null;
@@ -55,6 +60,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="relative w-full h-full flex items-center justify-center">
         {/* Close Button */}
@@ -78,31 +84,62 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
         {/* Navigation Buttons */}
         {images.length > 1 && (
           <>
-            {/* Previous Button */}
-            <button
-              onClick={handlePrev}
-              className={`t-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl sm:text-4xl lg:text-6xl hover:text-gray-300 ${
-                currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              disabled={currentIndex === 0}
-              aria-label="Previous image"
-            >
-              <FaChevronLeft />
-            </button>
-
-            {/* Next Button */}
-            <button
-              onClick={handleNext}
-              className={`t-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl sm:text-4xl lg:text-6xl hover:text-gray-300 ${
-                currentIndex === images.length - 1
-                  ? "opacity-50 cursor-not-allowed"
-                  : ""
-              }`}
-              disabled={currentIndex === images.length - 1}
-              aria-label="Next image"
-            >
-              <FaChevronRight />
-            </button>
+            {/* In RTL, swap button positions and icons */}
+            {isRTL ? (
+              <>
+                {/* Next Button (on the left in RTL) */}
+                <button
+                  onClick={handleNext}
+                  className={`t-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl sm:text-4xl lg:text-6xl hover:text-gray-300 ${
+                    currentIndex === images.length - 1
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
+                  disabled={currentIndex === images.length - 1}
+                  aria-label="Next image"
+                >
+                  <FaChevronLeft />
+                </button>
+                {/* Previous Button (on the right in RTL) */}
+                <button
+                  onClick={handlePrev}
+                  className={`t-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl sm:text-4xl lg:text-6xl hover:text-gray-300 ${
+                    currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  disabled={currentIndex === 0}
+                  aria-label="Previous image"
+                >
+                  <FaChevronRight />
+                </button>
+              </>
+            ) : (
+              <>
+                {/* Previous Button (on the left in LTR) */}
+                <button
+                  onClick={handlePrev}
+                  className={`t-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl sm:text-4xl lg:text-6xl hover:text-gray-300 ${
+                    currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                  disabled={currentIndex === 0}
+                  aria-label="Previous image"
+                >
+                  <FaChevronLeft />
+                </button>
+                {/* Next Button (on the right in LTR) */}
+                <button
+                  onClick={handleNext}
+                  className={`t-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl sm:text-4xl lg:text-6xl hover:text-gray-300 ${
+                    currentIndex === images.length - 1
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
+                  disabled={currentIndex === images.length - 1}
+                  aria-label="Next image"
+                >
+                  <FaChevronRight />
+                </button>
+              </>
+            )}
           </>
         )}
       </div>

@@ -48,6 +48,34 @@ button:focus-visible {
   border-color: #4a5568 !important;
 }
 
+/* Dropdown Menu */
+.dropdown-menu-button {  
+  background-color: transparent !important;
+}
+
+.dropdown-menu-button {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu-button:focus,
+.dropdown-menu-button:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu-button:hover {  
+  background-color: #f7fafc !important;
+  border: none !important;
+}
+
+.dark .dropdown-menu-button:hover {  
+  background-color: #4a5568 !important;
+  border: none !important;
+}
+
 /* Hamburger Button */
 .hamburger-button {  
   font-size: 1.5rem;

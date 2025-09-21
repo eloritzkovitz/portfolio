@@ -8,6 +8,7 @@ type KeyboardNavOptions = {
   canPrev?: boolean;
   canNext?: boolean;
   blockAtEdges?: boolean;
+  isRTL?: boolean;
 };
 
 export function useKeyboardNavigation({
@@ -18,6 +19,7 @@ export function useKeyboardNavigation({
   canPrev = true,
   canNext = true,
   blockAtEdges = false,
+  isRTL = false,
 }: KeyboardNavOptions) {
   useEffect(() => {
     if (!enabled) return;
@@ -28,29 +30,30 @@ export function useKeyboardNavigation({
       const relevant = isLeft || isRight || isEscape;
       if (!relevant) return;
 
+      // Swap left/right for RTL
+      const prevKey = isRTL ? isRight : isLeft;
+      const nextKey = isRTL ? isLeft : isRight;
+
       if (blockAtEdges) {
-        // Block event at edges so carousel doesn't move
-        if ((isLeft && !canPrev) || (isRight && !canNext)) {
+        if ((prevKey && !canPrev) || (nextKey && !canNext)) {
           event.preventDefault();
           event.stopPropagation();
           return;
         }
-        // If not at edge, allow bubbling for sync
       } else {
-        // Always block for handled keys
         event.preventDefault();
         event.stopPropagation();
       }
 
       if (isEscape && onClose) {
         onClose();
-      } else if (isLeft && onPrev && canPrev) {
+      } else if (prevKey && onPrev && canPrev) {
         onPrev();
-      } else if (isRight && onNext && canNext) {
+      } else if (nextKey && onNext && canNext) {
         onNext();
       }
     };
     window.addEventListener("keydown", handleKeyDown, true);
     return () => window.removeEventListener("keydown", handleKeyDown, true);
-  }, [enabled, onPrev, onNext, onClose, canPrev, canNext, blockAtEdges]);
+  }, [enabled, onPrev, onNext, onClose, canPrev, canNext, blockAtEdges, isRTL]);
 }
