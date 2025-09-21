@@ -1,0 +1,146 @@
+{
+  "navbar": {
+    "name": "Elor Itzkovitz",
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode",
+    "language": "Language"    
+  },  
+  "banner": {
+    "name": "Elor Itzkovitz",
+    "title": "Full-Stack Developer",
+    "description": "Building robust web apps with React, Node.js, and modern cloud tools."    
+  },
+  "footer": {
+    "text": "Elor Itzkovitz. All rights reserved."
+  },
+  "techStack": {
+    "title": "Tech Stack"
+  },
+  "github": {
+    "overview": "GitHub Overview",
+    "loading": "Loading GitHub data...",
+    "profile": "GitHub Profile",
+    "languages": "Most Used Languages",
+    "repositories": "Repositories",
+    "stars": "Stars",
+    "followers": "Followers",
+    "following": "Following",
+    "topRepositories": "Top Repositories"
+  },
+  "about": {
+    "title": "About Me",    
+    "introduction": {
+      "title": "Introduction",
+      "1": "Hi! My name is Elor. From the day I remember myself, I have always been fascinated by building and creating things with whatever I had in my hands. Time and curiosity have led me to explore the world of technology and programming, where I could bring together my dreams, ideas, and interests - and shape them into reality.",
+      "2": "I am very passionate about building modern, scalable, and user-friendly applications, as well as learning and adapting to new technologies and frameworks. I am always eager to learn and grow, and I believe that the best way to do that is by constantly challenging ourselves.",
+      "3": "Currently, I am a fresh computer science graduate, exploring the world of full-stack development, learning and experimenting with various technologies and frameworks - mainly React, Node.js and microservices."
+    },
+    "skills": {
+      "title": "Skills",      
+      "switchToFlat": "Switch to Flat View",
+      "switchToGrouped": "Switch to Grouped View"
+    },
+    "contributions": {
+      "title": "Contributions",
+      "1": "I enjoy building reusable tools to support my projects. One example is {link:server-essentials}, an npm package written in TypeScript for Node.js servers, which includes a collection of reusable utilities and is publicly available."      
+    },
+    "hobbies": {
+      "title": "Hobbies & Interests",
+      "1": "When I'm not coding or studying, I try my best to devote my free time to my long list of hobbies and interests. For example, I really like integrating my love for drawing and graphic design with my projects.",
+      "2": "I also enjoy traveling and exploring new places, photographing architecture, nature, and scenery, as well as spending time with my family."
+    }
+  },
+  "skills": {
+    "programmingLanguages": "Programming Languages",
+    "frontendDevelopment": "Frontend Development",
+    "backendDevelopment": "Backend Development",
+    "databaseManagement": "Database Management",
+    "devOpsCloud": "DevOps & Cloud",
+    "versionControl": "Version Control",
+    "testingAutomation": "Testing & Automation",
+    "languages": "Languages"
+  },
+  "projects": {
+    "snapchef": {
+      "name": "SnapChef",
+      "description": "SnapChef is a mobile application designed to create customized recipes based on available products at home. The application makes use of AI to identify various ingredients (from a taken photo, a scanned receipt or a barcode), and then creates cooking recipes based on the given data and other preferences. In addition, the application provides step-by-step cooking guidance and allows its users to save and rate their recipes, as well as share them with friends.",
+      "involvement": {
+        "1": "Designed and implemented a cross-platform mobile application using Flutter and Dart, following UI/UX patterns and practices",
+        "2": "Implemented unit and widget tests using the Flutter testing framework and Mockito",
+        "3": "Collaborated with my team to build the backend server (Node.js + Express.js, TypeScript, MongoDB) and deploy it to a remote server using PM2",
+        "4": "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
+        "5": "Helped design and develop the application's static website, using React, Next.js and Tailwind CSS",
+        "6": "Worked with technologies such as JWT, GCP (OAuth2, Cloud Vision, Generative AI, Vertex AI), Text-to-Speech, local & remote notifications and WebSockets",
+        "7": "Managed the project through Jira, using Agile methodologies"
+      }
+    },
+    "voltrico": {
+      "name": "Voltrico",
+      "description": "Voltrico is an appliances e-commerce platform built with a microservices architecture. Users can browse and search products, add items to their cart, place orders and view their order history. Administrators benefit from advanced management features, including product and order control, as well as analytics dashboards.",
+      "involvement": {
+        "1": "Refactored a college project originally written in JavaScript/CSS/HTML to React and TypeScript",
+        "2": "Redesigned the application interface as a modern and user-friendly layout, using Tailwind CSS and custom styles",
+        "3": "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
+        "4": "Designed the backend to follow a microservice architecture, using various technologies such as Node.js, MongoDB, PostgreSQL and Go",
+        "5": "Implemented an event-driven architecture using RabbitMQ for communication between microservices",
+        "6": "Collaborated with my friend to containerize the application using Docker and Docker Compose, orchestrate it with Kubernetes, define infrastructure as code with Terraform and deploy it to AWS using CI/CD pipelines with GitHub Actions"
+      }
+    },
+    "trevel": {
+      "name": "Trevel",
+      "description": "Trevel is a social networking platform designed for users to share their travel experiences, post trip highlights, and interact with fellow travelers. Users can upload photos, write travel stories, comment on posts, and mark their favorite content. The platform integrates AI-powered content suggestions to enhance user experience and provide relevant travel insights.",
+      "involvement": {
+        "1": "Designed and implemented the application interface and frontend using React + Vite and TypeScript",
+        "2": "Developed the backend server (Node.js + Express.js, TypeScript, MongoDB) and deployed it to a remote server using PM2",
+        "3": "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
+        "4": "Implemented testing suites with Jest",
+        "5": "Worked with technologies such as JWT, GCP (OAuth2, Generative AI)"
+      }
+    },
+    "oopsify": {
+      "name": "Oopsify",
+      "description": "A simple, interactive React app for simulating and learning about HTTP error messages. This project was developed as a DevOps final project and demonstrates modern DevOps practices alongside frontend development.",
+      "involvement": {
+        "1": "Developed a simple React application with Vite and TypeScript",
+        "2": "Containerized the application using Docker and Docker Compose for easy deployment",        
+        "3": "Collaborated with my team to implement CI/CD pipelines using GitHub Actions, following DevOps practices"
+      }
+    },
+    "hexgame": {
+      "name": "Hex",
+      "description": "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",
+      "involvement": {
+        "1": "Implemented the game logic using disjoint-set data structures",
+        "2": "Expanded a simple college assignment into a fully functional game using React",
+        "3": "Designed the game interface to be user-friendly and visually appealing",
+        "4": "Implemented a simple AI opponent for single-player mode"
+      }
+    },
+    "visit": "Visit project page →",
+    "description": "Description",
+    "technologies": "Tech Stack",
+    "involvement": "My Inovolvement",
+    "links": "Links"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "yourMessage": "Your Message",
+    "sendMessage": "Send Message",
+    "successMessage": "Thank you for reaching out! I'll get back to you soon.",
+    "errorMessage": "Oops! Something went wrong. Please try again later."    
+  },
+  "social": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "View My CV",
+    "npm": "npm",
+    "portfolio": "View this website's source on GitHub",
+    "email": "Email"
+  }
+}

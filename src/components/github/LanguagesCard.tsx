@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Chart, Tooltip, ArcElement, Legend } from "chart.js";
+import { useTranslation } from "react-i18next";
 import PieChart from "../ui/charts/PieChart";
 import PieLegendCard from "../ui/charts/PieLegendCard";
 import githubColors from "../../data/github-lang-colors.json";
@@ -13,6 +14,7 @@ interface LanguagesCardProps {
 
 const LanguagesCard: React.FC<LanguagesCardProps> = ({ languages }) => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const { t } = useTranslation();
 
   // Prepare and sort data by percentage descending
   const rawData = Object.entries(languages).map(([language, count]) => ({
@@ -35,7 +37,7 @@ const LanguagesCard: React.FC<LanguagesCardProps> = ({ languages }) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-6 text-center hover:scale-102 flex flex-col items-center justify-center">
       <div className="w-full">
-        <h2 className="text-3xl font-bold mb-4">Most Used Languages</h2>
+        <h2 className="text-3xl font-bold mb-4">{t("github.languages")}</h2>
         {languageLabels.length > 0 ? (
           <>
             {/* Pie Chart */}

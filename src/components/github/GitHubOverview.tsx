@@ -1,5 +1,6 @@
 import React from "react";
 import { FaCode, FaStar, FaUsers, FaUserFriends } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import LanguagesCard from "./LanguagesCard";
 import ProfileCard from "./ProfileCard";
 import StatCard from "./StatCard";
@@ -10,6 +11,7 @@ const username = "eloritzkovitz";
 
 const GitHubOverview: React.FC = () => {
   const { githubData, error } = useGitHubData(username);
+  const { t } = useTranslation();
 
   // Show error state
   if (error) {
@@ -18,7 +20,7 @@ const GitHubOverview: React.FC = () => {
 
   // Show loading state
   if (!githubData) {
-    return <p className="text-center mb-12" aria-live="polite">Loading GitHub data...</p>;
+    return <p className="text-center mb-12" aria-live="polite">{t("github.loading")}</p>;
   }
 
   // Format the joined date
@@ -29,7 +31,7 @@ const GitHubOverview: React.FC = () => {
   return (
     <section className="w-full max-w-screen-xl mx-auto px-4 py-12 mt-8">
       <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-center">
-        GitHub Overview
+        {t("github.overview")}
       </h1>
 
       {/* Profile and Languages */}
@@ -51,25 +53,25 @@ const GitHubOverview: React.FC = () => {
         <StatCard
           icon={<FaCode />}
           value={githubData.public_repos}
-          label="Repositories"
+          label={t("github.repositories")}
           colorClass="text-blue-600"
         />
         <StatCard
           icon={<FaStar />}
           value={githubData.total_stars}
-          label="Stars"
+          label={t("github.stars")}
           colorClass="text-yellow-500"
         />
         <StatCard
           icon={<FaUsers />}
           value={githubData.followers}
-          label="Followers"
+          label={t("github.followers")}
           colorClass="text-green-600"
         />
         <StatCard
           icon={<FaUserFriends />}
           value={githubData.following}
-          label="Following"
+          label={t("github.following")}
           colorClass="text-purple-600"
         />
       </div>

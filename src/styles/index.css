@@ -48,6 +48,34 @@ button:focus-visible {
   border-color: #4a5568 !important;
 }
 
+/* Dropdown Menu */
+.dropdown-menu-button {  
+  background-color: transparent !important;
+}
+
+.dropdown-menu-button {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu-button:focus,
+.dropdown-menu-button:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu-button:hover {  
+  background-color: #f7fafc !important;
+  border: none !important;
+}
+
+.dark .dropdown-menu-button:hover {  
+  background-color: #4a5568 !important;
+  border: none !important;
+}
+
 /* Hamburger Button */
 .hamburger-button {  
   font-size: 1.5rem;
@@ -285,22 +313,22 @@ button:focus-visible {
   background: #ffffff;
 }
 
-.toggle-navigation-btn, .toggle-theme-btn, .toggle-show-btn {  
+.toggle-navigation-btn, .toggle-settings-btn, .toggle-show-btn {  
   vertical-align: middle !important;  
   border: none !important;  
   outline: none !important;
 }
 
-.toggle-navigation-btn, .toggle-theme-btn {  
+.toggle-navigation-btn, .toggle-settings-btn {  
   background: transparent !important;
   box-shadow: none !important;
 }
 
-.dark .toggle-theme-btn, .dark .toggle-navigation-btn {
+.dark .toggle-settings-btn, .dark .toggle-navigation-btn {
   color: #ffffff;
 }
 
-.toggle-navigation-btn:hover, .toggle-theme-btn:hover, .toggle-show-btn:hover {
+.toggle-navigation-btn:hover, .toggle-settings-btn:hover, .toggle-show-btn:hover {
   color: #747bff;  
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
 import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 
@@ -17,7 +18,9 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
   currentIndex,
   setCurrentIndex,
   keyboardNavigationEnabled = true,
-}) => {  
+}) => {
+  const { i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
 
   // Previous screenshot
   const handlePrev = () => {
@@ -41,14 +44,16 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
   // Centralized swipe navigation
   const { handleTouchStart, handleTouchEnd } = useSwipeNavigation(
     handlePrev,
-    handleNext
+    handleNext,
+    isRTL
   );
 
   // Centralized keyboard navigation
   useKeyboardNavigation({
     enabled: keyboardNavigationEnabled,
     onPrev: handlePrev,
-    onNext: handleNext,    
+    onNext: handleNext,   
+    isRTL, 
   });    
 
   // If no screenshots, render nothing
@@ -59,6 +64,7 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
       className="mb-8 sm:mb-12 relative group"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Current Screenshot */}
       <div className="flex items-center justify-center">
@@ -70,20 +76,45 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
         />
       </div>
       {/* Navigation Buttons */}
-      <button
-        onClick={handlePrev}
-        aria-label="Previous screenshot"
-        className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
-      >
-        <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
-      </button>
-      <button
-        onClick={handleNext}
-        aria-label="Next screenshot"
-        className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
-      >
-        <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
-      </button>
+      {isRTL ? (
+        <>
+          {/* Next Button (on the left in RTL) */}
+          <button
+            onClick={handleNext}
+            aria-label="Next screenshot"
+            className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
+          </button>
+          {/* Previous Button (on the right in RTL) */}
+          <button
+            onClick={handlePrev}
+            aria-label="Previous screenshot"
+            className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
+          </button>
+        </>
+      ) : (
+        <>
+          {/* Previous Button (on the left in LTR) */}
+          <button
+            onClick={handlePrev}
+            aria-label="Previous screenshot"
+            className="toggle-navigation-btn absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <FaChevronLeft className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
+          </button>
+          {/* Next Button (on the right in LTR) */}
+          <button
+            onClick={handleNext}
+            aria-label="Next screenshot"
+            className="toggle-navigation-btn absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 p-2 sm:p-4 text-3xl sm:text-5xl min-w-10 min-h-10 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <FaChevronRight className="w-6 h-6 sm:w-10 sm:h-10 hover:scale-125 transition-transform" />
+          </button>
+        </>
+      )}
       {/* Indicators */}
       <div className="carousel-indicators flex justify-center gap-2 mt-8">
         {screenshots.map((_, index) => (
