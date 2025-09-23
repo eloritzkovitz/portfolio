@@ -123,7 +123,7 @@
     "visit": "Visit project page →",
     "description": "Description",
     "technologies": "Tech Stack",
-    "involvement": "My Inovolvement",
+    "involvement": "My Involvement",
     "links": "Links"
   },
   "contact": {
@@ -136,11 +136,11 @@
     "errorMessage": "Oops! Something went wrong. Please try again later."    
   },
   "social": {
+    "portfolio": "View this website's source on GitHub",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "cv": "View My CV",
-    "npm": "npm",
-    "portfolio": "View this website's source on GitHub",
+    "npm": "npm",    
     "email": "Email"
   }
 }
