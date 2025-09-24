@@ -71,6 +71,7 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
         <img
           src={screenshots[currentIndex]}
           alt={`Screenshot ${currentIndex + 1}`}
+          loading="lazy"
           className="rounded-lg object-contain w-full max-h-[250px] sm:max-h-[500px] cursor-pointer"
           onClick={() => onOpenViewer(currentIndex)}
         />
