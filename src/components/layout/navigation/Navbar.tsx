@@ -37,6 +37,7 @@ function Navbar() {
           <ul className="flex flex-row space-x-8 p-0 m-0">
             <NavLinks />
           </ul>
+          <div className="px-4" />
           <SettingsDropdown theme={theme} toggleTheme={toggleTheme} />
         </div>
 

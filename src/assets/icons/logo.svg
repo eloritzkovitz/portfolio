@@ -7,12 +7,11 @@
       }
 
       .cls-2 {
-        fill: #231f20;
+        fill: currentColor;
       }
     </style>
   </defs>
   <g id="Background">
-    <rect class="cls-1" x=".87" y="3.88" width="128" height="128"/>
   </g>
   <g id="Portfolio">
     <path class="cls-2" d="M116.87,24.88H12.87c-6.6,0-12,4.63-12,10.29v20.44c9.23,13.87,26.64,23.28,46.5,23.28h35c19.86,0,37.27-9.41,46.5-23.28v-20.44c0-5.66-5.4-10.29-12-10.29Z"/>

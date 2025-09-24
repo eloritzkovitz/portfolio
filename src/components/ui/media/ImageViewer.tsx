@@ -1,6 +1,7 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import LazyImage from "./LazyImage";
 import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
 import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 
@@ -74,10 +75,10 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
 
         {/* Image Viewer */}
         <div className="flex items-center justify-center w-full h-full px-2 sm:px-4">
-          <img
+          <LazyImage
             src={images[currentIndex]}
             alt={`Screenshot ${currentIndex + 1}`}
-            className="max-h-[60vh] sm:max-h-[80vh] max-w-[90vw] object-contain"
+            className="max-h-[60vh] sm:max-h-[80vh] max-w-[90vw] object-contain"          
           />
         </div>
 

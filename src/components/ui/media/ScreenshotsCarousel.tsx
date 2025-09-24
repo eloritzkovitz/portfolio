@@ -1,6 +1,7 @@
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import LazyImage from "./LazyImage";
 import { useKeyboardNavigation } from "../../../hooks/useKeyboardNavigation";
 import { useSwipeNavigation } from "../../../hooks/useSwipeNavigation";
 
@@ -68,10 +69,10 @@ const ScreenshotsCarousel: React.FC<ScreenshotsCarouselProps> = ({
     >
       {/* Current Screenshot */}
       <div className="flex items-center justify-center">
-        <img
+        <LazyImage
           src={screenshots[currentIndex]}
-          alt={`Screenshot ${currentIndex + 1}`}
-          className="rounded-lg object-contain w-full max-h-[250px] sm:max-h-[500px] cursor-pointer"
+          alt={`Screenshot ${currentIndex + 1}`}          
+          className="rounded-lg object-contain w-full max-h-[250px] sm:max-h-[500px] cursor-pointer"          
           onClick={() => onOpenViewer(currentIndex)}
         />
       </div>

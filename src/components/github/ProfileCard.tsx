@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import LazyImage from "../ui/media/LazyImage";
 
 import React from "react";
 
@@ -23,7 +24,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
       {/* Avatar */}
       <div className="mt-8 mb-8">
-        <img
+        <LazyImage
           src={avatarUrl}
           alt="GitHub Avatar"
           className="mx-auto rounded-full shadow-lg"
