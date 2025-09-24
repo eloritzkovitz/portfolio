@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import TechTagList from "../tech/TechTagList";
+import LazyImage from "../ui/media/LazyImage";
 import { Project } from "../../types/project";
 import { slugify } from "../../utils/string";
 
@@ -45,7 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   }) => (
     <figure className="relative w-full md:w-1/2 h-48 md:h-full flex items-center justify-center">
       <div className="w-[80%] h-[80%] flex items-center justify-center overflow-hidden">
-        <img
+        <LazyImage
           src={image}
           alt={`Screenshot of ${name} project`}
           className="w-full h-full object-contain"

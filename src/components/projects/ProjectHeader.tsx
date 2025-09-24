@@ -2,6 +2,7 @@ import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LazyImage from "../ui/media/LazyImage";
 
 interface ProjectHeaderProps {
   name: string;
@@ -28,7 +29,7 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ name, icon }) => {
             <FaChevronLeft className="w-5 h-5" />
           )}
         </button>
-        <img
+        <LazyImage
           src={icon}
           alt={name}
           className="rounded-lg w-16 h-16 sm:w-20 sm:h-20 object-contain"
