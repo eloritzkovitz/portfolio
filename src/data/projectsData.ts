@@ -142,7 +142,7 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "HexGame",
+    name: "Hex",
     description: "projects.hexgame.description",
     tech: ["React", "Vite", "JavaScript", "CSS", "HTML"],
     icon: "/projects/hexgame/icon.png",
