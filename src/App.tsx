@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
-import Projects from "./Projects";
-import ProjectPage from "./ProjectPage";
-import DirectionProvider from "../components/layout/DirectionProvider";
-import Navbar from "../components/layout/navigation/Navbar";
-import Footer from "../components/layout/Footer";
-import ScrollToTop from "../components/layout/ScrollToTop";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Projects from "./pages/Projects";
+import ProjectPage from "./pages/ProjectPage";
+import DirectionProvider from "./components/layout/DirectionProvider";
+import Navbar from "./components/layout/navigation/Navbar";
+import Footer from "./components/layout/Footer";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 function App() {
   return (

@@ -28,6 +28,8 @@ function About() {
 
   return (
     <div className="relative">
+      <title>About | Elor Itzkovitz</title>
+      
       <SectionsNavigator
         sections={sectionAnchors}
         navVisible={navVisible}

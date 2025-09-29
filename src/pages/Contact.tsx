@@ -6,6 +6,8 @@ function Contact() {
 
   return (
     <section className="w-full max-w-screen-xl mx-auto px-2 sm:px-12 py-4 sm:py-10">
+      <title>Contact | Elor Itzkovitz</title>
+      
       {/* Header */}
       <div className="p-6 sm:p-8">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-center">

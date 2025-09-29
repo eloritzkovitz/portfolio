@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Section from "../components/layout/Section";
@@ -20,6 +20,18 @@ const ProjectPage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { t } = useTranslation();
 
+  // Find project by slugified name
+  const project: Project | undefined = projects.find(
+    (proj) => slugify(proj.name) === projectId
+  );
+
+  // Update document title on project change
+  useEffect(() => {
+    if (project) {
+      document.title = `${project.name} | Elor Itzkovitz`;
+    }
+  }, [project]);
+
   // Section anchors for navigation
   const sectionAnchors = [
     { id: "description", label: "Description" },
@@ -27,11 +39,6 @@ const ProjectPage: React.FC = () => {
     { id: "involvement", label: "My Involvement" },
     { id: "links", label: "Links" },
   ];
-
-  // Find project by slugified name
-  const project: Project | undefined = projects.find(
-    (proj) => slugify(proj.name) === projectId
-  );
 
   // If project not found, display message
   if (!project) {
@@ -55,6 +62,8 @@ const ProjectPage: React.FC = () => {
 
   return (
     <div className="project-page w-full max-w-screen-xl mx-auto">
+      <title>{project.name} | Elor Itzkovitz</title>
+      
       {/* Sections Navigator Panel */}
       <div className="relative">
         <SectionsNavigator
@@ -94,7 +103,9 @@ const ProjectPage: React.FC = () => {
 
         {/* My Involvement */}
         <Section id="involvement" title={t("projects.involvement")}>
-          <InvolvementList involvement={(project.involvement ?? []).map((item) => t(item))} />
+          <InvolvementList
+            involvement={(project.involvement ?? []).map((item) => t(item))}
+          />
         </Section>
 
         {/* Links */}
