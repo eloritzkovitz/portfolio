@@ -101,13 +101,16 @@
         "5": "Worked with technologies such as JWT, GCP (OAuth2, Generative AI)"
       }
     },
-    "oopsify": {
-      "name": "Oopsify",
-      "description": "A simple, interactive React app for simulating and learning about HTTP error messages. This project was developed as a DevOps final project and demonstrates modern DevOps practices alongside frontend development.",
+    "atlaset": {
+      "name": "Atlaset",
+      "description": "Atlaset is an interactive country explorer and travel tracker, supporting user-defined overlays, flexible filters, markers, and detailed country information. The application allows users to visualize countries they have visited, document travel itineraries and explore personal data through an intuitive map interface.",
       "involvement": {
-        "1": "Developed a simple React application with Vite and TypeScript",
-        "2": "Containerized the application using Docker and Docker Compose for easy deployment",        
-        "3": "Collaborated with my team to implement CI/CD pipelines using GitHub Actions, following DevOps practices"
+        "1": "Developed a React application with Vite and TypeScript as a personal project",
+        "2": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
+        "3": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
+        "4": "Implemented features such as user-defined overlays, flexible filters, markers and detailed country information",
+        "5": "Implemented an IndexedDB database to store user data locally in the browser",
+        "6": "Added PWA and Electron support for offline/desktop usage"
       }
     },
     "hexgame": {
