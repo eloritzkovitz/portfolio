@@ -184,6 +184,8 @@ const projects: Project[] = [
       "/projects/atlaset/screenshots/screenshot-3.webp",
       "/projects/atlaset/screenshots/screenshot-4.webp",
       "/projects/atlaset/screenshots/screenshot-5.webp",
+      "/projects/atlaset/screenshots/screenshot-6.webp",
+      "/projects/atlaset/screenshots/screenshot-7.webp",
     ],
   },
   {
