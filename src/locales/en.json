@@ -109,8 +109,9 @@
         "2": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
         "3": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
         "4": "Implemented features such as user-defined overlays, flexible filters, markers and detailed country information",
-        "5": "Implemented an IndexedDB database to store user data locally in the browser",
-        "6": "Added PWA and Electron support for offline/desktop usage"
+        "5": "Added authentication and data persistence using Firebase for user accounts and Dexie (IndexedDB) for offline storage",
+        "6": "Implemented unit and integration tests using Vitest and Cypress",
+        "7": "Added PWA and Electron support for offline/desktop usage"
       }
     },
     "hexgame": {
