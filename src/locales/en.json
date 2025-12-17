@@ -65,17 +65,18 @@
     "languages": "Languages"
   },
   "projects": {
-    "snapchef": {
-      "name": "SnapChef",
-      "description": "SnapChef is a mobile application designed to create customized recipes based on available products at home. The application makes use of AI to identify various ingredients (from a taken photo, a scanned receipt or a barcode), and then creates cooking recipes based on the given data and other preferences. In addition, the application provides step-by-step cooking guidance and allows its users to save and rate their recipes, as well as share them with friends.",
+    "atlaset": {
+      "name": "Atlaset",
+      "description": "Atlaset is an interactive country explorer and travel tracker, supporting user-defined overlays, flexible filters, markers, and detailed country information. The application allows users to visualize countries they have visited, document travel itineraries and explore personal data through an intuitive map interface.",
       "involvement": {
-        "1": "Designed and implemented a cross-platform mobile application using Flutter and Dart, following UI/UX patterns and practices",
-        "2": "Implemented unit and widget tests using the Flutter testing framework and Mockito",
-        "3": "Collaborated with my team to build the backend server (Node.js + Express.js, TypeScript, MongoDB) and deploy it to a remote server using PM2",
-        "4": "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
-        "5": "Helped design and develop the application's static website, using React, Next.js and Tailwind CSS",
-        "6": "Worked with technologies such as JWT, GCP (OAuth2, Cloud Vision, Generative AI, Vertex AI), Text-to-Speech, local & remote notifications and WebSockets",
-        "7": "Managed the project through Jira, using Agile methodologies"
+        "1": "Developed a React application with Vite and TypeScript as a personal project",
+        "2": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
+        "3": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
+        "4": "Implemented features such as user-defined overlays and markers, flexible filters, detailed country information and a dashboard",
+        "5": "Added authentication and data persistence using Firebase for user accounts and Dexie (IndexedDB) for offline storage",
+        "6": "Implemented unit and integration tests using Vitest and Cypress",
+        "7": "Added PWA and Electron support for offline/desktop usage",
+        "8": "Deployed the application using Vercel for web and Render for backend"
       }
     },
     "voltrico": {
@@ -90,6 +91,19 @@
         "6": "Collaborated with my friend to containerize the application using Docker and Docker Compose, orchestrate it with Kubernetes, define infrastructure as code with Terraform and deploy it to AWS using CI/CD pipelines with GitHub Actions"
       }
     },
+    "snapchef": {
+      "name": "SnapChef",
+      "description": "SnapChef is a mobile application designed to create customized recipes based on available products at home. The application makes use of AI to identify various ingredients (from a taken photo, a scanned receipt or a barcode), and then creates cooking recipes based on the given data and other preferences. In addition, the application provides step-by-step cooking guidance and allows its users to save and rate their recipes, as well as share them with friends.",
+      "involvement": {
+        "1": "Designed and implemented a cross-platform mobile application using Flutter and Dart, following UI/UX patterns and practices",
+        "2": "Implemented unit and widget tests using the Flutter testing framework and Mockito",
+        "3": "Collaborated with my team to build the backend server (Node.js + Express.js, TypeScript, MongoDB) and deploy it to a remote server using PM2",
+        "4": "Designed and implemented a RESTful API, providing comprehensive documentation with Swagger",
+        "5": "Helped design and develop the application's static website, using React, Next.js and Tailwind CSS",
+        "6": "Worked with technologies such as JWT, GCP (OAuth2, Cloud Vision, Generative AI, Vertex AI), Text-to-Speech, local & remote notifications and WebSockets",
+        "7": "Managed the project through Jira, using Agile methodologies"
+      }
+    },    
     "trevel": {
       "name": "Trevel",
       "description": "Trevel is a social networking platform designed for users to share their travel experiences, post trip highlights, and interact with fellow travelers. Users can upload photos, write travel stories, comment on posts, and mark their favorite content. The platform integrates AI-powered content suggestions to enhance user experience and provide relevant travel insights.",
@@ -100,20 +114,7 @@
         "4": "Implemented testing suites with Jest",
         "5": "Worked with technologies such as JWT, GCP (OAuth2, Generative AI)"
       }
-    },
-    "atlaset": {
-      "name": "Atlaset",
-      "description": "Atlaset is an interactive country explorer and travel tracker, supporting user-defined overlays, flexible filters, markers, and detailed country information. The application allows users to visualize countries they have visited, document travel itineraries and explore personal data through an intuitive map interface.",
-      "involvement": {
-        "1": "Developed a React application with Vite and TypeScript as a personal project",
-        "2": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
-        "3": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
-        "4": "Implemented features such as user-defined overlays, flexible filters, markers and detailed country information",
-        "5": "Added authentication and data persistence using Firebase for user accounts and Dexie (IndexedDB) for offline storage",
-        "6": "Implemented unit and integration tests using Vitest and Cypress",
-        "7": "Added PWA and Electron support for offline/desktop usage"
-      }
-    },
+    },    
     "hexgame": {
       "name": "Hex",
       "description": "An abstract strategy board game implemented using React. The game allows two players to compete on a hexagonal board, with the goal of forming a connected path of their color linking two opposite sides of the board. The game logic relies on disjoint-set data structures to determine the winner.",

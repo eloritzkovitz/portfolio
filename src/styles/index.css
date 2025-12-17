@@ -28,12 +28,9 @@ body {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;    
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
 button:hover {
@@ -346,7 +343,7 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  /* button {
     background-color: #f9f9f9;
-  }
+  } */
 }
