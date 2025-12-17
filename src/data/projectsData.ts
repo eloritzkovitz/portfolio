@@ -21,6 +21,7 @@ const projects: Project[] = [
       "PWA",
       "Electron",
       "Vitest",
+      "Testing Library",
       "Cypress",
     ],
     icon: "/projects/atlaset/icon.png",
@@ -36,6 +37,8 @@ const projects: Project[] = [
       "projects.atlaset.involvement.4",
       "projects.atlaset.involvement.5",
       "projects.atlaset.involvement.6",
+      "projects.atlaset.involvement.7",
+      "projects.atlaset.involvement.8",
     ],
     screenshots: [
       "/projects/atlaset/screenshots/screenshot-1.webp",
