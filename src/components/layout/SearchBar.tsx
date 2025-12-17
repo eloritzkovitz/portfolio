@@ -1,5 +1,5 @@
 import React from "react";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaXmark } from "react-icons/fa6";
 
 interface SearchBarProps {
   value: string;
@@ -21,9 +21,19 @@ const SearchBar: React.FC<SearchBarProps> = ({
       onChange={(e) => onChange(e.target.value)}
       aria-label="Search"
     />
-    <span className="absolute left-3 top-2.5 text-gray-400 pointer-events-none">
+    <span className="absolute left-3 top-3.5 text-gray-400 pointer-events-none">
       <FaMagnifyingGlass />
     </span>
+    {value && (
+      <button
+        type="button"
+        className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none"
+        onClick={() => onChange("")}
+        aria-label="Clear search"
+      >
+        <FaXmark />
+      </button>
+    )}
   </div>
 );
 
