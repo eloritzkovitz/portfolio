@@ -23,6 +23,7 @@ const projects: Project[] = [
       "Vitest",
       "Testing Library",
       "Cypress",
+      "GitHub Actions",
     ],
     icon: "/projects/atlaset/icon.png",
     color: "#2b3990",
