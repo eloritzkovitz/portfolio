@@ -70,13 +70,14 @@
       "description": "Atlaset is an interactive country explorer and travel tracker, supporting user-defined overlays, flexible filters, markers, and detailed country information. The application allows users to visualize countries they have visited, document travel itineraries and explore personal data through an intuitive map interface.",
       "involvement": {
         "1": "Developed a React application with Vite and TypeScript as a personal project",
-        "2": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
-        "3": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
-        "4": "Implemented features such as user-defined overlays and markers, flexible filters, detailed country information and a dashboard",
-        "5": "Added authentication and data persistence using Firebase for user accounts and Dexie (IndexedDB) for offline storage",
-        "6": "Implemented unit and integration tests using Vitest and Cypress",
-        "7": "Added PWA and Electron support for offline/desktop usage",
-        "8": "Deployed the application using Vercel for web and Render for backend"
+        "2": "Implemented state management using Redux for predictable and scalable data flow",
+        "3": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
+        "4": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
+        "5": "Implemented features such as user-defined overlays and markers, flexible filters, detailed country information and a dashboard",
+        "6": "Added authentication and data persistence using Firebase for user accounts and Dexie (IndexedDB) for offline storage",
+        "7": "Implemented unit and integration tests using Vitest and Cypress",
+        "8": "Added PWA and Electron support for offline/desktop usage",
+        "9": "Deployed the application using Vercel (frontend) and Render (backend)"
       }
     },
     "voltrico": {
