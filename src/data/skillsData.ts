@@ -5,7 +5,7 @@ const skillsData = [
   },
   {
     category: "skills.frontendDevelopment",
-    skills: ["React", "Next.js", "Vite", "Tailwind CSS", "Bootstrap", "CSS", "HTML"],
+    skills: ["React", "Redux", "Next.js", "Vite", "Tailwind CSS", "Bootstrap", "CSS", "HTML"],
   },
   {
     category: "skills.backendDevelopment",
@@ -25,7 +25,7 @@ const skillsData = [
   },
   {
     category: "skills.testingAutomation",
-    skills: ["Jest", "Selenium"],
+    skills: ["Jest", "Vitest", "Testing Library", "Cypress", "Selenium"],
   },
   {
     category: "skills.languages",

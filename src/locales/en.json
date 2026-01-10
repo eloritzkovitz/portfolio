@@ -67,17 +67,16 @@
   "projects": {
     "atlaset": {
       "name": "Atlaset",
-      "description": "Atlaset is an interactive country explorer and travel tracker, supporting user-defined overlays, flexible filters, markers, and detailed country information. The application allows users to visualize countries they have visited, document travel itineraries and explore personal data through an intuitive map interface.",
+      "description": "Atlaset is an interactive country explorer and travel tracker, supporting user-defined layers and markers, flexible filters and detailed country information. The application allows users to visualize countries they have visited, document travel itineraries and explore personal data through an intuitive map interface.",
       "involvement": {
-        "1": "Developed a React application with Vite and TypeScript as a personal project",
+        "1": "Developed a React application with Vite and TypeScript as a personal project for self-use, family and friends.",
         "2": "Implemented state management using Redux for predictable and scalable data flow",
-        "3": "Designed and implemented an interactive world map using React-Simple-Maps and D3.js", 
-        "4": "Integrated various data sources, including REST APIs or static JSON files to provide comprehensive country information",       
-        "5": "Implemented features such as user-defined overlays and markers, flexible filters, detailed country information and a dashboard",
-        "6": "Added authentication and data persistence using Firebase for user accounts and Dexie (IndexedDB) for offline storage",
-        "7": "Implemented unit and integration tests using Vitest and Cypress",
-        "8": "Added PWA and Electron support for offline/desktop usage",
-        "9": "Deployed the application using Vercel (frontend) and Render (backend)"
+        "3": "Worked with frameworks and libraries like Tailwind CSS, geoJSON, D3.js, Chart.js and Recharts to deliver a modern and interactive design.",     
+        "4": "Implemented user authentication and data persistence using Firebase and Dexie (IndexedDB) for guest session and caching",
+        "5": "Developed a Node.js + Express backend server for handling API calls and serving data",
+        "6": "Implemented unit and integration tests using Vitest, Testing Library and Cypress",
+        "7": "Added PWA and Electron support for offline/desktop usage",
+        "8": "Deployed the application via Vercel (frontend) and Render (backend)"
       }
     },
     "voltrico": {
