@@ -41,7 +41,6 @@ const projects: Project[] = [
       "projects.atlaset.involvement.6",
       "projects.atlaset.involvement.7",
       "projects.atlaset.involvement.8",
-      "projects.atlaset.involvement.9",
     ],
     screenshots: [
       "/projects/atlaset/screenshots/screenshot-1.webp",
