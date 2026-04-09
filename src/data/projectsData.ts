@@ -20,7 +20,6 @@ const projects: Project[] = [
       "Firebase",
       "Dexie",
       "PWA",
-      "Electron",
       "Vitest",
       "Testing Library",
       "Cypress",

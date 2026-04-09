@@ -75,7 +75,7 @@
         "4": "Implemented user authentication and data persistence using Firebase and Dexie (IndexedDB) for guest session and caching",
         "5": "Developed a Node.js + Express backend server for handling API calls and serving data",
         "6": "Implemented unit and integration tests using Vitest, Testing Library and Cypress",
-        "7": "Added PWA and Electron support for offline/desktop usage",
+        "7": "Added PWA support for offline usage",
         "8": "Deployed the application via Vercel (frontend) and Render (backend)"
       }
     },
