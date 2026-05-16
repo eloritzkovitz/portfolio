@@ -15,6 +15,7 @@ const projects: Project[] = [
       "HTML",
       "D3.js",
       "GeoJSON",
+      "i18next",
       "Node.js",
       "Express",
       "Firebase",
@@ -52,6 +53,7 @@ const projects: Project[] = [
       "/projects/atlaset/screenshots/screenshot-8.webp",
       "/projects/atlaset/screenshots/screenshot-9.webp",
       "/projects/atlaset/screenshots/screenshot-10.webp",
+      "/projects/atlaset/screenshots/screenshot-11.webp",
     ],
   },
   {
